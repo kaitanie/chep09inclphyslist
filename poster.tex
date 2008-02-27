@@ -1,0 +1,224 @@
+\documentclass[10pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{epsf}
+\usepackage{graphicx,psfrag,color,pstcol,pst-grad}
+\usepackage{pst-blur}
+\usepackage{amsmath,amssymb}
+\usepackage{latexsym}
+\usepackage{calc}
+\usepackage{multicol,xspace}
+
+  
+% defines the width and height of the poster, scaled down to a viewable size
+\def\width{12in}  % this is 3'/3 = 36'' / 3 = 12''
+\def\height{17in} % this is 4'/3 = 48'' / 3 = 16''+ 3'/3 (for top and bottom inch)
+
+% Set paper format
+\setlength{\paperwidth}{\width}
+\setlength{\paperheight}{\height}
+\special{papersize=\width,\height}
+\pagestyle{empty}
+
+% width of colored background
+\newlength{\bgwidth}
+\setlength{\bgwidth}{12in}
+% height of colored background
+\newlength{\bgheight}
+\setlength{\bgheight}{16.3in}
+
+% Removing all margins and spacing
+\setlength{\topmargin}{-0.3in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\topskip}{0in}
+\setlength{\footskip}{0in}
+\setlength{\oddsidemargin}{-0.45in}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0em}
+%\setlength{\itemsep}{0.1cm}
+%\setlength{\parsep}{0.1cm}
+
+% Set textwidth to leave 1 inch on each side
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-1.0in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-0.3in}
+
+
+% The white box where the text is
+\newsavebox{\dummybox}
+\newenvironment{textbox}
+{\begin{lrbox}{\dummybox}\begin{minipage}{0.9\columnwidth}}
+{\end{minipage}\end{lrbox}\raisebox{-\depth}{\psshadowbox[framesep=1em,framearc=.1,shadow=true]{\usebox{\dummybox}}}\vspace{0.005\textheight}}
+
+
+% Colors for the sections and subsections
+%\definecolor{udsect}{rgb}{0 ,0 ,1}
+%\definecolor{udsubsect}{rgb}{0, 0.5, 0}
+\definecolor{udsect}{rgb}{0.0, 0.4, 0.27}
+\definecolor{udsubsect}{rgb}{0.0, 0.4, 0.27}
+
+\newcommand{\masyv}{\texttt{MASyV}\xspace}
+\newcommand{\cimmsim}{\texttt{CImmSim}\xspace}
+\newcommand{\maimmune}{\texttt{ma\_immune}\xspace}
+
+\begin{document}
+\begin{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Background                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newrgbcolor{gradbegin}{1 0.82 0.16}
+\newrgbcolor{gradend}{0.0 0.4 0.27}
+\psframe[linestyle=none,fillstyle=solid,fillcolor=gradbegin](-0.5\bgwidth,1.6in)(0.5\bgwidth,-0.5\bgheight)
+\psframe[linestyle=none,fillstyle=gradient,gradbegin=gradbegin,gradend=gradend,gradmidpoint=1](-0.5\bgwidth,-0.35\bgheight)(0.5\bgwidth,-0.45\bgheight)
+\psframe[linecolor=gradend,fillstyle=solid,fillcolor=gradend](-0.5\bgwidth,-0.4489\bgheight)(0.5\bgwidth,-\bgheight)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     Header                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-1in}
+\psframebox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
+	\parbox[c]{1.4cm}{\includegraphics[width=3.8cm]{images/UAcrest.eps}}
+	\hspace{0.6cm}
+   \parbox[c]{0.8\linewidth}{
+		\begin{center}
+			\textbf{\Huge INCL/ABLA for Geant4} \\[0.5em]
+			\textsc{\LARGE Aatos Heikkinen, Pekka Kaitaniemi$^{\dagger}$} \\[0.3em]
+			{\Large $^{\dagger}$Helsinki Institute of Physics}
+		\end{center}
+	}
+	\parbox[c]{2cm}{\includegraphics[width=2cm]{images/MITACSlogo.eps}}
+}}
+
+
+\begin{multicols}{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\begin{center}
+\textbf{\Large\color{udsubsect}\underline{ABSTRACT}}
+\end{center}
+
+{\color{udsect}
+Abstract goes here...
+}
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+\section*{\color{udsect} About \masyv}
+
+INCL/ABLA
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} INCL}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} ABLA}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} Validation}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} Evaporation}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{textbox}
+
+
+\section*{\color{udsect} Fission}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+\section*{\color{udsect} Free parameters}
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} Geant4}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+%% \section*{\color{udsect} Viral infections with \maimmune}
+%% \vspace{-0.3cm}
+%% \begin{center}
+%% \begin{tabular}{|c|c|}
+%% \hline
+%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig1.eps}} &
+%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig2.eps}} \\
+%% \hline
+%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig3.eps}} &
+%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig4.eps}} \\
+%% \hline
+%% \end{tabular}
+%% \end{center}
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} Defaults}
+ 
+ 
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{\color{udsect} Acknowledgements}
+
+
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+{\small
+\addcontentsline{toc}{section}{References}
+%\bibliographystyle{abbrv}
+%\bibliography{latex_poster}
+}
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{multicols}
+
+\end{center}
+\end{document}
