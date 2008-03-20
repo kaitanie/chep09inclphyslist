@@ -35,7 +35,7 @@
 \setlength{\footskip}{0in}
 \setlength{\oddsidemargin}{-0.45in}
 %\setlength{\parindent}{0em}
-%\setlength{\parskip}{0em}
+%\setlength{\parskip}{5cm}
 %\setlength{\itemsep}{0.1cm}
 %\setlength{\parsep}{0.1cm}
 
@@ -104,8 +104,9 @@
 \end{center}
 
 {\color{udsect}
-We present implementation of hadronic cascade model INCL 4.2
+We present first implementation of hadronic cascade model INCL 4.2
 \cite{incl} and evaporation model ABLA V3 \cite{abla} in Geant4 9.1.
+\vskip0.5cm
 These codes play an important role in many nuclear physics
 applications, such as spallation studies. (See Fig. \ref{fig:fig}).
 % The hadronic cascade model INCL4 \cite{incl} and de-excitation model
@@ -132,7 +133,15 @@ applications, such as spallation studies. (See Fig. \ref{fig:fig}).
 
 %One feature of INCL is low number of free model parameters.
 %The most imporant parameter of INCL is the stopping time, $t_{stop}$,
-Notably, INCL introduces only two free parameters: potential depth
+}
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+\section*{\color{udsect} Theory}
+
+Notably, INCL introduces \emph{only two free parameters}: potential depth
 and the stopping time
 $t_{stop}$, defined as the point in time when the cascade is
 finished and evaporation starts:
@@ -142,15 +151,7 @@ t_{stop} = f_{stop}t_0 (A_{target}/208) ^{0.16}.
 Here $A_{target}$ is the target mass number, $t_0 = 70 fm/c$, and
 $f_{stop}$ is a scaling factor for the stopping time \cite{g4physref}.
 % Good default value for this factor is $f_{stop}$ = 1.0
-}
 
-\end{textbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
-
-\section*{\color{udsect} About \masyv}
-
-INCL/ABLA
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
