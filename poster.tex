@@ -27,7 +27,8 @@
 \setlength{\bgheight}{16.3in}
 
 % Removing all margins and spacing
-\setlength{\topmargin}{-0.3in}
+%\setlength{\topmargin}{-0.3in}
+\setlength{\topmargin}{0.3in}
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0in}
 \setlength{\topskip}{0in}
@@ -103,7 +104,44 @@
 \end{center}
 
 {\color{udsect}
-Abstract goes here...
+We present implementation of hadronic cascade model INCL 4.2
+\cite{incl} and evaporation model ABLA V3 \cite{abla} in Geant4 9.1.
+These codes play an important role in many nuclear physics
+applications, such as spallation studies. (See Fig. \ref{fig:fig}).
+% The hadronic cascade model INCL4 \cite{incl} and de-excitation model
+% ABLA \cite{abla} play an important role in nuclear physics
+% applications and simulating the behaviour of high energy physics
+% detector systems such as Compact Muon Solenoid experiment at Large
+% Hadron Collider. 
+%
+% INCL4 and ABLA physics validation, using the ROOT \cite{rootwebsite}
+% data analysis package developed at CERN.  This validation framework
+% allows scripting of simulation parameters, such as target material,
+% thickness, beam particle type, energy and the physics models.
+%
+% using an interface layer, and are comparing the physics performance
+% against existing Geant4 models. We work together with the original
+% developers from Li\`ege University, GSI and CEA to convert this
+% FORTRAN-C++ hybrid system first to procedural C-implementation and
+% further to fully object oriented C++ code. This redesign and rewrite
+% will make it easier to maintain and .
+%
+% We have translated the FORTRAN based INCL 4.2 and ABLA V3 codes to C++
+% and connected them to Geant4 \cite{geant4Site} hadronic physics
+% framework making further development of these models possible. (TODO:)
+
+%One feature of INCL is low number of free model parameters.
+%The most imporant parameter of INCL is the stopping time, $t_{stop}$,
+Notably, INCL introduces only two free parameters: potential depth
+and the stopping time
+$t_{stop}$, defined as the point in time when the cascade is
+finished and evaporation starts:
+\begin{equation}
+t_{stop} = f_{stop}t_0 (A_{target}/208) ^{0.16}.
+\end{equation}
+Here $A_{target}$ is the target mass number, $t_0 = 70 fm/c$, and
+$f_{stop}$ is a scaling factor for the stopping time \cite{g4physref}.
+% Good default value for this factor is $f_{stop}$ = 1.0
 }
 
 \end{textbox}
@@ -121,6 +159,8 @@ INCL/ABLA
 
 \section*{\color{udsect} INCL}
 
+INCL is an intra-nuclear cascade model developed at the university of
+Li\`ege and CEA/Saclay.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -129,6 +169,7 @@ INCL/ABLA
 
 \section*{\color{udsect} ABLA}
 
+ABLA is a fission and evaporation code that is developed at GSI, Darmstadt.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -137,6 +178,11 @@ INCL/ABLA
 
 \section*{\color{udsect} Validation}
 
+%\begin{figure}
+\includegraphics[scale=0.4]{images/pPbDD.eps}
+%\caption{Hoi maailma.}
+%\label{fig:pPbdd1200MeV}
+%\end{figure}
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -211,8 +257,23 @@ INCL/ABLA
 
 {\small
 \addcontentsline{toc}{section}{References}
+\begin{thebibliography}{9}
+\bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for
+    a comprehensive description of spallation reaction data}, Phys.
+  Rev. C66 (2002) 044615
+\bibitem{abla} J. Benlliure et al., \emph{Calculated nuclide
+    production yields in relativistic collisions of fissile nuclei},
+  Nuc. Phys. A628 (1998) 458
+\bibitem{fp} P. Kaitaniemi, A. Heikkinen, \emph{Implementing INCL4
+    hadronic cascade and ABLA de-excitation codes in Geant4},
+  Proceedings of the 41th Annual Meeting of the Finnish Physical
+  Society (2007)
+%\bibitem{g4physref} \emph{Geant4 Physics Reference Manual -- version
+%    Geant4 9.1} available at {\tt http://\-cern.ch/\-geant4}
+\bibitem{g4incl} \emph{Geant4 Physics Reference Manual: INCL 4.2 Cascade and ABLA V3 Evaporation with Fission} {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
 %\bibliographystyle{abbrv}
 %\bibliography{latex_poster}
+\end{thebibliography}
 }
 
 \end{textbox}
