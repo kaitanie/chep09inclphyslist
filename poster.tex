@@ -156,15 +156,19 @@ applications these models are typically used for spallation studies.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
 
-\section*{\color{udsect} Theory}
+\section*{{\Huge {\sf INCL PARAMETERS}}}
+%\section*{\textbf{\Large\color{udsubsect}\underline{INCL parameters}}}
 
-Notably, INCL introduces \emph{only two free parameters}: potential depth
-and the stopping time
+INCL introduces \emph{only two free parameters}:
+\begin{itemize}
+\item potential depth and
+\item stopping time
 $t_{stop}$, defined as the point in time when the cascade is
 finished and evaporation starts:
 \begin{equation}
 t_{stop} = f_{stop}t_0 (A_{target}/208) ^{0.16}.
 \end{equation}
+\end{itemize}
 Here $A_{target}$ is the target mass number, $t_0 = 70 fm/c$, and
 $f_{stop}$ is a scaling factor for the stopping time \cite{g4physref}.
 % Good default value for this factor is $f_{stop}$ = 1.0
@@ -172,108 +176,102 @@ $f_{stop}$ is a scaling factor for the stopping time \cite{g4physref}.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
+%\begin{textbox}
 
 
-\section*{\color{udsect} INCL}
+%\section*{{\Huge {\sf INCL}}}
 
-INCL is an intra-nuclear cascade model developed at the university of
-Li\`ege and CEA/Saclay.
+\includegraphics[scale=0.73]{images/cascade.eps}
 
-\end{textbox}
+%INCL is an intra-nuclear cascade model developed at the university of
+%Li\`ege and CEA/Saclay.
+
+%\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
 
 
-\section*{\color{udsect} ABLA}
+\section*{{\Huge {\sf ABLA MODEL FOR EVAPO\-RATI\-ON AND FISSION}}}
+%\section*{\color{udsect} ABLA}
 
 ABLA is a fission and evaporation code that is developed at GSI, Darmstadt.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
+%\begin{textbox}
 
 
-\section*{\color{udsect} Validation}
+\section*{{\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}}
+
+Validating double-differential for neutron production from Geant4 INCL
+and ABLA models. Evaporation from ABLA model is shown below E $\simeq$
+20 MeV.
 
 %\begin{figure}
-\includegraphics[scale=0.4]{images/pPbDD.eps}
+\includegraphics[scale=0.70]{images/pPbDD.eps}
 %\caption{Hoi maailma.}
 %\label{fig:pPbdd1200MeV}
 %\end{figure}
 
-\end{textbox}
+%\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
 
 
-\section*{\color{udsect} Evaporation}
+\section*{{\Huge {\sf ABLA EVAPORATION}}}
+The probabilities for emission of particle type $j = {p, n, \alpha}$
+are calculated using formula:
+\begin{equation}
+W_j(N,Z,E) = \frac{\Gamma_j(N,Z,E)}{\sum_k\Gamma_k(N,Z,E)},
+\label{eqn:probabilities}
+\end{equation}
+where $\Gamma_j$ is emission width for particle $j$, $N$ is neutron
+number, $Z$ charge number and $E$ excitation energy.
+\vskip0.5cm
 
-
-\end{textbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{textbox}
-
-
-\section*{\color{udsect} Fission}
-
-
-\end{textbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
-
-\section*{\color{udsect} Free parameters}
-
-\end{textbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
-
-
-\section*{\color{udsect} Geant4}
-
-
-\end{textbox}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
-
-
-%% \section*{\color{udsect} Viral infections with \maimmune}
-%% \vspace{-0.3cm}
-%% \begin{center}
-%% \begin{tabular}{|c|c|}
-%% \hline
-%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig1.eps}} &
-%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig2.eps}} \\
-%% \hline
-%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig3.eps}} &
-%% \resizebox{0.46\textwidth}{!}{\includegraphics{images/fig4.eps}} \\
-%% \hline
-%% \end{tabular}
-%% \end{center}
-
-
+Emission widths are calculated using the following formula:
+\index{emission width}
+\begin{equation}
+\Gamma_j = \frac{1}{2 \pi \rho_c(E)} \frac{4 m_j R^2}{\hbar^2} T_j^2 \rho_j(E - S_j - B_j),
+\label{eqn:emissionwidth}
+\end{equation}
+where:
+\begin{itemize}
+\item $\rho_c(E)$ and $\rho_j(E - S_j - B_j)$ are the level densities
+of the compound nucleus and the exit channel, respectively.
+\item $B_j$ is the height of the Coulomb barrier,
+\item $S_j$ the separation energy,
+\item $R$ is the radius,
+\item $T_j$ the temperature of the remnant nucleus after
+emission, and
+\item $m_j$ the mass of the emitted particle.
+\end{itemize}
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
 
+\section*{{\Huge {\sf }}}
 
-\section*{\color{udsect} Defaults}
- 
- 
-\end{textbox}
+\includegraphics[scale=0.45]{images/vladimir.eps}
+{\Large {\sf Comparison of various cascade models in Geant4. INCL/ABLA precision
+model good agreement with experimental data. ({\emph Courtesy of
+    V. Ivanchenko, Geant4 collaboration}).}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
 
 
-\section*{\color{udsect} Acknowledgements}
+\section*{{\Huge {\sf ACKNOWLEDGEMENTS}}}
 
-
+This work is a collaborative effort with the original developers from
+Li\`ege University, GSI and CEA. We acknowledge the help from %\todo{names}
+converting the original FORTRAN codes C++ language.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip2cm
 \begin{textbox}
 
-{\small
+{\large
 \addcontentsline{toc}{section}{References}
 \begin{thebibliography}{9}
 \bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for
