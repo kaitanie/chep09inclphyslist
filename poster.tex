@@ -74,57 +74,64 @@
 \newcommand{\maimmune}{\texttt{ma\_immune}\xspace}
 
 \begin{document}
+\huge
 \begin{center}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Background                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newrgbcolor{gradbegin}{1 0.82 0.16}
-\newrgbcolor{gradend}{0.0 0.4 0.27}
-\psframe[linestyle=none,fillstyle=solid,fillcolor=gradbegin](-0.5\bgwidth,1.6in)(0.5\bgwidth,-0.5\bgheight)
-\psframe[linestyle=none,fillstyle=gradient,gradbegin=gradbegin,gradend=gradend,gradmidpoint=1](-0.5\bgwidth,-0.35\bgheight)(0.5\bgwidth,-0.45\bgheight)
-\psframe[linecolor=gradend,fillstyle=solid,fillcolor=gradend](-0.5\bgwidth,-0.4489\bgheight)(0.5\bgwidth,-\bgheight)
+%\newrgbcolor{gradbegin}{1 0.82 0.16}
+%\newrgbcolor{gradend}{0.0 0.4 0.27}
+%\psframe[linestyle=none,fillstyle=solid,fillcolor=gradbegin](-0.5\bgwidth,1.6in)(0.5\bgwidth,-0.5\bgheight)
+%\psframe[linestyle=none,fillstyle=gradient,gradbegin=gradbegin,gradend=gradend,gradmidpoint=1](-0.5\bgwidth,-0.35\bgheight)(0.5\bgwidth,-0.45\bgheight)
+%\psframe[linecolor=gradend,fillstyle=solid,fillcolor=gradend](-0.5\bgwidth,-0.4489\bgheight)(0.5\bgwidth,-\bgheight)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                     Header                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{-1in}
-\psframebox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
-	\parbox[c]{1.4cm}{\includegraphics[width=3.8cm]{images/UAcrest.eps}}
+%\psbox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
+	\parbox[c]{1.4cm}{\includegraphics[width=3.8cm]{images/hiplogo.eps}}
 	\hspace{0.6cm}
    \parbox[c]{0.8\linewidth}{
 		\begin{center}
-			\textbf{\Huge INCL/ABLA for Geant4} \\[0.5em]
-			\textsc{\LARGE Aatos Heikkinen, Pekka Kaitaniemi$^{\dagger}$} \\[0.3em]
-			{\Large $^{\dagger}$Helsinki Institute of Physics}
+			\textbf{\Huge INCL4 CASCADE AND ABLA EVAPORATION CODES IN GEANT4} \\[0.5em]
+			\textbf{\LARGE Aatos Heikkinen, Pekka Kaitaniemi$^{\dagger}$} \\[0.3em]
+			{\Large $^{\dagger}$ {\tt kaitanie@cc.helsinki.fi}} \\
+                        {\textsc Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland}
+                        \vskip2cm
 		\end{center}
 	}
-	\parbox[c]{2cm}{\includegraphics[width=2cm]{images/MITACSlogo.eps}}
-}}
-
+	\parbox[c]{5.3cm}{\includegraphics[width=5cm]{images/g4logo.eps}}
+%}}
+% Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland
+% email: pekka.kaitaniemi@helsinki.fi
 
 \begin{multicols}{3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
 
-
-\begin{center}
-\textbf{\Large\color{udsubsect}\underline{ABSTRACT}}
-\end{center}
+\section*{{\Huge {\sf ABSTRACT}}}
+%% \begin{center}
+%% \textsf{\Large\color{udsubsect}\underline{ABSTRACT}}
+%% \end{center}
 
 {\color{udsect}
-We present first implementation of hadronic cascade model INCL 4.2
-\cite{incl} and evaporation model ABLA V3 \cite{abla} in Geant4 9.1.
+We present first implementation \cite{fp} of hadronic cascade model INCL 4.2
+\cite{incl} and evaporation model ABLA V3 \cite{abla} in Geant4 9.1 \cite{g4}.
 \vskip0.5cm
-These codes play an important role in many nuclear physics
-applications, such as spallation studies. (See Fig. \ref{fig:fig}).
-% The hadronic cascade model INCL4 \cite{incl} and de-excitation model
-% ABLA \cite{abla} play an important role in nuclear physics
-% applications and simulating the behaviour of high energy physics
-% detector systems such as Compact Muon Solenoid experiment at Large
-% Hadron Collider. 
-%
+INCL and ABLA models play an important role in simulating the behaviour of high energy physics
+detector systems such as Compact Muon Solenoid experiment at LHC:
+\begin{itemize}
+\item improving shielding
+\item understanding radiation damage, and
+\item activation and background studies
+\end{itemize}
+In nuclear physics
+applications these models are typically used for spallation studies.
+% (See Fig. \ref{fig:fig}).
+
 % INCL4 and ABLA physics validation, using the ROOT \cite{rootwebsite}
 % data analysis package developed at CERN.  This validation framework
 % allows scripting of simulation parameters, such as target material,
