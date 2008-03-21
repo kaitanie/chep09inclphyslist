@@ -1,4 +1,4 @@
-\documentclass[10pt]{article}
+\documentclass[20pt]{article}
 \usepackage[latin1]{inputenc}
 \usepackage{epsf}
 \usepackage{graphicx,psfrag,color,pstcol,pst-grad}
@@ -10,8 +10,16 @@
 
   
 % defines the width and height of the poster, scaled down to a viewable size
-\def\width{12in}  % this is 3'/3 = 36'' / 3 = 12''
-\def\height{17in} % this is 4'/3 = 48'' / 3 = 16''+ 3'/3 (for top and bottom inch)
+%\def\width{12in}  % this is 3'/3 = 36'' / 3 = 12''
+%\def\height{17in} % this is 4'/3 = 48'' / 3 = 16''+ 3'/3 (for top and bottom inch)
+%A1:
+% size: 59.4cm wide x 84 cm high (A1)
+% (23.5 inches x 33 inches)
+%A2:
+% size: 42 cm wide x 59.4 cm high (A2)
+% (16.5 inches x 23.5 inches)
+\def\width{42cm}  % this is 3'/3 = 36'' / 3 = 12''
+\def\height{59.4cm} % this is 4'/3 = 48'' / 3 = 16''+ 3'/3 (for top and bottom inch)
 
 % Set paper format
 \setlength{\paperwidth}{\width}
@@ -21,10 +29,12 @@
 
 % width of colored background
 \newlength{\bgwidth}
-\setlength{\bgwidth}{12in}
+%\setlength{\bgwidth}{12in}
+\setlength{\bgwidth}{42cm}
 % height of colored background
 \newlength{\bgheight}
-\setlength{\bgheight}{16.3in}
+%\setlength{\bgheight}{16.3in}
+\setlength{\bgheight}{58cm}
 
 % Removing all margins and spacing
 %\setlength{\topmargin}{-0.3in}
