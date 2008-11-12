@@ -1,15 +1,23 @@
 \begin{appendix}
 \section{Misc. notes}
 We have demonstrated that implementations of INCL and ABLA models in Geant4 provide
-an reasonable description of spallation reactions in the 100 MeV - 2 GeV incident energy range 
+an reasonable description of spallation reactions in the 200 MeV - 3 GeV incident energy range 
 and that neutron cross sections are reproduced in most cases accurately.
 
 
 
-Limitations of INCL model
+Limitations of INCL model:
+\begin{itemize}
+\item Energy range: 200 MeV - 3 GeV
+\item Projectiles: Protons, Neutrons, Pions, Deuterons, Tritons, He3, Alphas
+\item Targets: from Aluminum (maybe even Carbon) up to Uranium
+\end{itemize}
 
-
-Future improvements of INCL model include
+Future improvements of INCL model include:
+\begin{itemize}
+\item Light target handling (including the use of Geant4 Fermi break-up)
+\item Light ion projectiles (up to Carbon or even Oxygen)
+\end{itemize}
 
 
 A remodelling of INCL code in Geant4 is in progress.  
