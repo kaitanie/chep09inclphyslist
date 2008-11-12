@@ -19,8 +19,9 @@ endif
 	@makeindex $(d).tex; $(tex) $(d); bibtex $(d); $(tex) $(d); $(tex) $(d); asy $(d); $(tex) $(d)
 ifdef AHSYSTEM
 	$(dviviewer) $(d).dvi &
-endif
 	$(pdfviewer) $(d).pdf
+endif
+
 ca:
 	rm -f $(d).pdf $(d).ps *.out $(d)_*.eps $(d).asy
 
