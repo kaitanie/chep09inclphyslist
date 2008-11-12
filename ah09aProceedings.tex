@@ -1,0 +1,700 @@
+%\renewcommand{\captionfont}{\textit}
+%\documentclass[twocolumn,twoside,slac,floatfix]{revtex4}
+%\documentclass[twocolumn,twoside,floatfix]{revtex4}
+\newif\ifCITENOTE  % define variable example
+\CITENOTEtrue
+
+\newif\ifPAPER  % define variable example
+\PAPERtrue % set example=true/ralse
+%\PAPERfalse  % if this active  use GNUmakefile  target slides
+
+\ifPAPER
+\documentclass[twoside,floatfix,a4wide]{revtex4}
+\usepackage{multirow} % common packages
+
+\usepackage{url}
+\usepackage{listings}
+%\documentclass[twoside,floatfix,a4    ]{revtex4}
+
+
+\else   % SLIDEs show properly if you run m and m pdf
+
+\documentclass[slidestop,compress,xdvips,9pt]{beamer} % packages spesific to slides
+%Use mathserif-option above if you dont want sf style for equations
+%Font-size 11pt is default. Also available 8pt,9pt, and 10pt 
+\usetheme{Antibes}
+\usecolortheme{lily}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{hyperref}
+
+\transglitter[direction=315]
+\xdefinecolor{ahcol}{rgb}{0.2, 0.4, 0.1}
+\xdefinecolor{olive}{cmyk}{0.64,0,0.95,0.4}
+\colorlet{structure}{green!60!black} % for color substitution
+%Predefined colors: red, green, blue, cyan, magenta, yellow, black,
+%darkgray, gray, lightgray, orange, violet, purple, and brown
+
+
+\hypersetup{
+    a4paper, % page format
+    pdftitle={My Title},                  % Title
+    pdfsubject={Subject of the document}, % Subject 
+    pdfauthor={Author name},              % Author
+    pdfkeywords={list of keywords},       % Keywords
+    plainpages=false, %
+    colorlinks,       % links are colored
+    urlcolor=blue,    % color of external links
+    linkcolor=red,    % color of internal links
+    citecolor=black,  % color of links to bibliography
+    bookmarksnumbered
+}
+
+\usecolortheme[named=ahcol]{structure}
+\useoutertheme{myinfolines}
+\useinnertheme{rounded}
+%\usecolortheme[named=yellow]{structure} % clashes with \usetheme
+\setbeamercolor{alerted_text}{fg=blue}
+\beamertemplateshadingbackground{blue!5}{yellow!10}
+%\beamersetaveragebackground{blue!5}
+
+\makeatother
+%\oddsidemargin=0mm
+%\evensidemargin=0mm  
+
+%\usecolortheme[named=green]{structure}
+%\xdefinecolor{ahcol}{0.3, 0.6, 0.1}
+
+%\colorlet{structure}{green!30!gray}
+\beamertemplatetransparentcoveredhigh
+\title{Beamer slides embededd to {\tt d.tex}}
+
+%Geant4 Lecture Course
+\author{A.~Heikkinen \\ {\tt aatos.heikkinen@cern.ch}\\ \it{HIP, Particle Physics Seminar}}
+%\institute[HIP]{On behalf of the Geant4 Collaboration}
+%\date{\today}
+\graphicspath{{.}{figures/}}
+\begin{document}
+\frame{\titlepage}
+\section{}
+\frame[shrink]{
+\frametitle{Usage}
+
+\transsplitverticalout<4>
+
+For normal paper set PAPER variable to true 
+and for slides set PAPER to false.
+       \vspace{0.5cm}
+\structure{ % blue color
+:::::
+}
+\vspace{0.5cm}
+
+$$\int_i^2 \sin s^2 dx$$
+\structure{textStructure}
+\alert{textAlert}
+
+
+
+Finally
+      ::::
+}
+
+\section{Section}
+\frame{
+\frametitle{From title}
+\begin{itemize}
+\pause \item Every thing
+\pause \item that has
+\pause \item beginning
+\pause \item has end.
+\end{itemize}
+
+%\vspace{-4cm}
+\begin{columns}
+\begin{column}{0.65\textwidth}
+\begin{tabular}{lcccc}
+ Class & A & B & C & D \\\hline
+ X & 1 & 2 & 3 & 4 \pause \\
+ Y & 3 & 4 & 5 & 6 \pause \\
+ Y & 3 & 4 & 5 & 6 \pause \\
+ Y & 3 & 4 & 5 & 6 \pause \\
+ Y & 3 & 4 & 5 & 6 \pause \\
+ Y & 3 & 4 & 5 & 6 \pause \\
+ Z&5&6&7&8
+\end{tabular}
+
+ \end{column}
+ \begin{column}{0.35\textwidth}
+%\includegraphics[scale=0.2]{images/hsswPoster.png}  
+
+\end{column}
+\end{columns}
+
+Image:
+
+\structure{(G.~Mavromanolakis and D. Ward, {\sf [arXiv/physics:0409040]})}
+}
+
+
+\frame{
+\frametitle{From title}
+\begin{itemize}
+\item <+-| alert@+> Every thing
+\item <+-| alert@+> that has
+\item <+-| alert@+> its basis on
+\end{itemize}
+}
+
+\def\hilite<#1>{
+  \temporal<#1>{\color{gray}}{\color{blue}} {\color{blue!25}}}
+
+\frame{
+\frametitle{From title}
+
+\begin{itemize}
+  \hilite<3> \item Everything
+  \hilite<4> \item that has
+  \hilite<5> \item beginning
+  \hilite<6> \item has end.
+  \hilite<7>
+\end{itemize}
+Something 
+}
+
+\fi
+
+\newif\ifshort  % define variable example
+\shorttrue % set example=true/ralse
+%\shortfalse
+
+%\setlength{\voffset}{-1.54cm}
+%\setlength{\hoffset}{-0.54cm}
+%\setlength{\evensidemargin}{1.5cm}
+%\setlength{\marginparsep}{0cm}
+%\setlength{\textwidth}{15cm}
+%\setlength{\textheight}{24.7cm}
+%\setlength{\topmargin}{1cm}
+%\setlength{\headheight}{0pt}
+%\setlength{\headsep}{0pt}
+
+% The path of picture directory is described in the environmental string
+%   ($LAWPICSPATH)
+% The name and path of the BiBTeX bibliography file is defined in
+%   ($LAWBIBNAME)
+
+
+\ifPAPER
+%\usepackage{epsf}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{makeidx}
+\usepackage{fancyhdr}
+\usepackage{asymptote}
+\usepackage{amsmath}
+\usepackage{eurosym} % euros
+
+
+%\fancypagestyle{lawbody}{
+%  \renewcommand{\headrulewidth}{0.5pt}
+%  \fancyhead[LE,LO]{SiBT DAQ article / draft v0.13 (\input{draft.timestamp})}
+%  \fancyhead[RE,RO]{Comments to lauri.wendland@cern.ch}
+%  \fancyfoot[CE,CO]{\thepage}
+%}
+
+\numberwithin{equation}{section} % Eguation numbering with section id. Reguires amsmath -package.
+\pagestyle{fancy}
+\fancyhead{} % clear all fields
+
+%\fancyfoot[R]{\it {Helsinki, April 21th, 2008}} % Left Odd, Right Even 
+\fancyhead[L]{\bf {November 10, 2008}} % Left Odd, Right Even 
+\fancyfoot[C]{A.~Heikkinen {\em et al.}: 
+{\em A Geant4 physics list for nuclear physics applications based on INCL and ABLA models }}
+
+\fancyhead[R]{\thepage}
+%\fancyhead[RO,RE]{\bf Working Notes}
+%\fancyfoot{} % clear all fields
+%\fancyfoot[LE,LO]{\bf Working Notes} 
+
+\newcommand{\urltilde}[1]{\texttt{#1}} % solves the tilde problem
+
+%\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\footrulewidth}{0pt}
+%\renewcommand{\sfdefault}{phv}
+
+%\setlength{\textheight}{235mm}
+%\setlength{\textwidth}{170mm}
+%\setlength{\topmargin}{-20mm}
+
+% You should use BibTeX and apsrev.bst for references
+
+\bibliographystyle{apsrev}
+
+\begin{document}
+%\title{Geant4 physics list for applications to spallation reactions in ADS
+
+\title{A Geant4 physics list for nuclear physics applications based on INCL and ABLA models
+\footnote{Paper \cite{ah09aProceedings} in preparation for CHEP 2009, 21 - 27 March 2009 Prague, Czech Republic\\
+\url{http://www.particle.cz/conferences/chep2009/}}}
+%\title{A Geant4 physics list for spallation reactions}
+
+\author{{\underline{A.~Heikkinen}, P.~Kaitaniemi},} 
+\affiliation{Helsinki Institute of Physics, P.O. Box 64, FIN-00014 University of Helsinki, Finland}
+
+\author{A. Boudard}
+\affiliation{CEN-Saclay, CEA-DAPNIA/SPhN, 91 191 Gif sur Yvette, France}
+
+\author{G.~Folger}
+\affiliation{European Organization for Nuclear Research (CERN) Switzerland}
+
+\begin{abstract}
+We present a new Geant4 physics list prepared for nuclear physics applications.
+We discuss new Geant4 models based on translation of INCL and ABLA codes used in the physic list 
+and give examples of physics performance.
+Suitability of these models for nuclear physics applications are demonstrated 
+particularly from the perspective of spallation and neutron cross section observables.
+An example application utilizing the physics list is introduced.
+%such as spallation reactions in Accelerator Driven Systems.
+\end{abstract}
+
+%\maketitle must follow title, authors, abstract
+\maketitle
+
+\thispagestyle{fancy}
+
+% Put \label in argument of \section for cross-referencing \section{\label{}}
+
+\ifshort
+
+[{\bf Suggested  responsibility}: 
+A.H. main author, P.K. coding, A.B. use case physics and INCL, G.F. Geant4 physics list details]
+
+\section{INTRODUCTION \label{section:intro}}
+An unique feature of Geant4 is physics list concept providing transparent access 
+to various physics models. 
+Often an optional models are available with specific strengths and limitations, 
+so physics lists concept is used to
+provide optimal set of functionality for specific use case.
+
+In this paper we are interested on issues relevant to nuclear physics applications,
+neutron production and modelling of spallation reactions.  
+
+%ADS
+This paper is organized as follows:
+key Geant4 models (intra-nuclear cascade INCL or Liege cascade, and ABLA evaporation-fission model) 
+applied in this work are introduced in Sec.~\ref{sec:models},
+Sec.~\ref{sec:list} documents the details of physics list implementation, and
+Sec.~\ref{sec:example} describes an example application utilizing the new physics list
+for the use case of spallation reaction study.
+Physics performance is demonstrated particularly for 
+neutron  cross sections in Sec.~\ref{sec:performance} and
+Sec.~\ref{sec:conclusion} concludes with outline of future models developments.
+
+\section{INCL AND ABLA MODELS IN GEANT4} \label{sec:models}
+
+INCL and ABLA models are casted into independent FORTRAN based Monte Carlo codes 
+INCL4.2 and ABLA V3 \cite{heikkinen07mProceedings}.
+Recently these implementations have been translated into C++ and codes provides
+as part of Geant4 toolkit \cite{:::}. 
+First beta release of INCL 4.2 and ABLA v3 was in Geant4  9.1 (December 2007).
+
+
+
+\section{PHYSICS LIST FOR SPALLATION STUDIES} \label{sec:list}
+
+\section{EXAMPLE APPLICATION} \label{sec:example}
+
+\section{PHYSICS PERFORMANCE} \label{sec:performance}
+
+
+
+
+
+\section{CONCLUSION} \label{sec:conclusion}
+
+%\begin{lstlisting}
+%\end{lstlisting}
+
+
+\else
+\section{ASYMPTOTE}
+Embedded Asymptote graphics.
+
+\begin{figure}
+\begin{center}
+
+\begin{asy}
+size(8cm,4cm,IgnoreAspect);
+//size(10cm,5cm,IgnoreAspect);
+import graph;
+texpreamble("\def\Arg{\mathop {\rm Arg}\nolimits}");
+
+
+
+real ampl(real x) {return 2.5/(1+x^2);}
+real phas(real x) {return -atan(x)/pi;}
+
+scale(Log,Log);
+draw(graph(ampl,0.01,10));
+ylimits(0.001,100);
+
+xaxis("$\omega\tau_0$",BottomTop,LeftTicks);
+yaxis("$|G(\omega\tau_0)|$",Left,RightTicks);
+
+picture q=secondaryY(new void(picture pic) {
+		       scale(pic,Log,Linear);
+		       draw(pic,graph(pic,phas,0.01,10),red);
+		       ylimits(pic,-1.0,1.5);
+		       yaxis(pic,"$\Arg G/\pi$",Right,red,
+			     LeftTicks("$% #.1f$",
+				       begin=false,end=false));
+		       yequals(pic,1,Dotted);
+		     });
+label(q,"(1,0)",Scale(q,(1,0)),red);
+add(q);
+
+\end{asy}
+\caption{Caption text 1}\label{fig:asy1}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\begin{asy}
+size(4cm,0);
+import feynman;
+
+
+// set default line width to 0.8bp
+currentpen = linewidth(0.8);
+
+// scale all other defaults of the feynman module appropriately
+fmdefaults();
+
+// define vertex and external points
+
+real L = 50;
+
+pair zl = (-0.75*L,0);
+pair zr = (+0.75*L,0);
+
+pair xu = zl + L*dir(+120);
+pair xl = zl + L*dir(-120);
+
+pair yu = zr + L*dir(+60);
+pair yl = zr + L*dir(-60);
+
+
+// draw propagators and vertices
+
+drawFermion(xu--zl);
+drawFermion(zl--xl);
+
+drawPhoton(zl--zr);
+
+drawFermion(yu--zr);
+drawFermion(zr--yl);
+
+drawVertex(zl);
+drawVertex(zr);
+
+// draw momentum arrows and momentum labels
+
+drawMomArrow(xl--zl, Relative(left));
+label(Label("$k'$",2RightSide), xl--zl);
+
+label(Label("$k$",2LeftSide), xu--zl);
+
+drawMomArrow(zl--zr, Relative(left));
+label(Label("$q$",2RightSide), zl--zr);
+
+drawMomArrow(zr--yu, Relative(right));
+label(Label("$p'$",2LeftSide), zr--yu);
+
+label(Label("$p$",2RightSide), zr--yl);
+
+// draw particle labels
+
+label("$e^-$", xu, left);
+label("$e^+$", xl, left);
+
+label("$\mu^+$", yu, right);
+label("$\mu^-$", yl, right);
+
+\end{asy}
+\caption{Caption text 2}\label{fig:asy2}
+\end{center}
+\end{figure}
+See Fig. \ref{fig:asy1} and \ref{fig:asy2}.
+
+\begin{figure}
+\begin{center}
+\begin{asy}[8cm,4cm,IgnoreAspect]
+import graph;
+import stats;
+//size(400,200,IgnoreAspect);
+int n=100;
+real[] a=new real[n];
+for(int i=0; i < n; ++i) a[i]=Gaussrand();
+
+histogram(a,min(a),max(a),n=100,normalize=true,low=0);
+
+draw(graph(Gaussian,min(a),max(a)),red);
+
+xaxis("$x$",BottomTop,LeftTicks);
+yaxis("$dP/dx$",LeftRight,RightTicks);
+\end{asy}
+\caption{Caption text}\label{fig:asy3}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+
+
+\begin{asy}[8cm,4cm,IgnoreAspect]
+import graph;
+
+picture pic;
+real xsize=200, ysize=140;
+size(pic,xsize,ysize,IgnoreAspect);
+
+pair[] f={(5,5),(50,20),(90,90)};
+pair[] df={(0,0),(5,7),(0,5)};
+
+errorbars(pic,f,df,red);
+draw(pic,graph(pic,f),"legend",
+     marker(scale(0.5mm)*unitcircle,red,FillDraw(blue),Below));
+
+xaxis(pic,"$x$",BottomTop,LeftTicks);
+yaxis(pic,"$y$",LeftRight,RightTicks);
+add(pic,legend(pic),point(pic,NW),20SE,UnFill);
+
+picture pic2;
+size(pic2,xsize,ysize,IgnoreAspect);
+
+frame mark;
+filldraw(mark,scale(0.8mm)*polygon(6),green,green);
+draw(mark,scale(0.8mm)*cross(6),blue);
+
+draw(pic2,graph(pic2,f),marker(mark,markuniform(5)));
+
+xaxis(pic2,"$x$",BottomTop,LeftTicks);
+yaxis(pic2,"$y$",LeftRight,RightTicks);
+
+yequals(pic2,55.0,red+Dotted);
+xequals(pic2,70.0,red+Dotted);
+
+// Fit pic to W of origin:
+add(pic.fit(),(0,0),W);
+
+// Fit pic2 to E of (5mm,0):
+// add(pic2.fit(),(5mm,0),E);
+\end{asy}
+\caption{Caption text 4}\label{fig:asy4}
+\end{center}
+\end{figure}
+
+
+\begin{figure}
+\begin{center}
+\begin{asy}
+// Plotting with Asymptote (http://asymptote.sourceforge.net)
+size(200, 150, IgnoreAspect);
+import graph;
+
+file in=line(input("d.dat"));
+real[][] a=transpose(dimension(in, 0, 0));
+
+real[] x = a[0];
+real[] y = a[1];
+real[] z = a[2];
+real[] d = a[3];
+real[] dError = a[4];
+
+draw(graph(x, y), red);
+
+draw(graph(x, z), blue);
+draw(graph(x, d), black);
+
+xaxis("$E$", BottomTop, LeftTicks);
+yaxis("$avg. num. of particles$", LeftRight, RightTicks);
+\end{asy}
+\caption{LaTeX-embedded Asyptote script reads data for 
+this plot from {\sf  n.dat}} \label{fig:asy5}
+\end{center}
+\end{figure}
+
+See Fig. \ref{fig:asy3}, \ref{fig:asy4}, and \ref{fig:asy5}.
+
+
+\section{TEST}
+%$\headsto$
+
+$\equiv$
+\{ a\_i \}
+\textvisiblespace
+
+$\angle$ 
+
+$\epsilon$ $\varepsilon$ 
+$\rho$ $\varrho$ 
+$\phi$ $\varphi$ 
+$\theta$ $\vartheta$
+$\pm$ $\times$ $\ast$ $\circ$ $\bullet$ $\leq$ $\simeq$ $\parallel$  
+$\sim$ $\ll$ $\cong$ $\in$ $\propto$ 
+$\cdot$  $\hbar$   $\leftarrow$ $\Leftarrow$ $\rightarrow$ $\Rightarrow$ 
+$\leftrightarrow$ $\mapsto$ $\ldots$
+$\exists$ $\forall$ $\infty$  $\emptyset$ $\triangle$ $\neg$ $\partial$
+$\sum$ $\prod$ $\oint$ $\langle$ $\rangle$ $\|$
+
+$\acute{a}$ $\bar{a}$ $\grave{a}$ $\vec{a}$
+
+$\overrightarrow{abc}$
+
+$\overline{abc}$
+$\underbrace{abc}$
+$\frac{abc}{xyz}$
+$\xrightarrow{text}$
+
+
+Standrard math $a = \sin(\alpha)$, with typographical variations: 
+$\mathbf{a} = \sin(\alpha)$, $\mathrm{a} = \sin(\alpha)$, {\boldmath$ a = \sin(\alpha)$}.
+
+\footnotesize
+Some text (footnote size)
+\small
+Some text (small)
+\normalsize
+Some text(normal size)
+
+{\rm Roman}  {\sl Slanted} {\it Italics} {\sf Sans Serif}
+
+
+
+
+Conclusions: In summary :::: leads to following results: i) ::: ii) ::: iii) ::::
+
+See for example A.~Heikkinen (2008) \cite{heikkinen07bPaper} \cite{heikkinen07aPaper}
+
+
+
+\section{INTRODUCTION}
+\subsection{Model limits \label{subsection:modelLimits}}
+
+The basic steps of the INC model are summarized below:
+
+\begin{enumerate}
+\item If Pauli's exclusion principle allows and $E_{particle} > E_{cutoff}$ = 2~MeV, 
+step (2) is performed to transport the products.
+\end{enumerate}
+
+Fig.~\ref{fig:MC}.
+
+%\begin{figure}
+%  \includegraphics[width=60mm,keepaspectratio]{n_2.eps}
+%  \caption{Feynman diagramm done with Asymptore}
+%  \label{fig:asy1}
+%\end{figure}
+
+
+For concentric spheres $i = \{1, 2, 3\}$ with radii
+$$r_{i}(\alpha_{i}) = \sqrt{C_{1}^{2} (1 - \frac{1}{A}) + 6.4} \sqrt{-log( \alpha_{i})}$$
+
+where $\alpha_{i} = \{0.01, 0.3, 0.7\}$ and $C_{1} = 3.3836 A^{1/3}$
+
+\begin{equation}
+ f(p) = c p ^2.
+\label{eq:fp}
+ \end{equation}
+
+We have defined (\ref{eq:fp}) using momentum, $p$, $\ldots$
+
+ \begin{equation}
+ \int_0^{p_F} f(p) dp = n_{p} \hspace{0.2truecm}  or \hspace{0.2truecm}   n_{n}.
+ \end{equation}
+
+The double differential cross-sections for neutrons at angles of $7.5^{\circ}$, $30^{\circ}$, $60^{\circ}$, and $150^{\circ}$.
+
+
+
+\fi
+
+
+\ifshort % select text based on logical value of variable example
+
+
+
+\else
+
+
+%\section{CONCLUSION}
+%\begin{acknowledgments}
+
+%\end{acknowledgments}
+%---------------------------------------------------------------
+ 
+\fi
+
+\clearpage
+\subsubsection{References and notes}
+\bibliographystyle{plain}  % Options plain, unsrt, alpha, abbrv
+
+\bibliography{refs.bib} %10 p
+
+%\include{notes}
+
+%\begin{thebibliography}{9}
+%\bibitem{titarenko99a}
+%Yu.~E.~Titarenko et al.,
+%``Experimental and Computer Simulations Study of
+%		  Irradiated by Intermediate Energy Protons'',
+%nucl-ex/9908012, 1999
+%\end{thebibliography}
+
+%\begin{appendix}
+%\begin{verbatim}
+%\section{Current {\tt .bashr}}
+%\begin{scriptsize}
+%\include{code/bashrc} % code/code.tex created from original file with codetex target
+
+%\section{Documenting Original Fortran Codes}
+
+% \lstset{ %
+% language=fortran,                % choose the language of the code
+% basicstyle=\footnotesize,       % the size of the fonts that are used for the code
+% showstringspaces=false,         % underline spaces within strings
+% numbers=left,                   % where to put the line-numbers
+% numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+% stepnumber=2,                   % the step between two line-numbers. 
+%                                 % If it's 1 each line will be numbered
+% numbersep=5pt,                  % how far the line-numbers are from the code
+% backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+% showspaces=false,               % show spaces within strings adding particular underscores
+% showtabs=false,                 % show tabs within strings adding particular underscores
+% frame=single,                   % adds a frame around the code
+% tabsize=2,                      % sets default tabsize to 2 spaces
+% captionpos=b,                   % sets the caption-position to bottom
+% breaklines=true,                % sets automatic line breaking
+% breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+% escapeinside={\%*}{*)}          % if you want to add a comment within your code
+% }
+
+% fortran/c++
+%\lstset{language=fortran, 
+%caption={\sf INCUL} source {\tt inaz.f},
+%label=listing:boundary}
+%\section{inaz.f}
+%\input{code/inaz.f}
+%\end{appendix}
+
+\else
+ 
+
+
+\fi % end PAPER
+
+\end{document}
+% LocalWords:  Mavromanolakis
