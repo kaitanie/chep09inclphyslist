@@ -252,16 +252,17 @@ Something
 \begin{abstract}
 We present a new Geant4 physics list prepared for nuclear physics applications
 in a domain dominated by spallation.
-This means that the model is well established for targets heavier than Aluminium
-and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV. Outside this domain
-(light nuclei and energies down to 20-30 MeV)
-the model can be tried but the capabilities have yet to be established.
-We discuss new Geant4 models based on translation of INCL and ABLA codes in C++ and used in the physic list.
-Suitability of these models are demonstrated in the perspective of accelerator driven systems
-and EURISOL future project especially with the neutron double differential cross sections and residual
+We discuss new Geant4 models based on translation of INCL and ABLA codes in C++ 
+and used in the physic list.
+The INCL model is well established for targets heavier than Aluminium
+and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV. 
+%Outside this domain (light nuclei and energies down to 20-30 MeV)
+%the model can be tried but the capabilities have yet to be established.
+Validity of the Geant4 physics list is demonstrated form the perspective of accelerator driven systems
+and EURISOL project, especially with the neutron double differential cross sections and residual
 nuclei production.
-Improvements of the physics model are foreseen for the treatment of light targets (C - O)
-and light ion beams (up to C) and will be discussed.
+Improvements of the physics model are foreseen for the treatment of light targets (Carbon - Oxygen)
+and light ion beams (up to Carbon) and will be discussed.
 An example application utilizing the physics list is introduced.
 %such as spallation reactions in Accelerator Driven Systems.
 \end{abstract}
@@ -304,7 +305,7 @@ Sec.~\ref{sec:conclusion} concludes with outline of future models developments.
 INCL and ABLA models are casted into independent FORTRAN based Monte Carlo codes 
 INCL4.2 and ABLA V3 \cite{heikkinen07mProceedings}.
 Recently these implementations have been translated into C++ and codes provides
-as part of Geant4 toolkit \cite{:::}. 
+as part of Geant4 toolkit \cite{heikkinen03aPaper}. 
 First beta release of INCL 4.2 and ABLA v3 was in Geant4  9.1 (December 2007).
 
 
@@ -644,15 +645,13 @@ The double differential cross-sections for neutrons at angles of $7.5^{\circ}$, 
 %---------------------------------------------------------------
  
 \fi
+\section*{References}
+\bibliographystyle{plain}  % Options plain, unsrt, alpha, abbrv
+\bibliography{ah09aProceedings.bib} %10 p
 
 \clearpage
-\subsubsection{References and notes}
-
+\subsubsection{Notes}
 \input{notes.tex}
-
-\bibliographystyle{plain}  % Options plain, unsrt, alpha, abbrv
-
-\bibliography{ah09aProceedings.bib} %10 p
 
 %\include{notes}
 
