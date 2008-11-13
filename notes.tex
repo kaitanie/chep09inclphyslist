@@ -22,6 +22,19 @@ Future improvements of INCL model include:
 
 A remodelling of INCL code in Geant4 is in progress.  
 
+\subsection{Physics list design}
+
+Since INCL/ABLA covers only one part of the energy range and target
+materials, it must be complemented by other models. For energies higher
+than 3 GeV the options seem to be QGSP, FTF, Bertini and Binary.
+
+For energies lower than, say, 150 MeV probably using PreCompound might
+be a good choice.
+
+Hydrogen-1 (proton) targets (and maybe some other light targets as
+well) have to be handled by something else than INCL/ABLA.
+
+For documentation, {\tt Doxygen} seems to be the most promising tool.
 
 %The results of the direct measurements of the ::: flux are in good agreement 
 %with the results predicted from the ::: model
