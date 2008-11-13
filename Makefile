@@ -14,7 +14,7 @@ all:
 	@echo :::preparing latex ...
 	@c; rm -f *.aux
 ifdef AHSYSTEM
-	rm -f refs.bib ; cp ../refs.bib . ; # use always the mother file for the bibliography
+#	rm -f refs.bib ; cp ../refs.bib . ; # use always the mother file for the bibliography
 endif
 	@makeindex $(d).tex; $(tex) $(d); bibtex $(d); $(tex) $(d); $(tex) $(d); asy $(d); $(tex) $(d)
 ifdef AHSYSTEM
