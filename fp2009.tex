@@ -1,0 +1,119 @@
+%%% FP2001.tex 05.10.2000 - Vesa Kolhinen <vesa.kolhinen@phys.jyu.fi>
+%%% Original version:
+%%% FP2000.tex 12.10.1999 - Eero Noponen <eero.noponen@hut.fi>
+%%%
+%%%
+%%%
+%%% Sample LaTeX file for the abstracts for the Proceedings of the
+%%% Annual Meeting of the Finnish Physical Society.
+
+\documentclass[12pt]{article}
+\usepackage{fp2009}
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{hyperref}
+
+%%% Remove the following line if Times font is unavailable.
+\usepackage{times}
+
+%%% The following line is required if the document contains figures.
+\usepackage{graphicx}
+
+%%% The following line is for LaTeX 2.09.
+%\documentstyle[FP2001,12pt]{article}
+
+\begin{document}
+
+%%%
+%%% The title of the abstract is given here as \title{TITLE TEXT}.
+%%%
+\title{HOW TO WRITE ABSTRACTS FOR THE PROCEEDINGS OF THE XXXIX ANNUAL CONFERENCE
+OF THE FINNISH PHYSICAL SOCIETY}
+
+%%%
+%%% The list of authors; underline the name of the author who is responsible
+%%% for the presentation of the paper.
+%%%
+\underline{A. Fyysikko} and B. Fyysikko
+
+%%%
+%%% The address.
+%%%
+Finnish Physical Society, P.O.B. 64, FIN-00014 University of Helsinki, Finland\\
+email: toimisto@fyysikkoseura.fi
+
+%%% Do not remove.
+\vspace{\baselineskip}
+
+%%%
+%%% Body text begins here.
+%%%
+
+Abstracts will be published in the \emph{Proceedings of the XLIII
+Annual Conference of the Finnish Physical Society}, Report Series of
+the Helsinki University of Technology. The language of the abstracts
+is English.
+
+Abstracts must be submitted to the organizers electronically, using
+the file upload form at
+\url{http://ltl.tkk.fi/wiki/Physics_Days_2009/Abstracts}. Files
+prepared with \LaTeX\ in eps format or with Word in doc format are
+accepted, as are also pdf files. Pdf format compiled using this
+\LaTeX\ template are strongly preferred. Submitted files will be
+published as they are. To maintain a coherent layout of the
+proceedings all authors have to write the abstracts using this
+sample file as a template. The sample file is designed to produce
+correctly formatted abstracts on an A4 page with line spacing 1 and
+3 cm wide margins. The font should be Times (New) Roman 12. Those
+who use \LaTeX\ should prepare the final pdf file with the commands
+\mbox{\tt dvips -o file.ps file.dvi} and \mbox{\tt ps2pdf file.ps}.
+In the output, check that the possible web links are clickable and
+lead to the correct address.
+
+The title has to be written in bold capitals (the PACS code used
+previously should not be included anymore). Title, authors, and
+address information have to be separated from each other by an empty
+line. The name of the author who will give the presentation has to
+be underlined. The email address of this author can be given on a
+separate line below the address information.
+
+The text has to be justified. Formulas have to be centered and, if
+numbering is necessary, the number has to be placed on the right in
+parentheses. References are cited in the text like this \cite{ref1}.
+The reference list should use the format shown below. You can add
+web links using the example below --- if possible, please do this
+for each reference.
+
+%%% The following minipage structures are needed to position the figure
+%%% beside the text paragraph.
+%%% For a standard figure environment, see the example below.
+
+\begin{minipage}{9cm}
+Figures may be included in the submitted files. Here we show how a
+figure can be included in a \LaTeX\ file.
+\end{minipage}
+\hfill
+\begin{minipage}{5cm}
+\includegraphics[width=4cm]{logo.eps}
+\end{minipage}
+
+%%%
+%%% A more typical Figure.
+%%%
+%\begin{figure}[!h]
+%\centering\includegraphics[width=4cm]{logo.eps}
+%\caption{Mallikuva.}
+%\end{figure}
+
+%%%
+%%% The bibliography: the references are listed here.
+%%%
+\begin{thebibliography}{9}
+
+\bibitem{ref1}
+A. Fyysikko and B. Fyysikko,
+\href{http://link.aps.org/abstract/PR/v108/p1175}{Fysiikan Lehti 108
+(1957) 1175}.
+\end{thebibliography}
+
+\end{document}

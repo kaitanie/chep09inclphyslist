@@ -1,0 +1,368 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 92 99
+%%Title: TKK:n tunnus - tkk--mtv.eps
+%%CreationDate: 4.11.2004 13.29
+%%Creator: http://logo.hut.fi/cgi-bin/tkk-tunnus
+%%For: 130.233.172.158:36765 Opera/6.1 (UNIX; U)  [en]
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
+%%Pages: 1
+%%DocumentNeededResources: font Helvetica
+%%DocumentSuppliedResources: font TKK-merkki
+%%+ file languagelevel2.proc
+%%+ procset TKK-Logo-Prolog 1.0 0
+%%CMYKCustomColor: 1.00 0.56 0.00 0.00 (Pantone 293 CMYK Emulation)
+%%CMYKCustomColor: 0.00 0.00 0.00 0.44 (Pantone 877 CMYK Emulation)
+%%RGBCustomColor: 0.0000 0.2549 0.6784 (Pantone 293 RGB Emulation)
+%%RGBCustomColor: 0.4863 0.4784 0.4784 (Pantone 877 RGB Emulation)
+%%RGBCustomColor: 0.0000 0.0000 0.8000 (HUTBlue WWW Emulation)
+%%RGBCustomColor: 0.6000 0.6000 0.6000 (HUTSilver WWW Emulation)
+%%RGBCustomColor: 0.4000 0.4000 0.4000 (HUTSilverOnWhite WWW Emulation)
+%%RGBCustomColor: 0.8000 0.8000 0.8000 (HUTSilverOnBlack WWW Emulation)
+%%EndComments
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+%                                                                             %
+% ------ !!!!!!! --- !!!!!! --  Copyright Notice -- !!!!!! --- !!!!!!! ------ %
+%                                                                             %
+% If you change the contents of this file, you may corrupt the preview image  %
+% or some other weird things may happen.                                      %
+%                                                                             %
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% VERSION 3.8 (2.2.2001)
+% History
+% - original version by timo
+% - DSC/EPSF template, 17.3.1999 asko
+% - languagelevel2.proc, 17.3.1999 asko
+% - added known colornames, 23.3.99 asko
+% - ISOLatin9Encoding, encfont, defL9font and defL1font, 23.3.1999 asko
+% - reorganized procedures to tkklogoDict in procset, 23.3.1999 asko
+% - fixed some bugs in DSC header, 23.3.1999 asko
+% - "minor" changes, first production prerelease, 1.4.1999 timo
+% - TIFF preview for Windows usage implemented, 2.5.1999 timo
+% - full beta release, 3.5.1999 timo
+% - redesigned TIFF preview and info about character metrics, 14.5.1999 timo
+% - glypf for hyphen minus (#055) altered, 19.5.1999 timo
+% - color modifications for RGB WWW, 22.5.1999 timo
+% - color names, 27.5.1999 timo
+% - EPS-markings added to TIFF preview - to inform the user when PostScript
+%   is not supported, 24.1.2001 timo
+% - transparent background, 2.2.2001 timo
+% TODO
+% - real Pantone
+% - automatic color system selection
+% AUTHORS
+% - Asko Tontti (asko.tontti@hut.fi)
+% - Timo T. Tuhkanen (ttt@hut.fi)
+
+%%BeginProlog
+%%BeginPreview *width height depth lines*
+% *INCLUDE PREVIEW HERE* (for future enhancements)
+%%EndPreview
+
+%%BeginResource: procset TKK-Logo-Prolog 1.0 0
+/tkklogoDict 100 dict def
+tkklogoDict begin
+
+  % === General Definitions ===
+
+  /bdef {bind def} bind def
+  /xdef {exch def} bind def
+
+  % === Font Encoding Stuff ===
+
+  /L9vec [ % differences between Latin1 and Latin9
+    8#055 /hyphen
+    8#244 /Euro
+    8#246 /Scaron 8#250 /scaron
+    8#264 /Zcaron 8#270 /zcaron
+    8#274 /OE     8#275 /oe
+    8#276 /Ydieresis
+  ] def
+
+  /ISOLatin9Encoding { % - ISOLatin9Encoding <array>
+    null begin
+      currentdict /encoding known not { %if
+        /encoding ISOLatin1Encoding dup length array copy def
+        //L9vec aload length 2 idiv {
+          encoding 3 1 roll put
+        } repeat
+      } if
+      encoding readonly
+    end
+  } dup 0 1 dict put bdef
+
+  /encfont { % /NewFontName /FontName <encvector> encfont <font>
+    exch findfont dup length dict begin
+      { 1 index /FID ne {def} {pop pop} ifelse } forall
+      /Encoding xdef
+      currentdict definefont
+    end
+  } bdef
+
+  /defL9font { % /NewFontName /FontName defL9font <font>
+    ISOLatin9Encoding encfont
+  } bdef
+
+  /defL1font { % /NewFontName /FontName defL1font <font>
+    ISOLatin1Encoding encfont
+  } bdef
+
+  % === Conversion Procedures ===
+
+  /TKK-mm {72 mul 25.4 div} bdef
+  /TKK-p {25.4 mul 72 div} bdef
+
+  % === Other Procedures ===
+
+  /TKK-box
+    { dup /TKK-bbox exch def
+      { /TKK-ury exch def
+        /TKK-urx exch def
+        dup /TKK-lly exch def /TKK-y0 exch def
+        dup /TKK-llx exch def /TKK-x0 exch def
+      }
+      { /TKK-y0 exch def
+        /TKK-x0 exch def
+      } ifelse
+    } bdef
+
+  /TKK-logomerkki       %% korkeus n-rivit N-rivit varikoodi tausta
+    { /TKK-tausta exch 0 eq { 0 } { 1 } ifelse def
+      /TKK-vari exch def
+      /TKK-iso exch def
+      /TKK-norm exch def
+      /TKK-H exch def
+      /TKK-merkki findfont TKK-H scalefont setfont
+        /TKK-wX (X) stringwidth pop def
+        /TKK-wV (V) stringwidth pop def
+        /TKK-wW (W) stringwidth pop def
+      /TKK-xbox TKK-wV TKK-wW add TKK-norm 0 gt { TKK-wX add } if def
+      /TKK-ybox TKK-wX 2.25 9 add TKK-norm dup 0 gt { 1 sub } if 2 mul add TKK-iso 3 mul add
+        3 add TKK-iso 0 gt { 1 add } if mul def
+      TKK-bg
+        { TKK-bbox
+          { newpath TKK-llx TKK-lly moveto TKK-urx TKK-lly lineto
+            TKK-urx TKK-ury lineto TKK-llx TKK-ury lineto closepath
+          }
+          { newpath TKK-x0 TKK-y0 moveto TKK-xbox 20 mul 0 rlineto
+            0 TKK-ybox rlineto TKK-xbox 20 mul neg 0 rlineto closepath
+          } ifelse
+          TKK-tausta setgray fill
+        } if
+      TKK-x0 TKK-wV add TKK-wW add TKK-wX add dup
+      TKK-norm 0 eq { TKK-wX sub } if /TKK-x exch def
+      TKK-wX sub TKK-wW sub
+      TKK-y0 TKK-ybox add TKK-H 1.25 mul sub dup /TKK-y exch def
+      moveto
+      TKK-vari 4 eq % CMYK (nelivaripainatus)
+       { 1.00 0.56 0.00 0.00 setcmykcolor (A) show %% kolmio
+         0.00 0.00 0.00 0.44 setcmykcolor (B) show %% siivet
+         0.00 0.00 0.00 0.44 setcmykcolor } if
+      TKK-vari 3 eq % RGB (paperi)
+       { 0.0000 0.2549 0.6784 setrgbcolor (A) show %% kolmio
+         0.4863 0.4784 0.4784 setrgbcolor (B) show %% siivet
+         0.4863 0.4784 0.4784 setrgbcolor } if
+      TKK-vari 2 eq TKK-tausta 0 eq and % RGB (WWW-kaytto, musta tausta)
+       { 0.0000 0.0000 0.8000 setrgbcolor (A) show %% kolmio
+         0.6000 0.6000 0.6000 setrgbcolor (B) show %% siivet
+         0.8000 0.8000 0.8000 setrgbcolor } if
+      TKK-vari 2 eq TKK-tausta 1 eq and % RGB (WWW-kaytto, valkoinen tausta)
+       { 0.0000 0.0000 0.8000 setrgbcolor (A) show %% kolmio
+         0.6000 0.6000 0.6000 setrgbcolor (B) show %% siivet
+         0.4000 0.4000 0.4000 setrgbcolor } if
+      TKK-vari 1 eq % mustavalkoinen
+       { TKK-tausta 0 eq
+         { 1.00 setgray (AB) show }
+         { 0.00 setgray (AB) show } ifelse
+       } if
+      /TKK-xmax TKK-x def
+    } bdef
+
+  /TKK-epsinfo
+    { 1 eq {
+      /TKK-ex TKK-H 10 mul 63 div 5 div def
+      /TKK-eps (EPS) def
+      TKK-tausta 1 eq { 0.6 } { 0.4 } ifelse setgray
+      /Helvetica findfont TKK-ex 4 mul scalefont setfont
+      TKK-llx TKK-lly moveto TKK-ex dup exch 0.6 mul exch rmoveto TKK-eps show
+      TKK-urx TKK-lly moveto TKK-ex dup neg exch rmoveto
+        TKK-eps stringwidth pop neg 0 rmoveto TKK-eps show
+      TKK-llx TKK-ury moveto TKK-ex dup neg exch 0.6 mul exch rmoveto
+        0 TKK-H 0.09 mul neg rmoveto TKK-eps show
+      TKK-urx TKK-ury moveto TKK-ex neg dup rmoveto
+        0 TKK-H 0.09 mul neg rmoveto
+        TKK-eps stringwidth neg exch neg exch rmoveto TKK-eps show
+      } if
+    } bdef
+
+  /TKK-fill
+    { 1 eq /TKK-bg exch def
+    } bdef
+
+  /TKK-print-bbox-info
+    { /TKK-llx TKK-x0 floor cvi def
+      /TKK-lly TKK-y0 floor cvi def
+      /TKK-urx TKK-xmax TKK-wX 3 mul add ceiling cvi def
+      /TKK-ury TKK-y0 TKK-ybox add ceiling cvi def
+      /temp 20 string def
+      (\r\nTKK-Bounding-Box: ) print
+      TKK-llx temp cvs print ( ) print TKK-lly temp cvs print ( ) print
+      TKK-urx temp cvs print ( ) print TKK-ury temp cvs print ( ) print
+      (\r\nTKK-Data: ) print
+      TKK-H   temp cvs print ( ) print TKK-wV  temp cvs print ( ) print
+      TKK-H 174 mul 1000 div temp cvs print ( ) print
+    } bdef
+
+end % tkklogoDict
+%%EndResource
+%%EndProlog
+
+%%BeginSetup
+%%IncludeResource: font Helvetica
+%%BeginResource: file languagelevel2.proc
+systemdict /languagelevel known { %ifelse
+  systemdict /languagelevel get 1 eq
+} { %else
+  true
+} ifelse
+{ %if
+  /Helvetica findfont 20 scalefont setfont
+  50 100 moveto (Fatal error:) dup = show
+  50 75 moveto
+  (The document requires a PostScript Level 2 interpreter) dup = show
+  showpage quit
+} if
+%%EndResource
+
+%%BeginResource: font TKK-merkki
+%!PS-AdobeFont-1.0: TKK-merkki 001.012
+%%CreationDate: Thu Nov 26 16:28:56 1998
+%%VMusage: 120000 150000
+11 dict begin
+/FontInfo 14 dict dup begin
+/version (001.012) readonly def
+/Notice (Copyright (c) Helsinki University of Technology, 1998. All rights reserved.) readonly def
+/FullName (TKK-merkki) readonly def
+/FamilyName (TKK-merkki) readonly def
+/ItalicAngle 0 def
+/isFixedPitch false def
+/UnderlinePosition -100 def
+/UnderlineThickness 50 def
+/Weight (Normal) readonly def
+end readonly def
+/FontName /TKK-merkki def
+/Encoding 256 array
+0 1 255 {1 index exch /.notdef put } for
+dup 32 /space put
+dup 65 /A put
+dup 66 /B put
+dup 84 /T put
+dup 86 /V put
+dup 87 /W put
+dup 88 /X put
+dup 97 /a put
+dup 98 /b put
+dup 99 /c put
+def
+/PaintType 0 def
+/FontType 1 def
+/FontMatrix [ 0.00100 0 0 0.00100 0 0 ] readonly def
+/FontBBox { -25 0 752 1000 } readonly def
+currentdict end
+currentfile eexec
+e8dc61728071abd4d5bcd230c4e186dce095a0ca84ffc476adfaa82124268e60d2cc570c
+5f52c10ed4a85a71ce8e5bcf26aa13b27d7fce1cc0c72c3b848dd5ffb2d56d06a1920fad
+e4ffa3b35336627e9ed1622c1f9652956d4a424488b4c4ffda9936442bbe0ca749700ae9
+8a2bf964fad088f0cc64b7c1d76742f25e90e759aca624a321402b1d20863faf5e04b86c
+1ae66f450b1586041815e52f13d2ae539f1725d11489898a83a05fe04d6d14bce66b823c
+20e86b4e9ec5ffdf6a4a2215a850966d31d9dee52e3e7a614f79588f823c1c8b6ca57d79
+03fb0555bdbde155be127c1ccbf318a0562121b9af53ee5266ab5f21eeb0f4805885506f
+245e1aa67e3073dbfa85958209744d019bf250d58eadfb9c7e84655e445acb0d0b27abca
+121b46e200b811ae0c6273864f117e58a9bbbadc9bdf3c2f7f1153f7e2bd00c6d4b0dbfd
+604242f9ca882f485241424106c61036bdd63912f251adb16ec9f3ad9849b45045c8d411
+6097419b44416464053c7c0e4226483cc3cf40d5fae142d3c72388011e6f85496703089f
+e82992911bc42ec107fecc42b3343b8d931a2f193a36c27fb917ac389eb4ad9f5b02f414
+e1503fd98b7286d817ce4602728022731220248caaf7bdf9a00d9a6dc4442c4e6c8de922
+c246876ba86ef42ff1ea0326d187c63524542df758b282b168a8b48402bd7b5079f3a3d2
+251d4145da9749d1671d1ba2a5587bf8b90a3acc342409f6410181a3682187894ca328b2
+07c29bad8a8b4043e010dbb0c54cc172837b433d0ae12cd33db1f56ba5a5bdcd89d87e2e
+bd8854d92f56fc60d4037499c0d66628d335c15ef32794c23c24ea9f32bcf5f2d1fe4474
+f8fbc7f5a617af23e7153dcb43d6257f66a7557193da013a0abaae9fe65899f8f63ee150
+881873cfa224cf72938567e7dc7d8ca2cb5a961c65ef24e2197789ac2ebed5d2e5f7b2ea
+81271764cbedaa9471b7f741c6309de06e7f548d23d69a724d425f558823a4d52491097c
+eb78f9a0a66618cd89a237383375f93e1facd2c839c5be5f3d0bc0ea141a544975ece6f4
+949a90248b1116f2372968852d66256ceb1779974a7c01283b3ec7437902eef91384332a
+3eff9ea243723cc88579c3d9b3a16a92f66e1d875136253aef0bbadb323387831f6f9680
+687d890f0c4950b390322afe1ea43613ade5daef9737ebe6c2b34885198ca05728071ee7
+8fd9a327def9e16a192fd1bb52fa03811bd8fac846eee394e8ff4732bca610dc44778981
+8ebd2ddaf36e8be11577a85ee98551c3b21b2b3f1ce8a718d50cfca2618fec3f72b9368c
+61a886c2790b2d39a4a58173c9ad5858657567295939eee1eb0927ca84744e5c22bf8455
+47a11e796889662ff9046a419ab716b63514d7c84765ae2c78bafb29744aef5d8a0eec8e
+44707983a09c5e447d9940701c5d374c4999d83db8420fd8b680ad17680fc5261c5e4f3f
+1f9da11f698c32e0a5d540aa31d02ec05a97edda9b9a3f175208126a9b0addd80df7c393
+faaa58f99d6c1ed90568e85a1635a0f5158c0ff7cfee6d807a28ad615122c9b21bf89d91
+57fc4e2f1e4afa1d7c5c8e1b72873e4d545a1c53304283eb1fa7870338c7af0bfbb456d4
+c42b4ba90d9ddad2e7e19baf39ab73750de381b3c455f3d1ab56c9f72ac435b95539cfb3
+0a0ae3536f523a0afece3403979e0236426e712ddb2a19ecc8f7567731e69958b16bef7b
+106a02f84d9ba3330cb88b41a2587313f8ca7941e13729f9398c2f93c4c909d4f58c72c5
+f7c7af0fd259409db715882d7f3128c651a8c9dbd4aee35b0728d4786a6baf82ee5644c0
+48ce058e04ee98eb752e401b831c48e695ccd481e3859c287483fc062400168857212b73
+12de428ff9ffd0133ece737079bad3c3293e0dc83fd96af58187052191466015dc492348
+02143bcb09c63a63a88de7bda61369e658d2132ad94769039e9da38716abb45bde9c35b9
+e303135e009f342e287e86143b645cc9049353acaf954df88165c330746aca103a05d00c
+5cd109bf0c855620201870403f9b2bd42d624a32a1ae3857cacfc87b17e21b81da6030e0
+b6e7876d61f8f9b4f43aa05a17c82711979e787596eca91a57049ceab8cb57a34a44d4a4
+50ba5678d86c76e92cf0b90e045c1a9c980e0ae96aa3c801e31e57a5cbe3f3bdb53e9f86
+dd53764195b1ed332fe4451d2249ef7a546173c113944dfff04e0b05a0cb47631e7cf5eb
+596f3dd5c97dde7061530923b2f5d7bfb01db0689f51a32855d24c13a0e371ea1a0cc503
+bbb5efbe3e266d794f1cd7434e6ab6eb0c1bbab4c5bb8daa53ed48825d02974da093c152
+ee48c958683c4772c21a44bc5887116b8a8fd87284dee3993b4fe01d9fb6239d065c1e53
+c9a56796605aaf853bf635d036dd57549d3b9281cff51235d82c9677eda1f8168fae1ff7
+23765a2731854112497d406591d11cc460e002556171c870f3e059e366c38219ee6aeb90
+4378a32673ec82e3529254c6e4bf6e38a25356efe4534f7f63fad3a9d0c24c38688de31a
+90df3e93dbf859db1b2f7d6424c290472f70af7aec0b875486c120911c1cff569b87b280
+d5b76a7a2c6bcf7cc94c4a2e194270a2b48473333b74c7477e20d8be6ad2263eb44e5be6
+b8dbd1951942808336f851f0ad4dfc9782a6b465aa3adab560188b50872df0b61e958c80
+4c6e8dd4698601090e9f45d93cc553679b8e289ce006b63313cb040681101430cea23138
+e486ab61c57fc5003ac315ecec1109e1ef3fe7d0ddafbab0b401c6fee7784064a72d77a6
+f744202ca5b5e6d786f19d206775e6f6518d3f9c1a7012f2fba14820aa0b44c433f532b7
+776018bc236fc7f1b2560bf73be53962b13cc62a22a48adcdd24fd08a461598d4c36c072
+3324cb93f17300dce1df2945501451dff6172fd547653b3c85eba959a3ec1c702da1fab5
+ff69b7fd327c32f4a988ef8f39b6c664a50114f4070d29f21d40369cf55dfbe1763aba36
+0ccc95f5523527f5b934a5
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000
+cleartomark
+%%EndResource
+
+tkklogoDict begin
+%%EndSetup
+
+%%Page: logo 1
+%%BeginPageSetup
+%%EndPageSetup
+
+% - = = = -
+
+0 TKK-fill
+0 0 92 99 true TKK-box
+22.0 TKK-mm 0 0 1 1 TKK-logomerkki
+
+
+% - - = - -
+
+TKK-bbox { showpage } { TKK-print-bbox-info } ifelse
+
+%%PageTrailer
+%%Trailer
+end % tkklogoDict
+
+%%EOF
