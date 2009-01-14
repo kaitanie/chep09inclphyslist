@@ -27,62 +27,42 @@
 %%%
 %%% The title of the abstract is given here as \title{TITLE TEXT}.
 %%%
-\title{HOW TO WRITE ABSTRACTS FOR THE PROCEEDINGS OF THE XXXIX ANNUAL CONFERENCE
-OF THE FINNISH PHYSICAL SOCIETY}
+\title{INCL/ABLA INTRA-NUCLEAR CASCADE MODEL UPDATES}
 
 %%%
 %%% The list of authors; underline the name of the author who is responsible
 %%% for the presentation of the paper.
 %%%
-\underline{A. Fyysikko} and B. Fyysikko
+A. Heikkinen \underline{P. Kaitaniemi}
 
 %%%
 %%% The address.
 %%%
-Finnish Physical Society, P.O.B. 64, FIN-00014 University of Helsinki, Finland\\
-email: toimisto@fyysikkoseura.fi
-
-%%% Do not remove.
-\vspace{\baselineskip}
+P.O.Box 64 (Gustaf H\"allstr\"omin katu 2), FIN-00014 University of Helsinki, Finland\\
+email: pekka.kaitaniemi@gmail.com
 
 %%%
 %%% Body text begins here.
 %%%
 
-Abstracts will be published in the \emph{Proceedings of the XLIII
-Annual Conference of the Finnish Physical Society}, Report Series of
-the Helsinki University of Technology. The language of the abstracts
-is English.
-
-Abstracts must be submitted to the organizers electronically, using
-the file upload form at
-\url{http://ltl.tkk.fi/wiki/Physics_Days_2009/Abstracts}. Files
-prepared with \LaTeX\ in eps format or with Word in doc format are
-accepted, as are also pdf files. Pdf format compiled using this
-\LaTeX\ template are strongly preferred. Submitted files will be
-published as they are. To maintain a coherent layout of the
-proceedings all authors have to write the abstracts using this
-sample file as a template. The sample file is designed to produce
-correctly formatted abstracts on an A4 page with line spacing 1 and
-3 cm wide margins. The font should be Times (New) Roman 12. Those
-who use \LaTeX\ should prepare the final pdf file with the commands
-\mbox{\tt dvips -o file.ps file.dvi} and \mbox{\tt ps2pdf file.ps}.
-In the output, check that the possible web links are clickable and
-lead to the correct address.
-
-The title has to be written in bold capitals (the PACS code used
-previously should not be included anymore). Title, authors, and
-address information have to be separated from each other by an empty
-line. The name of the author who will give the presentation has to
-be underlined. The email address of this author can be given on a
-separate line below the address information.
-
-The text has to be justified. Formulas have to be centered and, if
-numbering is necessary, the number has to be placed on the right in
-parentheses. References are cited in the text like this \cite{ref1}.
-The reference list should use the format shown below. You can add
-web links using the example below --- if possible, please do this
-for each reference.
+We present a new Geant4 physics list prepared for nuclear physics applications
+in the domain dominated by spallation.
+We discuss new Geant4 models based on the translation of 
+INCL intra-nuclear cascade and ABLA de-excitation codes in C++   
+and used in the physic list.
+The INCL model is well established for targets heavier than Aluminium
+and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV. 
+Validity of the Geant4 physics list is demonstrated from the perspective of accelerator driven systems
+and EURISOL project, especially with the neutron double differential cross sections and residual
+nuclei production.
+Foreseen improvements of the physics models for the treatment of light targets (Carbon - Oxygen)
+and light ion beams (up to Carbon) are discussed.
+%Improvements of the physics models are foreseen for the treatment of light targets (Carbon - Oxygen)
+%and light ion beams (up to Carbon) and will be discussed.
+An example application utilizing the physics list is introduced.
+%Outside this domain (light nuclei and energies down to 20-30 MeV)
+%the model can be tried but the capabilities have yet to be established.
+%such as spallation reactions in Accelerator Driven Systems.
 
 %%% The following minipage structures are needed to position the figure
 %%% beside the text paragraph.
