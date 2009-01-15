@@ -4,3 +4,5 @@ all:
 	dvips -o fp2009.ps fp2009.dvi
 	ps2pdf fp2009.ps
 
+clean_all:
+	rm -f *.out, *.pdf *.ps
