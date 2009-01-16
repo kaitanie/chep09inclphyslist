@@ -6,3 +6,16 @@ all:
 
 clean_all:
 	rm -f *.out, *.pdf *.ps
+
+gitClone:
+	git clone git@github.com:aatos/incl-physicsdays.git
+
+gitClonePk:
+	git clone git://github.com/kaitanie/incl-physicsdays.git
+
+gitAddPk:
+	git remote add pkIncl git://github.com/kaitanie/incl-physicsdays.git
+
+gitFetchPk:
+	git fetch pkIncl
+	git merge pkIncl/master
