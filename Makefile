@@ -1,8 +1,8 @@
 all:
 	latex fp2009
 	latex fp2009
-	dvips -o fp2009.ps fp2009.dvi
-	ps2pdf fp2009.ps
+	dvips -E -o fp2009.eps fp2009.dvi
+	ps2pdf fp2009.eps
 
 clean_all:
 	rm -f *.out, *.pdf *.ps
