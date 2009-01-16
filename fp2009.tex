@@ -49,12 +49,10 @@ $^2$~CEN-Saclay, CEA-IRFU/SPhN, 91 191 Gif sur Yvette, France
 %%%
 %%% Body text begins here.
 %%%
-
 We discuss the status of INCL intra-nuclear cascade and ABLA fission/de-excitation codes
 in the latest relase of the detector simulation toolkit Geant4 9.2 \cite{pk09aCollaboration}.
 The INCL model is well established for targets heavier than Aluminium
 and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
-
 %Improvements of the physics models are foreseen for the treatment of light targets (Carbon - Oxygen)
 %and light ion beams (up to Carbon) and will be discussed.
 %Outside this domain (light nuclei and energies down to 20-30 MeV)
@@ -63,7 +61,7 @@ and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk0
 %%% The following minipage structures are needed to position the figure
 %%% beside the text paragraph.
 %%% For a standard figure environment, see the example below.
-%\begin{minipage}{9cm}
+\begin{minipage}{6cm}
 We present a new Geant4 physics list prepared for nuclear physics applications
 in the domain dominated by spallation.
 Validity of the Geant4 physics list is demonstrated from the perspective of accelerator driven systems
@@ -75,13 +73,17 @@ Finally, an ongoing work to improve of the physics models for the treatment of
 light targets (Carbon - Oxygen) and light ion beams (up to Carbon) are discussed.
 Finally, an ongoing work to improve of the physics models for the treatment of 
 light targets (Carbon - Oxygen) and light ion beams (up to Carbon) (see Fig.) are discussed.
-%\end{minipage}
-%\hfill
-%\begin{minipage}{5cm}
-
+\end{minipage}
+\hfill
+\begin{minipage}{9cm}
 %\includegraphics[width=1.0\textwidth]{logo.eps}
-
-%\end{minipage}
+%\includegraphics[angle=90,scale=0.5]{masses.eps}
+\includegraphics[scale=0.52]{masses2.eps}
+{\bf Fig.~1} Mass of the isotopes produced in reaction p(1 GeV) + $^{12}C$
+simulated using INCL/ABLA (red), INCL with Fermi break-up (black) and
+Geant4 Bertini cascade (green). Experimental data (blue) from
+\cite{carbone}.
+\end{minipage}
 
 
 %%%
@@ -91,14 +93,10 @@ light targets (Carbon - Oxygen) and light ion beams (up to Carbon) (see Fig.) ar
 %\centering\includegraphics[width=4cm]{logo.eps}
 %\caption{Mallikuva.}
 %\end{figure}
-\clearpage
-\begin{figure}
-\includegraphics[angle=90,scale=0.50]{masses.eps}
-\caption{Mass of the isotopes produced in reaction p(1 GeV) + $^{12}C$
-simulated using INCL/ABLA (red), INCL with Fermi break-up (black) and
-Geant4 Bertini cascade (green). Experimental data (blue) from
-\cite{carbone}.}
-\end{figure}
+
+%\begin{figure}
+
+%\end{figure}
 
 %%%
 %%% The bibliography: the references are listed here.

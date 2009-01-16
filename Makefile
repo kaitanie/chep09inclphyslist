@@ -19,3 +19,5 @@ gitAddPk:
 gitFetchPk:
 	git fetch pkIncl
 	git merge pkIncl/master
+m:
+	make; gv fp2009.pdf
