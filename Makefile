@@ -5,7 +5,7 @@ all:
 	ps2pdf fp2009.eps
 
 clean_all:
-	rm -f *.out, *.pdf *.ps
+	rm -f *.out, *.pdf *.ps *.out
 
 gitClone:
 	git clone git@github.com:aatos/incl-physicsdays.git
