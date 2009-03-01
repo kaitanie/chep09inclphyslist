@@ -1,0 +1,295 @@
+\documentclass[20pt]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{epsf}
+\usepackage{graphicx,psfrag,color,pstcol,pst-grad}
+\usepackage{pst-blur}
+\usepackage{amsmath,amssymb}
+\usepackage{latexsym}
+\usepackage{calc}
+\usepackage{multicol,xspace}
+
+  
+% defines the width and height of the poster, scaled down to a viewable size
+%\def\width{12in}  % this is 3'/3 = 36'' / 3 = 12''
+%\def\height{17in} % this is 4'/3 = 48'' / 3 = 16''+ 3'/3 (for top and bottom inch)
+%A1:
+% size: 59.4cm wide x 84 cm high (A1)
+% (23.5 inches x 33 inches)
+%A2:
+% size: 42 cm wide x 59.4 cm high (A2)
+% (16.5 inches x 23.5 inches)
+\def\width{42cm}  % this is 3'/3 = 36'' / 3 = 12''
+\def\height{59.4cm} % this is 4'/3 = 48'' / 3 = 16''+ 3'/3 (for top and bottom inch)
+
+% Set paper format
+\setlength{\paperwidth}{\width}
+\setlength{\paperheight}{\height}
+\special{papersize=\width,\height}
+\pagestyle{empty}
+
+% width of colored background
+\newlength{\bgwidth}
+%\setlength{\bgwidth}{12in}
+\setlength{\bgwidth}{42cm}
+% height of colored background
+\newlength{\bgheight}
+%\setlength{\bgheight}{16.3in}
+\setlength{\bgheight}{58cm}
+
+% Removing all margins and spacing
+%\setlength{\topmargin}{-0.3in}
+\setlength{\topmargin}{0.3in}
+\setlength{\headheight}{0in}
+\setlength{\headsep}{0in}
+\setlength{\topskip}{0in}
+\setlength{\footskip}{0in}
+\setlength{\oddsidemargin}{-0.45in}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{5cm}
+%\setlength{\itemsep}{0.1cm}
+%\setlength{\parsep}{0.1cm}
+
+% Set textwidth to leave 1 inch on each side
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-1.0in}
+\setlength{\textheight}{\paperheight}
+\addtolength{\textheight}{-0.3in}
+
+
+% The white box where the text is
+\newsavebox{\dummybox}
+\newenvironment{textbox}
+{\begin{lrbox}{\dummybox}\begin{minipage}{0.9\columnwidth}}
+{\end{minipage}\end{lrbox}\raisebox{-\depth}{\psshadowbox[framesep=1em,framearc=.1,shadow=true]{\usebox{\dummybox}}}\vspace{0.005\textheight}}
+
+
+% Colors for the sections and subsections
+%\definecolor{udsect}{rgb}{0 ,0 ,1}
+%\definecolor{udsubsect}{rgb}{0, 0.5, 0}
+\definecolor{udsect}{rgb}{0.0, 0.4, 0.27}
+\definecolor{udsubsect}{rgb}{0.0, 0.4, 0.27}
+
+\newcommand{\masyv}{\texttt{MASyV}\xspace}
+\newcommand{\cimmsim}{\texttt{CImmSim}\xspace}
+\newcommand{\maimmune}{\texttt{ma\_immune}\xspace}
+\begin{document}
+\huge
+\begin{center}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                    Background                                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\newrgbcolor{gradbegin}{1 0.82 0.16}
+%\newrgbcolor{gradend}{0.0 0.4 0.27}
+%\psframe[linestyle=none,fillstyle=solid,fillcolor=gradbegin](-0.5\bgwidth,1.6in)(0.5\bgwidth,-0.5\bgheight)
+%\psframe[linestyle=none,fillstyle=gradient,gradbegin=gradbegin,gradend=gradend,gradmidpoint=1](-0.5\bgwidth,-0.35\bgheight)(0.5\bgwidth,-0.45\bgheight)
+%\psframe[linecolor=gradend,fillstyle=solid,fillcolor=gradend](-0.5\bgwidth,-0.4489\bgheight)(0.5\bgwidth,-\bgheight)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                     Header                                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-1in}
+%\psbox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
+	\parbox[c]{1.4cm}{\includegraphics[width=3.8cm]{images/hiplogo.eps}}
+	\hspace{0.6cm}
+   \parbox[c]{0.8\linewidth}{
+		\begin{center}
+			\textbf{\Huge {\sf INCL4} CASCADE AND {\sf ABLA} EVAPORATION CODES IN {\sf GEANT4}} \\[0.5em]
+			\textbf{\LARGE Aatos Heikkinen, Pekka Kaitaniemi$^{\dagger}$} \\[0.3em]
+			{\Large $^{\dagger}$ {\tt kaitanie@cc.helsinki.fi}} \\
+                        {\textsc Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland}
+                        \vskip2cm
+		\end{center}
+	}
+	\parbox[c]{5.3cm}{\hspace{-1.0cm} \includegraphics[width=5.6cm]{images/g4logo.eps}}
+%}}
+% Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland
+% email: pekka.kaitaniemi@helsinki.fi
+
+\begin{multicols}{3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+\section*{{\Huge {\sf ABSTRACT}}}
+%% \begin{center}
+%% \textsf{\Large\color{udsubsect}\underline{ABSTRACT}}
+%% \end{center}
+
+We introduce the first implementation \cite{fp} of the hadronic cascade model {\sf INCL 4.2}
+\cite{incl} and evaporation/fission model {\sf ABLA V3} \cite{abla} in {\sf Geant4 9.1} detector simulation toolkit \cite{g4}.
+\vskip0.5cm
+
+% FIXME ``makes it possible''
+{\sf INCL} and {\sf ABLA} codes provide microscopic models especially validated for simulation of spallation reactions.  The
+inclusion of these models in {\sf Geant4} makes it possible to use them
+for LHC detector simulations. Additional uses for the models include:
+\begin{itemize}
+\item shielding studies,
+\item understanding radiation damage, and
+\item activation and background studies.
+\end{itemize}
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hspace{-1cm} \includegraphics[scale=0.73]{images/cascade.eps}
+
+\begin{textbox}
+
+\section*{{\Huge {\sf INCL PARAMETERS}}}
+%\section*{\textbf{\Large\color{udsubsect}\underline{INCL parameters}}}
+{\color{udsect}
+Li\`ege intra-nuclear cascade, {\sf INCL}, \cite{incl} requires \emph{only two free parameters}:
+\begin{itemize}
+\item potential depth, and
+\item stopping time, $t_{stop}$, defined as the point in time when the cascade is
+finished and evaporation starts:
+\begin{equation}
+t_{stop} = f_{stop}t_0 (A_{target}/208) ^{0.16}.
+\end{equation}
+\end{itemize}
+Here $A_{target}$ is the target mass number, $t_0 = 70 fm/c$, and
+$f_{stop}$ is a scaling factor for the stopping time \cite{g4incl}.
+\vskip0.5cm
+
+The number of parameters is kept low in order to have as much
+\emph{predictive power} as possible.
+}
+% Good default value for this factor is $f_{stop}$ = 1.0
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{textbox}
+
+
+%\section*{{\Huge {\sf INCL}}}
+
+
+%INCL is an intra-nuclear cascade model developed at the university of
+%Li\`ege and CEA/Saclay.
+
+%\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{textbox}
+
+
+%\section*{{\Huge {\sf ABLA MODEL FOR EVAPO\-RATI\-ON AND FISSION}}}
+%\section*{\color{udsect} ABLA}
+
+%ABLA is a fission and evaporation code that is developed at GSI, Darmstadt.
+
+%\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{textbox}
+%\section*{{\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}}
+%\vskip-1.5cm
+%\begin{figure}
+\vskip3.5cm
+{\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}
+\includegraphics[scale=0.70]{images/pPbDD.eps}
+%\label{fig:pPbdd1200MeV}
+%\end{figure}
+\vskip-0.3cm
+% FIXME linespread
+{\Large {\sf {\linespread{1.5} Double-differential for neutron production cross section
+    from {\sf Geant4} {\sf INCL} and {\sf ABLA} models. Neutron evaporation from {\sf ABLA} model is
+    shown below E $\simeq$ 20 MeV. Black and red histograms are the
+    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Blue data points are
+    from Ref.~\cite{data}.}}}
+
+%\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{{\Huge {\sf ABLA EVAPORATION}}}
+{\color{udsect}
+The ablation code {\sf ABLA} \cite{abla} for evaporation and fission modeling is developed at GSI, Darmstadt.
+\vskip0.5cm
+
+The probabilities for emission of particle type $j$ = \{$p$, $n$, $\alpha$\}
+are calculated using formula:
+\begin{equation}
+W_j(N,Z,E) = \frac{\Gamma_j(N,Z,E)}{\sum_k\Gamma_k(N,Z,E)},
+\label{eqn:probabilities}
+\end{equation}
+where $N$ is neutron
+number, $Z$ charge number and $E$ excitation energy.
+\vskip0.5cm
+
+The emission width, $\Gamma_j$, for particle $j$ is defined as:
+\index{emission width}
+\begin{equation}
+\Gamma_j = \frac{1}{2 \pi \rho_c(E)} \frac{4 m_j R^2}{\hbar^2} T_j^2 \rho_j(E - S_j - B_j),
+\label{eqn:emissionwidth}
+\end{equation}
+where:
+\begin{itemize}
+\item $\rho_c(E)$ and $\rho_j(E - S_j - B_j)$ are the level densities
+of the compound nucleus and the exit channel, respectively.
+\item $B_j$ the height of the Coulomb barrier,
+\item $S_j$ the separation energy,
+\item $R$ the radius,
+\item $T_j$ the temperature of the remnant nucleus after
+emission, and
+\item $m_j$ the mass of the emitted particle.
+\end{itemize}
+}
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section*{{\Huge {\sf }}}
+{\Huge {\sf p(0.8 GeV) + Pb $\rightarrow$ n + X}}
+
+\includegraphics[scale=0.45]{images/vladimir.eps}
+{\Large {\sf Comparison of various models in {\sf Geant4}. Li\`ege cascade together with ABLA (label ``LIEGE'') is compared against experimental data and other {\sf Geant4} models (BIC, BERT, RPG).
+ {\sf INCL/ABLA} simulation is in good agreement with experimental data. (\emph{Courtesy of
+    V. Ivantchenko, Geant4 collaboration}.)}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{textbox}
+
+
+\section*{{\Huge {\sf ACKNOWLEDGEMENTS}}}
+
+This work has been a collaborative effort with the original developers from
+Li\`ege University, GSI and CEA. We acknowledge the help from J.~Cugnon,
+A.~Boudard, Y.~Yariv, S.~Leray, C.~Schmidt and K.~H.~Schmidt
+on reimplementing the original {\sf FORTRAN} codes in {\sf C++} language.
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip2cm
+\begin{textbox}
+
+{\Large
+\addcontentsline{toc}{section}{References}
+\begin{thebibliography}{9}
+\bibitem{fp} P. Kaitaniemi, A. Heikkinen, \emph{Implementing INCL4
+    hadronic cascade and ABLA de-excitation codes in Geant4},
+  Proceedings of the 41th Annual Meeting of the Finnish Physical
+  Society (2007)
+\bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for
+    a comprehensive description of spallation reaction data}, Phys.
+  Rev. C66 (2002) 044615
+\bibitem{abla} J. Benlliure et al., \emph{Calculated nuclide
+    production yields in relativistic collisions of fissile nuclei},
+  Nuc. Phys. A628 (1998) 458
+\bibitem{g4} \emph{Geant4 collaboration website} \\ {\tt http://\-cern.ch/\-geant4}
+\bibitem{g4incl} \emph{Geant4 Physics Reference Manual: INCL~4.2 Cascade and ABLA~V3 Evaporation with Fission} \\ {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
+\bibitem{data} X.Ledoux et al., \emph{Spallation Neutron Production by
+  0.8, 1.2, and 1.6 GeV Protons on Pb Targets} Phys. Rev. Lett. 82
+  (1999)
+%\bibliographystyle{abbrv}
+%\bibliography{latex_poster}
+\end{thebibliography}
+}
+
+\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{multicols}
+
+\end{center}
+\end{document}
