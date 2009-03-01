@@ -1,0 +1,3 @@
+* \usepackage{relsize}
+* \larger and \smaller allows to adjust font sizes
+** \Huge seems to be max size
