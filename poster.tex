@@ -116,19 +116,19 @@
 %% \textsf{\Large\color{udsubsect}\underline{ABSTRACT}}
 %% \end{center}
 
-We introduce the first implementation \cite{fp} of the hadronic cascade model {\sf INCL 4.2}
-\cite{incl} and evaporation/fission model {\sf ABLA V3} \cite{abla} in {\sf Geant4 9.1} detector simulation toolkit \cite{g4}.
-\vskip0.5cm
+We discuss the status of INCL intra-nuclear cascade and ABLA fission/de-excitation codes
+in the latest release of the detector simulation toolkit Geant4 9.2 \cite{pk09aCollaboration, pk08aProceedings}.
+The INCL model is well established for targets heavier than Aluminium
+and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
 
-% FIXME ``makes it possible''
-{\sf INCL} and {\sf ABLA} codes provide microscopic models especially validated for simulation of spallation reactions.  The
-inclusion of these models in {\sf Geant4} makes it possible to use them
-for LHC detector simulations. Additional uses for the models include:
-\begin{itemize}
-\item shielding studies,
-\item understanding radiation damage, and
-\item activation and background studies.
-\end{itemize}
+We present a new Geant4 physics list prepared for nuclear physics applications
+in the domain dominated by spallation.
+Validity of the Geant4 physics list is demonstrated from the perspective of accelerator driven systems
+and EURISOL project, especially with the neutron double differential cross sections and residual
+nuclei production.
+An example application utilizing the physics list is introduced.
+Finally, an ongoing work to improve of the physics models for the treatment of 
+light targets (Carbon - Oxygen) and light ion beams (up to Carbon) (Fig.~1) are discussed.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
