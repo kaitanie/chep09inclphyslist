@@ -1,4 +1,4 @@
-all:
+all: poster
 	latex fp2009
 	latex fp2009
 	dvips -E -o fp2009.eps fp2009.dvi
@@ -21,3 +21,15 @@ gitFetchPk:
 	git merge pkIncl/master
 m:
 	make; gv fp2009.pdf
+
+poster:
+	latex poster
+	latex poster
+#       dvips -Ppdf -G0 -ta4 poster
+#       dvips -Ppdf -G0 -ta1 poster
+	dvips -Ppdf -o poster.ps poster.dvi
+	ps2pdf -dMaxSubsetPct=100 -dCompatibilityLevel=1.4 -dSubsetFonts=true -dEmbedAllFonts=true -sPAPERSIZE=a4 poster.ps
+
+a4:
+	convert poster.ps -page A4 posterA4.ps
+
