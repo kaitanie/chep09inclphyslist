@@ -258,6 +258,34 @@ Geant4}.
 \end{textbox}
 
 \begin{textbox}
+\section*{{\Huge {\sf Geant4 Physics lists}}}
+{\tt Geant4} physics models, cross sections and processes are
+decoupled using abstract interfaces.
+\begin{itemize}
+\item Allow alternative implementations
+\item The system can be extended
+\item Users can run their simulation using different physics model
+configuration and compare the results
+\item Allow users to find good balance between various goals (e.g. CPU
+time requirements vs. accuracy of results)
+\item Each application must define explicitly what physics
+configuration to use
+\end{itemize}
+
+The options are: use a \emph{reference physics list} or build your
+own.
+
+\begin{itemize}
+\item Everything related to physics is a \emph{process}.
+\item Each particle has a pointer to its \emph{particle definition}.
+\item Particle definition has exactly one \emph{process manager}.
+\item Process manager keeps track of different processes assigned to the particle.
+\item Process has cross section and a model associated with it.
+\end{itemize}
+
+\end{textbox}
+
+\begin{textbox}
 \section*{{\Huge {\sf ABLA EVAPORATION}}}
 {\color{udsect}
 The ablation code {\sf ABLA} \cite{abla} for evaporation and fission modeling is developed at GSI, Darmstadt.
