@@ -7,6 +7,7 @@
 \usepackage{latexsym}
 \usepackage{calc}
 \usepackage{multicol,xspace}
+\usepackage{verbatim} % for comment
 
 \graphicspath{{.}{inclposter-2007/}{images/}}  
 % defines the width and height of the poster, scaled down to a viewable size
@@ -95,8 +96,9 @@
 	\hspace{0.6cm}
    \parbox[c]{0.8\linewidth}{
 		\begin{center}
-			\textbf{\Huge {\sf INCL4} CASCADE AND {\sf ABLA} EVAPORATION CODES IN {\sf GEANT4}} \\[0.5em]
-			\textbf{\LARGE Aatos Heikkinen$^{1}$, Pekka Kaitaniemi$^{\dagger, 1, 2}$} \\[0.3em]
+
+			\textbf{\Huge INCL/ABLA INTRA-NUCLEAR CASCADE MODELS \\ IN GEANT4~9.2} \\[0.5em]
+			\textbf{\LARGE Aatos Heikkinen$^{1}$, \underline{Pekka Kaitaniemi}$^{\dagger, 1, 2}$} \\[0.3em]
 			{\Large $^{\dagger}$ {\tt pekka.kaitaniemi@cea.fr}} \\
                         {\LARGE $^1$~Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland}\\
                         {\LARGE $^2$~CEN-Saclay, CEA-IRFU/SPhN, 91 191 Gif sur Yvette, France}
@@ -117,27 +119,33 @@
 %% \textsf{\Large\color{udsubsect}\underline{ABSTRACT}}
 %% \end{center}
 
-We discuss the status of INCL intra-nuclear cascade and ABLA fission/de-excitation codes
-in the latest release of the detector simulation toolkit Geant4 9.2 \cite{pk09aCollaboration, pk08aProceedings}.
-The INCL model is well established for targets heavier than Aluminium
+%We discuss the status of INCL intra-nuclear cascade and ABLA fission/de-excitation codes
+%in the latest release of the detector simulation toolkit Geant4 9.2 \cite{pk09aCollaboration, pk08aProceedings}.
+In Geant4 9.2 \cite{pk09aCollaboration} 
+the INCL model is well established for targets heavier than Aluminium
 and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
 
+\vspace{1cm}
 We present a new Geant4 physics list prepared for nuclear physics applications
 in the domain dominated by spallation.
-Validity of the Geant4 physics list is demonstrated from the perspective of accelerator driven systems
-and EURISOL project, especially with the neutron double differential cross sections and residual
-nuclei production.
-An example application utilizing the physics list is introduced.
-Finally, an ongoing work to improve of the physics models for the treatment of 
-light targets (Carbon - Oxygen) and light ion beams (up to Carbon) (Fig.~1) are discussed.
+Validity of the new Geant4 physics list 
+is demonstrated from the perspective of accelerator driven systems
+and EURISOL project.
+
+%especially with the neutron double differential cross sections and residual nuclei production.
+%An example application utilizing the physics list is introduced.
+%Finally, 
+\vspace{1cm}
+An ongoing work to improve of the physics models for the treatment of 
+light targets (Carbon - Oxygen) and light ion beams (up to Carbon) are discussed.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\hspace{-1cm} \includegraphics[scale=0.73]{images/cascade.eps}
+%\hspace{-1cm} \includegraphics[scale=0.73]{images/cascade.eps}
 
+\begin{comment}
 \begin{textbox}
-
 \section*{{\Huge {\sf INCL PARAMETERS}}}
 %\section*{\textbf{\Large\color{udsubsect}\underline{INCL parameters}}}
 {\color{udsect}
@@ -160,6 +168,7 @@ The number of parameters is kept low in order to have as much
 % Good default value for this factor is $f_{stop}$ = 1.0
 
 \end{textbox}
+\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{textbox}
 
@@ -182,15 +191,16 @@ The number of parameters is kept low in order to have as much
 
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{textbox}
-%\section*{{\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}}
-%\vskip-1.5cm
-%\begin{figure}
+\begin{comment}
+\begin{textbox}
+\section*{{\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}}
+\vskip-1.5cm
+\begin{figure}
 \vskip3.5cm
 {\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}
 \includegraphics[scale=0.70]{images/lead.eps}
-%\label{fig:pPbdd1200MeV}
-%\end{figure}
+\label{fig:pPbdd1200MeV}
+\end{figure}
 \vskip-0.3cm
 % FIXME linespread
 {\Large {\sf {\linespread{1.5} Double-differential for neutron production cross section
@@ -199,100 +209,128 @@ The number of parameters is kept low in order to have as much
     results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Blue data points are
     from Ref.~\cite{data}.}}}
 
-%\end{textbox}
+\end{textbox}
+\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
-\section*{{\Huge {\sf PHYSICS LIST}}}
+\section*{{\Huge {\sf GEANT4 PHYSICS LISTS}}}
+
+In {\tt Geant4}, \emph{physics models, cross sections, and processes are
+decoupled} using abstract interfaces:
+\begin{itemize}
+\item Users can run their simulation using different physics model
+configuration and compare the results
+\item Allow users to find good balance between various goals (e.g. CPU
+time requirements vs. accuracy of results)
+%\item Allow alternative implementations
+\item The system can be extended
+%\item Each application must define explicitly what physics
+%configuration to use
+\end{itemize}
+
+%\begin{comment}
+%The options are: use a \emph{reference physics list} or build your own.
+%\begin{itemize}
+%\item Everything related to physics is a \emph{process}.
+%\item Each particle has a pointer to its \emph{particle definition}.
+%\item Particle definition has exactly one \emph{process manager}.
+%\item Process manager keeps track of different processes assigned to the particle.
+%\item Process has cross section and a model associated with it.
+%\end{itemize}
+%\end{comment}
+\end{textbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vspace{-5cm}
+\begin{textbox}
+
+\section*{{\Huge {\sf NEW PHYSICS LIST}}}
+
 {\color{udsect}
 
 New physics list called {\sf QGSP\_INCLABLA} has been implemented with
-spallation users in mind. This list uses INCL/ABLA models for proton,
+spallation users in mind. 
+
+\vspace{1cm}
+This list uses INCL/ABLA models for proton,
 neutron and pion inelastic interactions in the energy range 0 - 3
 GeV. In this energy range INCL/ABLA is the only model used for the
 aforementioned processes.
-
-Fragments produced in reaction: p(1 GeV) + Pb
-\includegraphics[scale=0.5]{images/fragments.eps}
-
-Isotope production:
-\includegraphics[scale=0.5]{images/pPbIsotopes.eps}
-
-Neutron production:
-\includegraphics[scale=0.5]{images/zirkonium.eps}
-
-\includegraphics[scale=0.5]{images/iron.eps}
-
-\includegraphics[scale=0.5]{images/aluminum.eps}
-
 }
 \end{textbox}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{textbox}
+\vspace{5cm}
+\section*{{\Huge {\sf FRAGMENT PRODUCTION}}}
+%Fragments produced in reaction: p(1 GeV) + Pb
+\begin{center}
+\includegraphics[scale=0.65]{images/fragments.eps}
+
+%Isotope production:
+\includegraphics[scale=0.55]{images/pPbIsotopes.eps}
+\end{center}
+%\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{textbox}
+\section*{{\Huge {\sf NEUTRON PRODUCTION}}}
+%Neutron production:
+\begin{center}
+%\includegraphics[scale=0.5]{images/zirkonium.eps}
+%\includegraphics[scale=0.5]{images/iron.eps}
+\includegraphics[scale=0.55]{images/aluminum.eps}
+\end{center}
+%\end{textbox}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\vspace{6cm}
+\begin{center}
+{\Huge {\sf p(1 GeV) + C}}
+\includegraphics[scale=0.6,angle=90]{images/masses.eps}
+\end{center}
+
+
 \begin{textbox}
 \section*{{\Huge {\sf LIGHT TARGETS}}}
+
 {\color{udsect}
 
 {\sf INCL} can now be used with the {\sf Geant4} Fermi break-up
 model. In order to choose between ABLA and Fermi break-up we have
 introduced a selection rule in the code. Currently cascade remnant
 nuclei lighter than A < 13 are handled using Fermi break-up.
-
-\begin{center}
-{\Huge {\sf p(1 GeV) + C}}
-\includegraphics[scale=0.6,angle=90]{images/masses.eps}
-\end{center}
 }
 \end{textbox}
+
+
+
 
 \begin{textbox}
 \section*{{\Huge {\sf CARBON PROJECTILES}}}
 {\color{udsect}
-
-Carbon projectile support has been added to the {\sf INCL}
-cascade. Carbon beams are of interest for medical applications of {\sf
+Recently a Carbon projectile support has been added to the {\sf INCL}
+cascade. Carbon beams are of particular interest for medical applications of {\sf
 Geant4}.
-
-{\tt NOTE: CARBON FIGS PRODUCED USING BUGGY CODE. THEY WILL NOT BE
-PART OF THE POSTER}
-
+%{\tt NOTE: CARBON FIGS PRODUCED USING BUGGY CODE. THEY WILL NOT BE
+%PART OF THE POSTER}
 \begin{center}
-{\Huge {\sf C(400 MeV/nucleon) + Cu}}
+%{\Huge {\sf C(400 MeV/nucleon) + Cu}}
 %\includegraphics[scale=0.6,angle=0]{images/carbonCopper.eps}
 \end{center}
 \begin{center}
-{\Huge {\sf C(400 MeV/nucleon) + Cu}}
+%{\Huge {\sf C(400 MeV/nucleon) + Cu}}
 %\includegraphics[scale=0.6,angle=0]{images/carbonCopperLin.eps}
 \end{center}
 }
+\vspace{-1cm}
 \end{textbox}
 
-\begin{textbox}
-\section*{{\Huge {\sf Geant4 Physics lists}}}
-{\tt Geant4} physics models, cross sections and processes are
-decoupled using abstract interfaces.
-\begin{itemize}
-\item Allow alternative implementations
-\item The system can be extended
-\item Users can run their simulation using different physics model
-configuration and compare the results
-\item Allow users to find good balance between various goals (e.g. CPU
-time requirements vs. accuracy of results)
-\item Each application must define explicitly what physics
-configuration to use
-\end{itemize}
 
-The options are: use a \emph{reference physics list} or build your
-own.
-
-\begin{itemize}
-\item Everything related to physics is a \emph{process}.
-\item Each particle has a pointer to its \emph{particle definition}.
-\item Particle definition has exactly one \emph{process manager}.
-\item Process manager keeps track of different processes assigned to the particle.
-\item Process has cross section and a model associated with it.
-\end{itemize}
-
-\end{textbox}
-
+\begin{comment}
 \begin{textbox}
 \section*{{\Huge {\sf ABLA EVAPORATION}}}
 {\color{udsect}
@@ -328,61 +366,66 @@ emission, and
 \end{itemize}
 }
 \end{textbox}
+\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\section*{{\Huge {\sf }}}
-{\Huge {\sf p(0.8 GeV) + Pb $\rightarrow$ n + X}}
+%{\Huge {\sf p(0.8 GeV) + Pb $\rightarrow$ n + X}}
 
-\includegraphics[scale=0.45]{images/vladimir.eps}
-{\Large {\sf Comparison of various models in {\sf Geant4}. Li\`ege cascade together with ABLA (label ``LIEGE'') is compared against experimental data and other {\sf Geant4} models (BIC, BERT, RPG).
- {\sf INCL/ABLA} simulation is in good agreement with experimental data. (\emph{Courtesy of
-    V. Ivantchenko, Geant4 collaboration}.)}}
+%\includegraphics[scale=0.45]{images/vladimir.eps}
+%{\Large {\sf Comparison of various models in {\sf Geant4}. Li\`ege cascade together with ABLA (label ``LIEGE'') is compared against experimental data and other {\sf Geant4} models (BIC, BERT, RPG).
+% {\sf INCL/ABLA} simulation is in good agreement with experimental data. (\emph{Courtesy of
+%    V. Ivantchenko, Geant4 collaboration}.)}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{textbox}
+%\begin{textbox}
 
 
-\section*{{\Huge {\sf ACKNOWLEDGEMENTS}}}
+%\section*{{\Huge {\sf ACKNOWLEDGEMENTS}}}
 
-This work has been a collaborative effort with the original developers from
-Li\`ege University, GSI and CEA. We acknowledge the help from J.~Cugnon,
-A.~Boudard, Y.~Yariv, S.~Leray, C.~Schmidt and K.~H.~Schmidt
-on reimplementing the original {\sf FORTRAN} codes in {\sf C++} language.
+%This work has been a collaborative effort with the original developers from
+%Li\`ege University, GSI and CEA. We acknowledge the help from J.~Cugnon,
+%A.~Boudard, Y.~Yariv, S.~Leray, C.~Schmidt and K.~H.~Schmidt
+%on reimplementing the original {\sf FORTRAN} codes in {\sf C++} language.
 
-\end{textbox}
+%\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vskip2cm
-\begin{textbox}
-
-{\Large
-\addcontentsline{toc}{section}{References}
+%\vskip2cm
+%\begin{textbox}
+%\section*{{\Huge {\sf REFERENCES}}}
+%{\Large
+%\addcontentsline{toc}{section}{References}
 \begin{thebibliography}{9}
-\bibitem{fp} P. Kaitaniemi, A. Heikkinen, \emph{Implementing INCL4
-    hadronic cascade and ABLA de-excitation codes in Geant4},
-  Proceedings of the 41th Annual Meeting of the Finnish Physical
-  Society (2007)
 \bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for
     a comprehensive description of spallation reaction data}, Phys.
   Rev. C66 (2002) 044615
+
 \bibitem{abla} J. Benlliure et al., \emph{Calculated nuclide
     production yields in relativistic collisions of fissile nuclei},
   Nuc. Phys. A628 (1998) 458
 \bibitem{g4} \emph{Geant4 collaboration website} \\ {\tt http://\-cern.ch/\-geant4}
-\bibitem{g4incl} \emph{Geant4 Physics Reference Manual: INCL~4.2 Cascade and ABLA~V3 Evaporation with Fission} \\ {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
+\bibitem{g4incl} \emph{Geant4 Physics Reference Manual: INCL~4.2 Cascade and ABLA~V3 Evaporation with Fission} 
+%\\ {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
+
 \bibitem{data} X.Ledoux et al., \emph{Spallation Neutron Production by
   0.8, 1.2, and 1.6 GeV Protons on Pb Targets} Phys. Rev. Lett. 82
   (1999)
 
-\bibitem{pk09aCollaboration}
-P. Kaitaniemi and A. Heikkinen with Geant4 Collaboration
-{\tt http://www.geant4.org}{http://www.geant4.org}
+%\bibitem{pk09aCollaboration}
+%P. Kaitaniemi and A. Heikkinen with Geant4 Collaboration
+%{\tt http://www.geant4.org}{http://www.geant4.org}
 
-\bibitem{pk08aProceedings}
-P. Kaitaniemi and A. Heikkinen,  
-{\em INCL4 cascade and ABLA evaporation codes in Geant4},
-Proceedings of the XLII annual conference of the Finnish Physical Society, 
-                 March 27-29 2008, Turku, Finland. 
-                 Report Series in Physics L 31, University of Turku, 2008.
+%\bibitem{fp} P. Kaitaniemi, A. Heikkinen, \emph{Implementing INCL4
+%    hadronic cascade and ABLA de-excitation codes in Geant4},
+%  Proceedings of the 41th Annual Meeting of the Finnish Physical
+%  Society (2007)
+
+%\bibitem{pk08aProceedings}
+%P. Kaitaniemi and A. Heikkinen,  
+%{\em INCL4 cascade and ABLA evaporation codes in Geant4},
+%Proceedings of the XLII annual conference of the Finnish Physical Society, 
+%                 March 27-29 2008, Turku, Finland. 
+%                 Report Series in Physics L 31, University of Turku, 2008.
 
 \bibitem{pk08bProceedings}
 A. Heikkinen, P. Kaitaniemi, and A. Boudard,
@@ -390,18 +433,18 @@ A. Heikkinen, P. Kaitaniemi, and A. Boudard,
 Journal of Physics: Conference Series 119 (2008) 032024, 
 {\sf [doi:10.1088/1742-6596/119/3/032024]}
 
-\bibitem{carbone}
-D.L. Olson et al.,
-{\em Factorization of fragment-production cross sections in relativistic heavy-ion collisions},
-Phys. Rev. C28, 1602 (1983)
-{\sf [doi:10.1103/PhysRevC.28.1602]}
+%\bibitem{carbone}
+%D.L. Olson et al.,
+%{\em Factorization of fragment-production cross sections in relativistic heavy-ion collisions},
+%Phys. Rev. C28, 1602 (1983)
+%{\sf [doi:10.1103/PhysRevC.28.1602]}
 
 %\bibliographystyle{abbrv}
 %\bibliography{latex_poster}
 \end{thebibliography}
-}
 
-\end{textbox}
+
+%\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \end{multicols}
