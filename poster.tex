@@ -38,8 +38,8 @@
 \setlength{\bgheight}{58cm}
 
 % Removing all margins and spacing
-%\setlength{\topmargin}{-0.3in}
-\setlength{\topmargin}{0.3in}
+\setlength{\topmargin}{-0.5in}
+%\setlength{\topmargin}{0.3in}
 \setlength{\headheight}{0in}
 \setlength{\headsep}{0in}
 \setlength{\topskip}{0in}
@@ -90,14 +90,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                     Header                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{-1in}
+\vspace{-2.0cm}
 %\psbox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
 	\parbox[c]{1.4cm}{\includegraphics[width=3.8cm]{images/hiplogo.eps}}
 	\hspace{0.6cm}
    \parbox[c]{0.8\linewidth}{
 		\begin{center}
 
-			\textbf{\Huge INCL/ABLA INTRA-NUCLEAR CASCADE MODELS \\ IN GEANT4~9.2} \\[0.5em]
+			\textbf{\Huge INCL/ABLA INTRA-NUCLEAR CASCADE MODELS \\ IN {\sf GEANT4~9.2}} \\[0.5em]
 			\textbf{\LARGE Aatos Heikkinen$^{1}$, \underline{Pekka Kaitaniemi}$^{\dagger, 1, 2}$} \\[0.3em]
 			{\Large $^{\dagger}$ {\tt pekka.kaitaniemi@cea.fr}} \\
                         {\LARGE $^1$~Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland}\\
@@ -110,7 +110,9 @@
 % Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland
 % email: pekka.kaitaniemi@helsinki.fi
 
+\vspace{-2cm}
 \begin{multicols}{3}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
 
@@ -120,24 +122,27 @@
 %% \end{center}
 
 %We discuss the status of INCL intra-nuclear cascade and ABLA fission/de-excitation codes
-%in the latest release of the detector simulation toolkit Geant4 9.2 \cite{pk09aCollaboration, pk08aProceedings}.
-In Geant4 9.2 \cite{g4} 
-the INCL \cite{incl}  model is well established for targets heavier than Aluminium
+%in the latest release of the detector simulation toolkit {\sf Geant4 9.2} \cite{pk09aCollaboration, pk08aProceedings}.
+
+We have introduced INCL \cite{incl} model in {\sf Geant4 9.2} \cite{g4},
+which is well established for targets heavier than Aluminium
 and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
 
 \vspace{1cm}
-We present a new Geant4 physics list prepared for nuclear physics applications
+{\color{udsect}
+We present a new {\sf Geant4} physics list, based on INCL and ABLA models, 
+prepared for nuclear physics applications
 in the domain dominated by spallation.
-Validity of the new Geant4 physics list 
+}
+
+\vspace{1cm}
+Validity of the new {\sf Geant4} physics list 
 is demonstrated from the perspective of accelerator driven systems
 and EURISOL project.
 
 %especially with the neutron double differential cross sections and residual nuclei production.
 %An example application utilizing the physics list is introduced.
 %Finally, 
-\vspace{1cm}
-An ongoing work to improve of the physics models for the treatment of 
-light targets (Carbon - Oxygen) and light ion beams (up to Carbon) are discussed.
 
 \end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -215,15 +220,21 @@ The number of parameters is kept low in order to have as much
 \begin{textbox}
 \section*{{\Huge {\sf GEANT4 PHYSICS LISTS}}}
 
-In {\tt Geant4}, \emph{physics models, cross sections, and processes are
-decoupled} using abstract interfaces:
+An unique feature of {\sf Geant4} is to  
+\emph{decouple physics models, cross sections, and processes}
+using abstract interfaces, and manage the usage of different options with the physics lists.
+
+
 \begin{itemize}
 \item Users can run their simulation using different physics model
-configuration and compare the results
-\item Allow users to find good balance between various goals (e.g. CPU
-time requirements vs. accuracy of results)
+configuration and compare the results.
+{\color{udsect}
+\item Physics lists allow users to find good balance between various goals (e.g. CPU
+time requirements vs. accuracy of results).
+}
 %\item Allow alternative implementations
-\item The system can be extended
+
+\item Further, the {\sf Geant4} physics system can be easily extended.
 %\item Each application must define explicitly what physics
 %configuration to use
 \end{itemize}
@@ -246,51 +257,61 @@ time requirements vs. accuracy of results)
 %\vspace{-5cm}
 \begin{textbox}
 
-\section*{{\Huge {\sf NEW PHYSICS LIST}}}
+\section*{{\Huge {\sf  A NEW PHYSICS LIST}}}
 
 {\color{udsect}
 
-New physics list called {\sf QGSP\_INCLABLA} has been implemented with
-spallation users in mind. 
+We have implemented a new physics list called {\sf QGSP\_\-INCL\-ABLA} with
+spallation physics in mind. 
+}
 
 \vspace{1cm}
 This list uses INCL/ABLA models for proton,
 neutron and pion inelastic interactions in the energy range 0 - 3
-GeV. In this energy range INCL/ABLA is the only model used for the
-aforementioned processes.
-}
+GeV. In this energy range INCL/ABLA is \emph{the only model used} for the
+%aforementioned 
+these processes.
+
 \end{textbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{textbox}
-\vspace{5cm}
-\section*{{\Huge {\sf FRAGMENT PRODUCTION}}}
+\vspace{4cm}
+\section*{{\Huge {\sf FRAGMENT YIELD}}}
+\vspace{-1cm}
 %Fragments produced in reaction: p(1 GeV) + Pb
 \begin{center}
-\includegraphics[scale=0.65]{images/fragments.eps}
 
+\includegraphics[scale=0.70]{images/fragments.eps}
+
+\vspace{2cm}
 %Isotope production:
-\includegraphics[scale=0.55]{images/pPbIsotopes.eps}
+\includegraphics[scale=0.60]{images/pPbIsotopes.eps}
 \end{center}
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{textbox}
+
+\vspace{1cm}
 \section*{{\Huge {\sf NEUTRON PRODUCTION}}}
+\vspace{-1cm}
 %Neutron production:
 \begin{center}
 %\includegraphics[scale=0.5]{images/zirkonium.eps}
 %\includegraphics[scale=0.5]{images/iron.eps}
-\includegraphics[scale=0.55]{images/aluminum.eps}
+\includegraphics[scale=0.69]{images/aluminum.eps}
 \end{center}
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\vspace{6cm}
+\vspace{5cm}
 \begin{center}
-{\Huge {\sf p(1 GeV) + C}}
-\includegraphics[scale=0.6,angle=90]{images/masses.eps}
+{\Huge {\sf 1 GeV PROTON  ON CARBON TARGET}}
+
+\vspace{1cm}
+\includegraphics[scale=0.67,angle=90]{images/masses.eps}
 \end{center}
 
 
@@ -298,35 +319,40 @@ aforementioned processes.
 \section*{{\Huge {\sf LIGHT TARGETS}}}
 
 {\color{udsect}
-
-{\sf INCL} can now be used with the {\sf Geant4} Fermi break-up
-model. In order to choose between ABLA and Fermi break-up we have
-introduced a selection rule in the code. Currently cascade remnant
-nuclei lighter than A $<$ 13 are handled using Fermi break-up.
+In order to choose between ABLA and Fermi break-up we have
+introduced a selection rule in the code. 
+So, \emph{{\sf INCL} can now be used with the {\sf Geant4} Fermi break-up model}.
 }
+
+\vspace{1cm}
+Currently, cascade remnant nuclei lighter than A $<$ 13 are handled using Fermi break-up.
+
 \end{textbox}
-
-
 
 
 \begin{textbox}
 \section*{{\Huge {\sf CARBON PROJECTILES}}}
+An ongoing work is to improve of the physics models for the treatment of 
+light ion beams up to Carbon.
+
+\vspace{1cm}
 {\color{udsect}
-Recently a Carbon projectile support has been added to the {\sf INCL}
-cascade. Carbon beams are of particular interest for medical applications of {\sf
-Geant4}.
+Carbon beams are of particular interest for medical applications of {\sf
+Geant4}, and recently, a Carbon projectile support has been added to the {\sf INCL}
+cascade. 
+
 %{\tt NOTE: CARBON FIGS PRODUCED USING BUGGY CODE. THEY WILL NOT BE
 %PART OF THE POSTER}
-\begin{center}
+%\begin{center}
 %{\Huge {\sf C(400 MeV/nucleon) + Cu}}
 %\includegraphics[scale=0.6,angle=0]{images/carbonCopper.eps}
-\end{center}
-\begin{center}
+%\end{center}
+%\begin{center}
 %{\Huge {\sf C(400 MeV/nucleon) + Cu}}
 %\includegraphics[scale=0.6,angle=0]{images/carbonCopperLin.eps}
-\end{center}
+%\end{center}
 }
-\vspace{-1cm}
+%\vspace{-1cm}
 \end{textbox}
 
 
@@ -392,14 +418,24 @@ emission, and
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\vskip2cm
 %\begin{textbox}
+\addcontentsline{toc}{section}{References}
 %\section*{{\Huge {\sf REFERENCES}}}
-%{\Large
-%\addcontentsline{toc}{section}{References}
+{\Large
+
+%\bibliographystyle{abbrv}
+%\bibliography{latex_poster}
+%\bibliographystyle{unsrt} 
 \begin{thebibliography}{9}
-\bibitem{g4} \emph{Geant4 collaboration website} \\ {\tt http://\-cern.ch/\-geant4}
+
 \bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for
     a comprehensive description of spallation reaction data}, Phys.
   Rev. C66 (2002) 044615
+\bibitem{g4} \emph{Geant4 collaboration website} \\ {\tt http://\-cern.ch/\-geant4}
+\bibitem{pk08bProceedings}
+A. Heikkinen, P. Kaitaniemi, and A. Boudard,
+{\em Implementation of INCL4 cascade and ABLA evaporation codes in Geant4},
+Journal of Physics: Conference Series 119 (2008) 032024, 
+{\sf [doi:10.1088/1742-6596/119/3/032024]}
 
 \bibitem{abla} J. Benlliure et al., \emph{Calculated nuclide
     production yields in relativistic collisions of fissile nuclei},
@@ -427,11 +463,6 @@ emission, and
 %                 March 27-29 2008, Turku, Finland. 
 %                 Report Series in Physics L 31, University of Turku, 2008.
 
-\bibitem{pk08bProceedings}
-A. Heikkinen, P. Kaitaniemi, and A. Boudard,
-{\em Implementation of INCL4 cascade and ABLA evaporation codes in Geant4},
-Journal of Physics: Conference Series 119 (2008) 032024, 
-{\sf [doi:10.1088/1742-6596/119/3/032024]}
 
 %\bibitem{carbone}
 %D.L. Olson et al.,
@@ -439,14 +470,12 @@ Journal of Physics: Conference Series 119 (2008) 032024,
 %Phys. Rev. C28, 1602 (1983)
 %{\sf [doi:10.1103/PhysRevC.28.1602]}
 
-%\bibliographystyle{abbrv}
-%\bibliography{latex_poster}
 \end{thebibliography}
 
 
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+}
 \end{multicols}
 
 \end{center}
