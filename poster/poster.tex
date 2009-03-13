@@ -92,20 +92,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vspace{-2.0cm}
 %\psbox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
-	\parbox[c]{1.4cm}{\includegraphics[width=3.8cm]{images/hiplogo.eps}}
+	\parbox[c]{1.4cm}{\includegraphics[width=4.8cm]{images/hiplogo.eps}}
 	\hspace{0.6cm}
    \parbox[c]{0.8\linewidth}{
 		\begin{center}
 
-			\textbf{\Huge INCL/ABLA INTRA-NUCLEAR CASCADE MODELS \\ IN {\sf GEANT4~9.2}} \\[0.5em]
-			\textbf{\LARGE Aatos Heikkinen$^{1}$, \underline{Pekka Kaitaniemi}$^{\dagger, 1, 2}$} \\[0.3em]
-			{\Large $^{\dagger}$ {\tt pekka.kaitaniemi@cea.fr}} \\
+			\textbf{\Huge A Geant4 physics list for spallation and related nuclear physics applications 
+based on INCL and ABLA models} \\[0.5em]
+			\textbf{\LARGE \underline{Aatos Heikkinen}$^{\dagger, 1}$, Pekka Kaitaniemi$^{1, 2}$, Alain Boudard$^{2}$, Gunter Folger$^{3}$} \\[0.3em]
+			{\Large $^{\dagger}$ {\tt aatos.heikkinen@cern.ch}} \\
                         {\LARGE $^1$~Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland}\\
-                        {\LARGE $^2$~CEN-Saclay, CEA-IRFU/SPhN, 91 191 Gif sur Yvette, France}
+                        {\LARGE $^2$~CEN-Saclay, CEA-IRFU/SPhN, 91 191 Gif sur Yvette, France}\\
+                        {\LARGE $^3$~European Organization for Nuclear Research (CERN), Switzerland}
                         \vskip2cm
 		\end{center}
 	}
-	\parbox[c]{5.3cm}{\hspace{-1.0cm} \includegraphics[width=5.6cm]{images/g4logo.eps}}
+	\parbox[c]{5.3cm}{\hspace{-1.0cm} \includegraphics[width=6.1cm]{images/g4logo.eps}}
 %}}
 % Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland
 % email: pekka.kaitaniemi@helsinki.fi
@@ -132,13 +134,10 @@ and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk0
 {\color{udsect}
 We present a new {\sf Geant4} physics list, based on {\sf INCL} and {\sf ABLA} models, 
 prepared for nuclear physics applications
-in the domain dominated by spallation.
-}
-
-\vspace{1cm}
-Validity of this new {\sf Geant4} physics list 
-is demonstrated from the perspective of accelerator driven systems
+in the domain
+of accelerator driven systems
 and EURISOL project.
+}
 
 %especially with the neutron double differential cross sections and residual nuclei production.
 %An example application utilizing the physics list is introduced.
@@ -206,7 +205,9 @@ The number of parameters is kept low in order to have as much
 \includegraphics[scale=0.70]{images/lead.eps}
 \label{fig:pPbdd1200MeV}
 \end{figure}
-\vskip-0.3cm
+
+\vskip8.0cm
+
 % FIXME linespread
 {\Large {\sf {\linespread{1.5} Double-differential for neutron production cross section
     from {\sf Geant4} {\sf INCL} and {\sf ABLA} models. Neutron evaporation from {\sf ABLA} model is
@@ -217,7 +218,6 @@ The number of parameters is kept low in order to have as much
 \end{textbox}
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{0.8cm}
 \begin{textbox}
 \section*{{\Huge {\sf GEANT4 PHYSICS LISTS}}}
 
@@ -231,14 +231,13 @@ using abstract interfaces, and manage the usage of different options with so-cal
 \item Physics lists allow users to find good balance between various goals (e.g. CPU
 time requirements vs. accuracy of results).
 }
-\item Also, users can run their simulation using different physics model
-configurations and compare the results.
-%\item Allow alternative implementations
 
-\item Further, the {\sf Geant4} physics system can be easily extended.
+\item Also, the {\sf Geant4} physics system can be easily extended.
 %\item Each application must define explicitly what physics
 %configuration to use
 \end{itemize}
+
+
 
 %\begin{comment}
 %The options are: use a \emph{reference physics list} or build your own.
@@ -253,29 +252,28 @@ configurations and compare the results.
 \end{textbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\vskip0.5cm
+\includegraphics[scale=0.78]{images/inclAblaDoc.eps}
+%\vskip-3.0cm
+\vskip0.5cm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\vspace{-5cm}
-\vspace{0.4cm}
+%\vspace{0.4cm}
 \begin{textbox}
 
 \section*{{\Huge {\sf  A NEW PHYSICS LIST}}}
 
 {\color{udsect}
 
-We have implemented a new physics list called {\sf QGSP\_\-INCL\-ABLA} with
+We have implemented a new physics list called {\sf QGSP\_\-INCL\_ABLA} with
 spallation physics in mind. 
-}
+%}
 
-\vspace{1cm}
-This list uses {\sf INCL/ABLA} models for proton,
+%\vspace{1cm}
+which uses {\sf INCL/ABLA} models for proton,
 neutron and pion inelastic interactions in the energy range 0 - 3
 GeV.
-\vskip1cm
-In this energy range {\sf INCL/ABLA} is the only model used for the
-%aforementioned 
-these processes.
-
+}
 \end{textbox}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -307,7 +305,7 @@ these processes.
 \begin{center}
 %\includegraphics[scale=0.5]{images/zirkonium.eps}
 %\includegraphics[scale=0.5]{images/iron.eps}
-\includegraphics[scale=0.69]{images/aluminum.eps}
+\includegraphics[scale=0.69]{images/aluminumDetail.eps}
 {\Large {\sf {\linespread{1.0} Double-differential for neutron production cross section
     from {\sf Geant4} {\sf INCL} and {\sf ABLA} models. Black and red histograms are the
     results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Data points are
@@ -316,7 +314,7 @@ these processes.
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\vspace{5cm}
+\vspace{3cm}
 
 \begin{textbox}
 \section*{{\Huge {\sf LIGHT TARGETS}}}
@@ -331,6 +329,8 @@ Currently, {\sf INCL} interface provides Fermi break-up \cite{g4incl} for
 remnant nuclei lighter than A = 13 and {\sf ABLA} for heavier elements.
 \end{textbox}
 
+\vskip1cm
+
 \begin{center}
 {\Huge {\sf 1 GeV PROTON  ON CARBON}}
 
@@ -340,14 +340,15 @@ remnant nuclei lighter than A = 13 and {\sf ABLA} for heavier elements.
 
 \begin{textbox}
 \section*{{\Huge {\sf CARBON PROJECTILES}}}
-An ongoing work is to improve of the physics models for the treatment of 
-light ion beams up to Carbon.
-
-\vspace{1cm}
 {\color{udsect}
 Carbon beams are of particular interest for medical applications of {\sf
 Geant4}, and recently, a Carbon projectile support has been added to the {\sf INCL}
 cascade. 
+
+\vspace{1cm}
+
+An ongoing work is to improve of the physics models for the treatment of 
+light ion beams up to Carbon.
 
 %{\tt NOTE: CARBON FIGS PRODUCED USING BUGGY CODE. THEY WILL NOT BE
 %PART OF THE POSTER}
