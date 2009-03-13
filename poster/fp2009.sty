@@ -1,0 +1,49 @@
+% FP2001.sty 05.10.2000
+% Original version FP2000.sty 12.10.1999 
+%                  - Eero Noponen <eero.noponen@hut.fi>
+%
+% LaTeX style file for the abstracts for the Proceedings of the
+% Annual Meeting of the Finnish Physical Society
+%
+% LaTeX 2.09:
+% Use as a style option with the article style:
+%   \documentstyle[FP2000,12pt]{article}
+%
+% LaTeX 2e:
+% Use as a package with the article class
+%   \documentclass[12pt]{article}
+%   \usepackage{FP2000}
+
+\setlength\paperheight   {297mm}
+\setlength\paperwidth    {210mm}
+\setlength\topmargin     {4.6mm}
+\setlength\headheight    {0pt}
+\setlength\headsep       {0pt}
+\setlength\oddsidemargin {4.6mm}
+\setlength\textwidth     {150mm}
+\setlength\textheight    {237mm}
+\setlength\parindent     {0pt}
+\setlength\parskip       {\baselineskip}
+\pagestyle{empty}
+
+\renewenvironment{thebibliography}[1]
+     {\list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \itemsep -4pt
+            \topsep 0pt
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy\clubpenalty4000\widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `thebibliography' environment}}%
+      \endlist}
+
+\renewcommand{\title}[1]{
+\begin{tabular*}{\textwidth}[t]{@{}p{\textwidth}}
+\bf #1
+\end{tabular*}}
