@@ -136,7 +136,7 @@ in the domain dominated by spallation.
 }
 
 \vspace{1cm}
-Validity of the new {\sf Geant4} physics list 
+Validity of this new {\sf Geant4} physics list 
 is demonstrated from the perspective of accelerator driven systems
 and EURISOL project.
 
@@ -223,16 +223,16 @@ The number of parameters is kept low in order to have as much
 
 A unique feature of {\sf Geant4} is to  
 \emph{decouple physics models, cross sections, and processes}
-using abstract interfaces, and manage the usage of different options with the physics lists.
+using abstract interfaces, and manage the usage of different options with so-called the physics lists.
 
 
 \begin{itemize}
-\item Users can run their simulation using different physics model
-configurations and compare the results.
 {\color{udsect}
 \item Physics lists allow users to find good balance between various goals (e.g. CPU
 time requirements vs. accuracy of results).
 }
+\item Also, users can run their simulation using different physics model
+configurations and compare the results.
 %\item Allow alternative implementations
 
 \item Further, the {\sf Geant4} physics system can be easily extended.
@@ -270,7 +270,9 @@ spallation physics in mind.
 \vspace{1cm}
 This list uses {\sf INCL/ABLA} models for proton,
 neutron and pion inelastic interactions in the energy range 0 - 3
-GeV. In this energy range {\sf INCL/ABLA} is \emph{the only model used} for the
+GeV.
+\vskip1cm
+In this energy range {\sf INCL/ABLA} is the only model used for the
 %aforementioned 
 these processes.
 
@@ -278,7 +280,7 @@ these processes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{textbox}
-\vspace{4cm}
+\vspace{2cm}
 \section*{{\Huge {\sf FRAGMENT YIELD}}}
 \vspace{-1cm}
 %Fragments produced in reaction: p(1 GeV) + Pb
@@ -289,7 +291,7 @@ these processes.
 \vspace{1.5cm}
 %Isotope production:
 \includegraphics[scale=0.60]{images/pPbIsotopes.eps}
-{\Large {\sf {\linespread{1.0} Fragment production of the {\sf INCL} and {\sf ABLA} models. Black and red histograms are the
+{\Large {\sf {\linespread{1.0} Fragment production of the {\sf INCL} and {\sf ABLA} \cite{abla} models. Black and red histograms are the
     results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively.}}}
 \end{center}
 %\end{textbox}
@@ -308,7 +310,7 @@ these processes.
 \includegraphics[scale=0.69]{images/aluminum.eps}
 {\Large {\sf {\linespread{1.0} Double-differential for neutron production cross section
     from {\sf Geant4} {\sf INCL} and {\sf ABLA} models. Black and red histograms are the
-    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Blue data points are
+    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Data points are
     from Ref.~\cite{data}.}}}
 \end{center}
 %\end{textbox}
@@ -320,21 +322,20 @@ these processes.
 \section*{{\Huge {\sf LIGHT TARGETS}}}
 
 {\color{udsect}
-In order to choose between {\sf ABLA} and Fermi break-up we have
-introduced a selection rule in the code. 
+We have introduced a cut to choose between {\sf ABLA} and Fermi break-up for light targets.
 So, \emph{{\sf INCL} can now be used with the {\sf Geant4} Fermi break-up model}.
 }
 
 \vspace{1cm}
-Currently, cascade remnant nuclei lighter than A = 13 are handled using Fermi break-up.
-
+Currently, {\sf INCL} interface provides Fermi break-up \cite{g4incl} for
+remnant nuclei lighter than A = 13 and {\sf ABLA} for heavier elements.
 \end{textbox}
 
 \begin{center}
-{\Huge {\sf 1 GeV PROTON  ON CARBON TARGET}}
+{\Huge {\sf 1 GeV PROTON  ON CARBON}}
 
 \vspace{1cm}
-\includegraphics[scale=0.67,angle=90]{images/masses.eps}
+\includegraphics[scale=0.72,angle=90]{images/masses.eps}
 \end{center}
 
 \begin{textbox}
