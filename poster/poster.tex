@@ -76,8 +76,6 @@
 \begin{document}
 \huge
 \begin{center}
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                    Background                                   %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,7 +88,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                                     Header                                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{-2.0cm}
+\vspace{-4.0cm}
 %\psbox[fillstyle=solid,linewidth=1pt,framearc=.5]{\makebox[0.98\textwidth]{
 	\parbox[c]{1.4cm}{\includegraphics[width=4.8cm]{images/hiplogo.eps}}
 	\hspace{0.6cm}
@@ -99,8 +97,8 @@
 
 			\textbf{\Huge A Geant4 physics list for spallation and related nuclear physics applications 
 based on INCL and ABLA models} \\[0.5em]
-			\textbf{\LARGE \underline{Aatos Heikkinen}$^{\dagger, 1}$, Pekka Kaitaniemi$^{1, 2}$, Alain Boudard$^{2}$, Gunter Folger$^{3}$} \\[0.3em]
-			{\Large $^{\dagger}$ {\tt aatos.heikkinen@cern.ch}} \\
+			\textbf{\LARGE \underline{Aatos Heikkinen}$^{1}$, Pekka Kaitaniemi$^{1, 2}$, Alain Boudard$^{2}$, Gunter Folger$^{3}$} \\[0.3em]
+%			{\Large $^{\dagger}$ {\tt aatos.heikkinen@cern.ch}} \\
                         {\LARGE $^1$~Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland}\\
                         {\LARGE $^2$~CEN-Saclay, CEA-IRFU/SPhN, 91 191 Gif sur Yvette, France}\\
                         {\LARGE $^3$~European Organization for Nuclear Research (CERN), Switzerland}
@@ -112,12 +110,12 @@ based on INCL and ABLA models} \\[0.5em]
 % Helsinki Institute of Physics, P.O.B. 64, FIN-00014 University of Helsinki, Finland
 % email: pekka.kaitaniemi@helsinki.fi
 
-\vspace{-2cm}
+\vspace{-2.0cm}
 \begin{multicols}{3}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
-
+\vskip-0.2cm
 \section*{{\Huge {\sf ABSTRACT}}}
 %% \begin{center}
 %% \textsf{\Large\color{udsubsect}\underline{ABSTRACT}}
@@ -130,7 +128,7 @@ We have introduced {\sf INCL} \cite{incl} intra-nuclear cascade model in {\sf Ge
 The {\sf INCL} model is well established for targets heavier than Aluminium
 and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
 
-\vspace{1cm}
+\vspace{0.5cm}
 {\color{udsect}
 We present a new {\sf Geant4} physics list, based on {\sf INCL} and {\sf ABLA} models, 
 prepared for nuclear physics applications
@@ -150,6 +148,7 @@ and EURISOL project.
 
 \begin{comment}
 \begin{textbox}
+\vskip-0.2cm
 \section*{{\Huge {\sf INCL PARAMETERS}}}
 %\section*{\textbf{\Large\color{udsubsect}\underline{INCL parameters}}}
 {\color{udsect}
@@ -197,16 +196,17 @@ The number of parameters is kept low in order to have as much
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment}
 \begin{textbox}
+\vskip-0.2cm
 \section*{{\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}}
-\vskip-1.5cm
+\vskip{-1.5cm}
 \begin{figure}
-\vskip3.5cm
+\vskip{2.5cm}
 {\Huge {\sf p(1.2 GeV) + Pb $\rightarrow$ n + X}}
 \includegraphics[scale=0.70]{images/lead.eps}
 \label{fig:pPbdd1200MeV}
 \end{figure}
 
-\vskip8.0cm
+\vskip{4.0cm}
 
 % FIXME linespread
 {\Large {\sf {\linespread{1.5} Double-differential for neutron production cross section
@@ -219,6 +219,7 @@ The number of parameters is kept low in order to have as much
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{textbox}
+\vskip-0.2cm
 \section*{{\Huge {\sf GEANT4 PHYSICS LISTS}}}
 
 A unique feature of {\sf Geant4} is to  
@@ -237,8 +238,6 @@ time requirements vs. accuracy of results).
 %configuration to use
 \end{itemize}
 
-
-
 %\begin{comment}
 %The options are: use a \emph{reference physics list} or build your own.
 %\begin{itemize}
@@ -253,70 +252,61 @@ time requirements vs. accuracy of results).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \vskip0.5cm
-\includegraphics[scale=0.78]{images/inclAblaDoc.eps}
-%\vskip-3.0cm
+\includegraphics[scale=0.70]{images/inclAblaDoc.eps}
 \vskip0.5cm
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\vspace{-5cm}
-%\vspace{0.4cm}
 \begin{textbox}
-
+\vskip-0.2cm
 \section*{{\Huge {\sf  A NEW PHYSICS LIST}}}
 
 {\color{udsect}
 
 We have implemented a new physics list called {\sf QGSP\_\-INCL\_ABLA} with
 spallation physics in mind. 
-%}
+}
 
-%\vspace{1cm}
-which uses {\sf INCL/ABLA} models for proton,
+\vspace{0.5cm}
+It uses {\sf INCL/ABLA} models for proton,
 neutron and pion inelastic interactions in the energy range 0 - 3
 GeV.
-}
 \end{textbox}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{textbox}
-\vspace{2cm}
+\vskip3.2cm
 \section*{{\Huge {\sf FRAGMENT YIELD}}}
-%\vspace{-1cm}
+\vspace{-1.2cm}
 %Fragments produced in reaction: p(1 GeV) + Pb
 \begin{center}
-
 \includegraphics[scale=0.70]{images/fragments.eps}
-
-\vspace{1.0cm}
 %Isotope production:
 \includegraphics[scale=0.60]{images/pPbIsotopes.eps}
 \end{center}
 {\large {\sf Fragment production of the {\sf INCL} and {\sf ABLA} \cite{abla, abla1, abla2} models. Black and red histograms are the
-    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Data is from Ref \cite{gsifragments}}}
+    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Data is from Ref. \cite{gsifragments}.}}
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\begin{textbox}
 
-%\vskip-0.5cm
+\vspace{-2.6cm}
 \section*{{\Huge {\sf NEUTRON PRODUCTION}}}
-\vskip-1.6cm
+\vspace{-1.6cm}
 %Neutron production:
 \begin{center}
 %\includegraphics[scale=0.5]{images/zirkonium.eps}
 %\includegraphics[scale=0.5]{images/iron.eps}
 \includegraphics[scale=0.69]{images/aluminum.eps}
 \end{center}
+\vskip-1.6cm
 {\large {\sf Double-differential for neutron production cross section
     from {\sf Geant4} {\sf INCL} and {\sf ABLA} models. Black and red histograms are the
-    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. Data points are
-    from Ref.~\cite{data}.}}
+    results from the original {\sf FORTRAN} version and new {\sf C++} implementation, respectively. 
+Data is from Ref.~\cite{data}.}}
 %\end{textbox}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\vskip4cm
-
 \begin{textbox}
+\vskip-0.2cm
 \section*{{\Huge {\sf LIGHT TARGETS}}}
 
 {\color{udsect}
@@ -324,32 +314,33 @@ We have introduced a cut to choose between {\sf ABLA} and Fermi break-up for lig
 So, \emph{{\sf INCL} can now be used with the {\sf Geant4} Fermi break-up model}.
 }
 
-\vspace{1cm}
+\vspace{0.5cm}
 Currently, {\sf INCL} interface provides Fermi break-up \cite{g4incl} for
 remnant nuclei lighter than A = 13 and {\sf ABLA} for heavier elements.
 \end{textbox}
 
-\vskip1cm
+
 
 \begin{center}
 {\Huge {\sf 1 GeV PROTON  ON CARBON}}
 
-\vspace{1cm}
+\vspace{0.5cm}
 \includegraphics[scale=0.72,angle=90]{images/masses.eps}
 \end{center}
 
 \begin{textbox}
+\vskip-0.2cm
 \section*{{\Huge {\sf CARBON PROJECTILES}}}
 {\color{udsect}
 Carbon beams are of particular interest for medical applications of {\sf
 Geant4}, and recently, a Carbon projectile support has been added to the {\sf INCL}
 cascade. 
-
-\vspace{1cm}
+}
+\vspace{0.5cm}
 
 An ongoing work is to improve of the physics models for the treatment of 
 light ion beams up to Carbon.
-
+\end{textbox}
 %{\tt NOTE: CARBON FIGS PRODUCED USING BUGGY CODE. THEY WILL NOT BE
 %PART OF THE POSTER}
 %\begin{center}
@@ -360,13 +351,14 @@ light ion beams up to Carbon.
 %{\Huge {\sf C(400 MeV/nucleon) + Cu}}
 %\includegraphics[scale=0.6,angle=0]{images/carbonCopperLin.eps}
 %\end{center}
-}
-%\vspace{-1cm}
-\end{textbox}
+
+
+
 
 
 \begin{comment}
 \begin{textbox}
+\vskip-0.2cm
 \section*{{\Huge {\sf ABLA EVAPORATION}}}
 {\color{udsect}
 The ablation code {\sf ABLA} \cite{abla} for evaporation and fission modeling is developed at GSI, Darmstadt.
@@ -434,6 +426,7 @@ emission, and
 %\bibliographystyle{abbrv}
 %\bibliography{latex_poster}
 %\bibliographystyle{unsrt} 
+\vskip-0.5cm
 \begin{thebibliography}{9}
 
 \bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for

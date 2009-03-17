@@ -136,3 +136,27 @@ endif
 	@$(MAKE) libmap
 	@$(ECHO) "Libraries installation completed !"; done
 endif
+
+addPK:
+	git remote add pekka git://github.com/kaitanie/chep09inclphyslist.git  
+
+getPK:
+	git fetch pekka
+	git merge pekka/master
+
+gitClonePK:
+	git://github.com/kaitanie/chep09inclphyslist.git  
+
+gitClone:
+	git clone git@github.com:aatos/chep09inclphyslist.git  
+
+#git diff
+#git status
+#git commit -a -m 'comment'  (add all changes)
+#(modify)
+#git diff
+#git commit -a -m 'comment'  
+#gitk 
+#git push 
+
+#git revert HEAD  (in case of bad commit this reverses it)
