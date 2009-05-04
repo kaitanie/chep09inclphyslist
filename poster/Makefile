@@ -1,4 +1,4 @@
-all: poster
+all: 
 	latex fp2009
 	latex fp2009
 	dvips -E -o fp2009.eps fp2009.dvi
@@ -21,6 +21,9 @@ gitFetchPk:
 	git merge pkIncl/master
 m:
 	make; gv fp2009.pdf
+
+ca:
+	rm -f fp2009.pdf fp2009.eps poster.pdf poster.ps
 
 poster:
 	latex poster

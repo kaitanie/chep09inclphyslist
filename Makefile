@@ -1,4 +1,6 @@
 d = ah09aProceedings
+d1 = chep09geant4
+#d1 = jpcsSample
 
 # extended report
 #d = ah08hCodeReport
@@ -23,7 +25,18 @@ ifdef AHSYSTEM
 endif
 
 ca:
-	rm -f $(d).pdf $(d).ps *.out $(d)_*.eps $(d).asy
+	rm -f *.pdf *.ps *.out $(d)_*.eps $(d).asy
+
+paper:
+	@echo :::CHEP09 TMVA paper = $(d1)
+	@rm -f *.aux
+	@latex $(d1) && latex $(d1) 
+#	@$(tex) $(d1) && $(tex) $(d1) 
+	@dvips -R0 $(d1).dvi -o $(d1).ps
+	@ps2pdf $(d1).ps
+ifdef USEVIEWER
+	$(PDFVIEWER) $(d1).pdf
+endif
 
 files:
 	ls -latGg code/$(GI)  >  code/bertiniFiles.txt
