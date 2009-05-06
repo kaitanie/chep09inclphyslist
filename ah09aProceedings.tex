@@ -283,36 +283,11 @@ An example application utilizing the physics list is introduced.
 [{\bf Suggested  responsibility}: 
 A.H. main author, P.K. coding, A.B. use case physics and INCL, G.F. Geant4 physics list details]
 
-\section{INTRODUCTION \label{section:intro}}
-An unique feature of Geant4 is physics list concept providing transparent access 
-to various physics models. 
-Often an optional models are available with specific strengths and limitations, 
-so physics lists concept is used to
-provide optimal set of functionality for specific use case.
-
-In this paper we are interested on issues relevant to nuclear physics applications,
-neutron production and modelling of spallation reactions.  
-
-%ADS
-This paper is organized as follows:
-key Geant4 models (intra-nuclear cascade INCL or Liege cascade, and ABLA evaporation-fission model) 
-applied in this work are introduced in Sec.~\ref{sec:models},
-Sec.~\ref{sec:list} documents the details of physics list implementation, and
-Sec.~\ref{sec:example} describes an example application utilizing the new physics list
-for the use case of spallation reaction study.
-Physics performance is demonstrated particularly for 
-neutron  cross sections in Sec.~\ref{sec:performance} and
-Sec.~\ref{sec:conclusion} concludes with outline of future models developments.
+\section{INTRODUCTION} \label{sec:intro}
+\input{introduction.tex}
 
 \section{INCL AND ABLA MODELS IN GEANT4} \label{sec:models}
-
-INCL and ABLA models are casted into independent FORTRAN based Monte Carlo codes 
-INCL4.2 and ABLA V3 \cite{heikkinen07mProceedings}.
-Recently these implementations have been translated into C++ and codes provides
-as part of Geant4 toolkit \cite{heikkinen03aPaper}. 
-First beta release of INCL 4.2 and ABLA v3 was in Geant4  9.1 (December 2007).
-
-
+\input{models.tex}
 
 \section{PHYSICS LIST FOR SPALLATION STUDIES} \label{sec:list}
 
