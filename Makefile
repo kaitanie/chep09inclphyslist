@@ -4,8 +4,8 @@ d1 = chep09geant4
 
 # extended report
 #d = ah08hCodeReport
-tex       = pdflatex
-#tex       = latex
+%tex       = pdflatex
+tex       = latex
 pdfviewer = /home/aatos/Desktop/system/tools/acroread/opt/Adobe/Reader8/bin/./acroread
 #pdfviewer = gv
 #pdfviewer = firefox
@@ -30,8 +30,9 @@ ca:
 paper:
 	@echo :::CHEP09 TMVA paper = $(d1)
 	@rm -f *.aux
-	@latex $(d1) && latex $(d1) 
-#	@$(tex) $(d1) && $(tex) $(d1) 
+	@$(tex) $(d1) && $(tex) $(d1)
+#	@bibtex $(d1)
+#	@$(tex) $(d1) && $(tex) $(d1)
 	@dvips -R0 $(d1).dvi -o $(d1).ps
 	@ps2pdf $(d1).ps
 ifdef USEVIEWER
