@@ -37,36 +37,174 @@ An example application utilizing the physics list is introduced.
 \end{abstract}
 
 \section{Introduction}
- 
+[Poster abtract$>>$]
 
+We have introduced INCL \cite{incl} intra-nuclear cascade model in Geant4 9.2 \cite{g4}.
+The INCL model is well established for targets heavier than Aluminium
+and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
+
+
+We present a new Geant4 physics list, based on INCL and ABLA models, 
+prepared for nuclear physics applications in the domain
+of accelerator driven systems and EURISOL project.
+
+[$<<$poster abtract]
+
+
+\section{Geant4 physics lists}
+
+A unique feature of Geant4 is to  
+decouple physics models, cross sections, and processes
+using abstract interfaces, and manage the usage of different options with so-called the physics lists:
+\begin{itemize}
+\item Physics lists allow users to find good balance between various goals (e.g. CPU
+time requirements vs. accuracy of results).
+\item Also, the Geant4 physics system can be easily extended.
+\end{itemize}
+
+
+
+\section{A new physics list}
+
+We have implemented a new physics list called {\sf QGSP\_\-INCL\_ABLA} with
+spallation physics in mind. 
+It uses INCL/ABLA models for proton,
+neutron and pion inelastic interactions in the energy range 0~-~3~GeV.
 
 
 \begin{figure}[h]
-%\begin{minipage}{14pc}
-
 \begin{center}
-\includegraphics[width=30pc]{poster/images/lead.eps}
+%\includegraphics[width=21pc]{poster/images/inclAblaDoc.eps}\hspace{2pc}%
+\includegraphics[scale=0.80]{poster/images/inclAblaDoc.eps}
+%\begin{minipage}[b]{14pc}
+\caption{\label{label}Doxygen documentation of Geant4 {\sf QGSP\_\-INCL\_ABLA} physics list is provided.}
+%\end{minipage}
 \end{center}
-\caption{\label{label}Figure caption .}
+\end{figure}
+
+
+
+\section{Fragment yield}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.70]{poster/images/fragments.eps}
+
+\caption{Fragment production of the INCL and ABLA \cite{abla, abla1, abla2} models. 
+Black and red histograms are the results from the original FORTRAN version 
+and new C++ implementation, respectively. Data is from Ref. \cite{gsifragments}.}
+
+\end{center}
+\end{figure}
+
+
+\begin{figure}[h]
+\begin{center}
+%Isotope production:
+\includegraphics[scale=0.60]{poster/images/pPbIsotopes.eps}
+
+\caption{Fragment production of the INCL and ABLA \cite{abla, abla1, abla2} models. 
+Black and red histograms are the results from the original FORTRAN version 
+and new C++ implementation, respectively. Data is from Ref. \cite{gsifragments}.}
+
+\end{center}
+\end{figure}
+
+
+\section{Neutron production}
+
+\begin{figure}
+\begin{center}
+%\includegraphics[scale=0.5]{images/zirkonium.eps}
+%\includegraphics[scale=0.5]{images/iron.eps}
+\includegraphics[scale=0.70]{poster/images/aluminum.eps}
+\caption{Double-differential for neutron production cross section
+    from Geant4 INCL and ABLA models in p(1.2 GeV) + Al $\rightarrow$ n + X reaction.
+Black and red histograms are the
+    results from the original FORTRAN version and new C++ implementation, respectively. 
+Neutron evaporation from ABLA model is shown below E $\simeq$ 20 MeV.
+Data is from Ref.~\cite{data}.}
+\label{fig:neutronAl}
+\end{center}
+\end{figure}
+
+
+%\begin{figure}
+%\begin{center}
+%\includegraphics[scale=0.70]{poster/images/zirkonium.eps}
+%\caption{Neutron production from p(1.2 GeV) + Zr $\rightarrow$ n + X.
+%These results can be compared with a corresponding case with aluminium and iron targets show in Fig.~\ref{fig:neutronAl}
+%and Fig.~\ref{fig:neutronFe}, respectively.}
+%\end{center}
+%\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.70]{poster/images/iron.eps}
+\caption{Neutron production from p(1.2 GeV) + Fe  $\rightarrow$ n + X. 
+These results can be compared with a corresponding case with aluminium target in Fig.~\ref{fig:neutronAl}.}
+\end{center}
+\end{figure}
+
+
+
+%\section{[commented in poster] p(1.2 GeV) + Pb $\rightarrow$ n + X}
+%\begin{figure}
+%\begin{center}
+%\includegraphics[scale=0.70]{poster/images/lead.eps}
+%\end{center}
+%\label{fig:pPbdd1200MeV}
+%\caption{p(1.2 GeV) + Pb $\rightarrow$ n + X. Double-differential for neutron production cross section
+%    from Geant4 INCL and ABLA models. Neutron evaporation from ABLA model is
+%    shown below E $\simeq$ 20 MeV. Black and red histograms are the
+%    results from the original FORTRAN version and new C++ implementation, respectively. 
+%Blue data points are from Ref.~\cite{data}.}
+%\end{figure}
+
+\section{Light targets}
+
+We have introduced a cut to choose between ABLA and Fermi break-up for light targets.
+So, INCL can now be used with the Geant4 Fermi break-up model.
+
+
+Currently, INCL interface provides Fermi break-up \cite{g4incl} for
+remnant nuclei lighter than A = 13 and ABLA for heavier elements.
+
+\section{1 GeV proton  on carbon}
+\begin{figure}
+%\begin{center}
+\includegraphics[scale=0.60,angle=90]{poster/images/masses.eps}
+%\end{center}
+\caption{Comparison of massnumber distributions given INCL4.2 cascade with ABLA evaporation 
+and with standard Geant4 Fermi break up model against data from \cite{a}.
+Also, results from Geant4 Bertini cascade with independent evaporation model are shown. }
+\end{figure}
+
+\section{Carbon projectiles}
+Carbon beams are of particular interest for medical applications of Geant4, 
+and recently, a Carbon projectile support has been added to the INCL cascade. 
+
+An ongoing work is to improve of the physics models for the treatment of light ion beams up to Carbon.
+
+%\begin{figure}[h]
+%\begin{minipage}{14pc}
+%\begin{center}
+%\includegraphics[width=30pc]{poster/images/lead.eps}
+%\end{center}
+%\caption{\label{label}Figure caption .}
 %\end{minipage}\hspace{2pc}%
 %\begin{minipage}{14pc}
 %\includegraphics[width=14pc]{./poster/images/inclAblaDoc.eps}
 %\caption{\label{label}Figure caption for second of two sided figures.}
 %\end{minipage} 
-\end{figure}
-
-\begin{figure}[h]
-\includegraphics[width=21pc]{poster/images/inclAblaDoc.eps}\hspace{2pc}%
-\begin{minipage}[b]{14pc}\caption{\label{label}Figure caption for a narrow figure where the caption is put at the side of the figure.}
-\end{minipage}
-\end{figure}
+%\end{figure}
 
 
 \ack %command \ack sets the acknowledgments heading as an unnumbered section.
 
 
-\appendix % The command \appendix" is used to signify the start of the appendixes.
-\section{AH:::}
+%\appendix % The command \appendix" is used to signify the start of the appendixes.
+%\section{AH:::}
 
 %\begin{equation}
 %time= money
@@ -77,16 +215,56 @@ An example application utilizing the physics list is introduced.
 %precede it and \verb"\setcounter{section}{1}" must follow it. 
 
 
+
+\begin{center}
+\begin{table}[h]
+\caption{\label{opt}Summary of {\sf QGSP\_\-INCL\_ABLA} physics list.}
+%\footnotesize\rm
+\centering
+\begin{tabular}{@{}*{7}{l}}
+\br
+Option&Description\\
+\mr
+\verb"Al-"&Targets heavier than Aluminium.\\
+\verb"150~MeV -"&Projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV.\\
+\br
+\end{tabular}
+\end{table}
+\end{center}
+
+
+
 \section*{References}
 
 
-
-Ref. [1]
-
 \begin{thebibliography}{9}
-\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
-\item Jain S C, Willander M, Narayan J and van Overstraeten R 2000 
-{\it J. Appl. Phys}. {\bf 87} 965 
+
+\bibitem{incl} A. Boudard et al., \emph{Intranuclear cascade model for
+    a comprehensive description of spallation reaction data}, Phys.
+  Rev. C66 (2002) 044615
+\bibitem{g4} \emph{Geant4 collaboration website} \\ {\tt http://\-cern.ch/\-geant4}
+\bibitem{pk08bProceedings}
+A. Heikkinen, P. Kaitaniemi, and A. Boudard,
+{\em Implementation of INCL4 cascade and ABLA evaporation codes in Geant4},
+Journal of Physics: Conference Series 119 (2008) 032024, 
+{\sf [doi:10.1088/1742-6596/119/3/032024]}
+\bibitem{abla} J. Benlliure et al., \emph{Calculated nuclide
+    production yields in relativistic collisions of fissile nuclei},
+  Nuc. Phys. A628 (1998) 458
+\bibitem{abla1} J. J. Gaimard et al., \emph{},
+  Nuc. Phys. A531 (1991) 709
+\bibitem{abla2} A. R. Junghans et al., \emph{},
+  Nuc. Phys. A629 (1998) 635
+\bibitem{gsifragments} T. Enqvist et al. \emph{},
+  Nucl. Phys. A686 (2001) 481
+\bibitem{g4incl} \emph{Geant4 Physics Reference Manual: INCL~4.2 Cascade and ABLA~V3 Evaporation with Fission} 
+%\\ {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
+
+\bibitem{data} X.Ledoux et al., \emph{Spallation Neutron Production by
+  0.8, 1.2, and 1.6 GeV Protons on Pb Targets} Phys. Rev. Lett. 82
+  (1999)
+
+%\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
 \end{thebibliography}
 
 
