@@ -37,17 +37,6 @@ An example application utilizing the physics list is introduced.
 \end{abstract}
 
 \section{Introduction} \label{sec:intro}
-\input{introduction.tex}
-
-\section{INCL and ABLA models in Geant4} \label{sec:models}
-\input{models}
-
-\section{Physics list} \label{sec:list}
-\input{physicslist.tex}
-
-\appendix
-
-\section{Introduction}
 [Poster abtract$>>$]
 
 We have introduced INCL \cite{incl} intra-nuclear cascade model in Geant4 9.2 \cite{g4}.
@@ -61,6 +50,46 @@ of accelerator driven systems and EURISOL project.
 
 [$<<$poster abtract]
 
+
+An unique feature of Geant4 is physics list concept providing transparent access 
+to various physics models. 
+Often an optional models are available with specific strengths and limitations, 
+so physics lists concept is used to
+provide optimal set of functionality for specific use case.
+
+In this paper we are interested on issues relevant to nuclear physics applications,
+neutron production and modelling of spallation reactions.  
+
+%ADS
+
+The goal of accelerator driven sub-critical reactor (Accelerator
+Driven System, ADS) development is to provide safer and more effective
+methods of nuclear power production. The most important benefits of
+this new type of reactor include improved safety. In case of an
+emergency the accelerator can be shut down which in turn shuts down
+the reactor. Another important safety benefit is that the system
+transmutes nuclear waste to less harmful isotopes.
+
+The ADS is based on two main components: accelerator and spallation target.
+
+This paper is organized as follows:
+key Geant4 models (intra-nuclear cascade INCL or Liege cascade, and ABLA evaporation-fission model) 
+applied in this work are introduced in Sec.~\ref{sec:models},
+Sec.~\ref{sec:list} documents the details of physics list implementation, and
+Sec.~\ref{sec:example} describes an example application utilizing the new physics list
+for the use case of spallation reaction study.
+Physics performance is demonstrated particularly for 
+neutron  cross sections in Sec.~\ref{sec:performance} and
+Sec.~\ref{sec:conclusion} concludes with outline of future models developments.
+
+
+\section{INCL and ABLA models in Geant4} \label{sec:models}
+
+INCL and ABLA models are casted into independent FORTRAN based Monte Carlo codes 
+INCL4.2 and ABLA V3 \cite{heikkinen07mProceedings}.
+Recently these implementations have been translated into C++ and codes provides
+as part of Geant4 toolkit \cite{heikkinen03aPaper}. 
+First beta release of INCL 4.2 and ABLA v3 was in Geant4  9.1 (December 2007).
 
 \section{Geant4 physics lists}
 
@@ -82,6 +111,24 @@ spallation physics in mind.
 It uses INCL/ABLA models for proton,
 neutron and pion inelastic interactions in the energy range 0~-~3~GeV.
 
+INCL/ABLA models can now be used via physics list {\tt
+QGSP\_INCL\_ABLA}. The list is based on widely used {\tt QGSP\_BERT}
+physics list. In the new list we use INCL/ABLA models instead of the
+Bertini cascade.
+
+The INCL/ABLA models are used for proton, neutron, pi+ and pi-
+inelastic processes in the energy range 0 - 3 GeV. Above this
+threshold QGSP model is used. Since this list is intended for
+spallation and ADS applications we have not optimized the physics
+performance for energies higher than 3 GeV. In order to extend the
+list for high energy applications another model is probably needed
+between QGSP and INCL/ABLA.
+
+The class reference documentation of the INCL/ABLA models is produced
+using Doxygen \cite{doxygen} documentation generator. It allows us to
+produce full documentation of the class structure complete with usage
+instructions, class diagrams, detailed descriptions of all methods and
+code listings.
 
 \begin{figure}[h]
 \begin{center}
