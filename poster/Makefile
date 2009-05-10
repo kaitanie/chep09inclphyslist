@@ -1,3 +1,7 @@
+pdfviewer = /home/aatos/Desktop/system/tools/acroread/opt/Adobe/Reader8/bin/./acroread
+#pdfviewer = gv
+#pdfviewer = firefox
+
 all: 
 	latex fp2009
 	latex fp2009
@@ -32,7 +36,9 @@ poster:
 #       dvips -Ppdf -G0 -ta1 poster
 	dvips -Ppdf -o poster.ps poster.dvi
 	ps2pdf -dMaxSubsetPct=100 -dCompatibilityLevel=1.4 -dSubsetFonts=true -dEmbedAllFonts=true -sPAPERSIZE=a4 poster.ps
-
+ifdef AHSYSTEM
+	 $(pdfviewer) poster.pdf &
+endif
 a4:
 	convert poster.ps -page A4 posterA4.ps
 
