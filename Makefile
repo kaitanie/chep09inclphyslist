@@ -1,5 +1,6 @@
-d = ah09aProceedings
+#d = ah09aProceedings
 d1 = chep09geant4
+d = $(d1)
 #d1 = jpcsSample
 
 # extended report
