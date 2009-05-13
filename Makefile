@@ -12,7 +12,7 @@ pdfviewer = /home/aatos/Desktop/system/tools/acroread/opt/Adobe/Reader8/bin/./ac
 #pdfviewer = firefox
 dviviewer = xdvi -allowshell -geometry 700x900+750+100 
 
-all: 
+all: paper
 	@echo :::document = $(d)
 	@echo :::preparing latex ...
 	@c; rm -f *.aux
