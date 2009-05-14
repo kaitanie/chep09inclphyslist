@@ -37,53 +37,65 @@ An example application utilizing the physics list is introduced.
 \end{abstract}
 
 \section{Introduction} \label{sec:intro}
-[Poster abtract$>>$]
-
-We have introduced INCL \cite{incl} intra-nuclear cascade model in Geant4 9.2 \cite{g4}.
-The INCL model is well established for targets heavier than Aluminium
-and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV \cite{pk08bProceedings}. 
+In this paper we are interested on issues relevant Geant4 simulation of nuclear physics applications,
+neutron production and modelling of spallation reactions.  
 
 
-We present a new Geant4 physics list, based on INCL and ABLA models, 
-prepared for nuclear physics applications in the domain
-of accelerator driven systems and EURISOL project.
+%\subsection{Accelerator Driven Systems}
+%ADS
+% Material: http://users.ictp.it/~pub_off/lectures/lns012/Kadi_002.pdf
+One of our motivation is to  develop Geant4 tools
+ for simulation of Accelerator Drive System (ADS)
+The goal of accelerator driven sub-critical reactor 
+development is to provide safer and more effective
+methods of nuclear power production. 
+The main components of an ADS system are: accelerator, spallation
+target and sub-critical core.
 
-[$<<$poster abtract]
 
+The most important benefits of
+this new type of reactor include improved safety. In case of an
+emergency the accelerator can be shut down which in turn shuts down
+the reactor. Another important safety benefit is that the system
+transmutes nuclear waste to less harmful isotopes.
+
+
+To this aim we present a new Geant4 physics list, 
+based on INCL \cite{incl} intra-nuclear cascade model and ABLA model in Geant4 9.2~\cite{g4}. 
+
+
+%The INCL model is well established for targets heavier than Aluminium
+%and projectile energies from $\sim$ 150 MeV up to 2.5 GeV $\sim$ 3 GeV . 
+
+
+This paper is organized as follows.
+Section~\ref{sec:list} briefly summarise the concept of physics list.
+Geant4 9.2 models intra-nuclear cascade INCL or Liege cascade, and ABLA evaporation-fission model
+applied in this work are introduced in Section~\ref{sec:models},
+Section~\ref{sec:newlist} documents the details of physics list implementation, 
+%Secctio~\ref{sec:example} describes an example application utilizing the new physics list
+%for the use case of spallation reaction study.
+Physics performance is demonstrated particularly for 
+neutron  cross sections in Section~\ref{sec:performance} and
+Section~\ref{sec:carbon} concludes with outline of future models developments.
+
+
+\section{Geant4 physics lists}\label{sec:list}
+
+A unique feature of Geant4 is to  
+decouple physics models, cross sections, and processes
+using abstract interfaces, and manage the usage of different options with so-called the physics lists:
+\begin{itemize}
+\item Physics lists allow users to find good balance between various goals (e.g. CPU
+time requirements vs. accuracy of results).
+\item Also, the Geant4 physics system can be easily extended.
+\end{itemize}
 
 An unique feature of Geant4 is physics list concept providing transparent access 
 to various physics models. 
 Often an optional models are available with specific strengths and limitations, 
 so physics lists concept is used to
 provide optimal set of functionality for specific use case.
-
-In this paper we are interested on issues relevant to nuclear physics applications,
-neutron production and modelling of spallation reactions.  
-
-%ADS
-% Material: http://users.ictp.it/~pub_off/lectures/lns012/Kadi_002.pdf
-
-The goal of accelerator driven sub-critical reactor (Accelerator
-Driven System, ADS) development is to provide safer and more effective
-methods of nuclear power production. The most important benefits of
-this new type of reactor include improved safety. In case of an
-emergency the accelerator can be shut down which in turn shuts down
-the reactor. Another important safety benefit is that the system
-transmutes nuclear waste to less harmful isotopes.
-
-The main components of an ADS system are: accelerator, spallation
-target and sub-critical core.
-
-This paper is organized as follows:
-key Geant4 models (intra-nuclear cascade INCL or Liege cascade, and ABLA evaporation-fission model) 
-applied in this work are introduced in Sec.~\ref{sec:models},
-Sec.~\ref{sec:list} documents the details of physics list implementation, and
-Sec.~\ref{sec:example} describes an example application utilizing the new physics list
-for the use case of spallation reaction study.
-Physics performance is demonstrated particularly for 
-neutron  cross sections in Sec.~\ref{sec:performance} and
-Sec.~\ref{sec:conclusion} concludes with outline of future models developments.
-
 
 \section{INCL and ABLA models in Geant4} \label{sec:models}
 
@@ -97,22 +109,9 @@ Currently new versions of INCL and ABLA versions in Geant4 are pure
 FORTRAN to C++ translations. Our goal is to completely redesign the
 INCL cascade code using modern OO techniques.
 
-\section{Geant4 physics lists}
+\section{A new Geant4 physics list {\tt QGSP\_\-INCL\_ABLA}}\label{sec:newlist}
 
-A unique feature of Geant4 is to  
-decouple physics models, cross sections, and processes
-using abstract interfaces, and manage the usage of different options with so-called the physics lists:
-\begin{itemize}
-\item Physics lists allow users to find good balance between various goals (e.g. CPU
-time requirements vs. accuracy of results).
-\item Also, the Geant4 physics system can be easily extended.
-\end{itemize}
-
-
-
-\section{A new physics list}
-
-We have implemented a new physics list called {\sf QGSP\_\-INCL\_ABLA} with
+We have implemented a new physics list called {\tt QGSP\_\-INCL\_ABLA} with
 spallation physics in mind. 
 It uses INCL/ABLA models for proton,
 neutron and pion inelastic interactions in the energy range 0~-~3~GeV.
@@ -131,7 +130,7 @@ list for high energy applications another model is probably needed
 between QGSP and INCL/ABLA.
 
 The class reference documentation of the INCL/ABLA models is produced
-using Doxygen \cite{doxygen} documentation generator. It allows us to
+using Doxygen \cite{doxygen} documentation generator (see Fig.~\ref{fig:doxygen}). It allows us to
 produce full documentation of the class structure complete with usage
 instructions, class diagrams, detailed descriptions of all methods and
 code listings.
@@ -139,24 +138,25 @@ code listings.
 \begin{figure}[h]
 \begin{center}
 %\includegraphics[width=21pc]{poster/images/inclAblaDoc.eps}\hspace{2pc}%
-\includegraphics[scale=0.80]{poster/images/inclAblaDoc.eps}
+\includegraphics[scale=0.70]{poster/images/inclAblaDoc.eps}
 %\begin{minipage}[b]{14pc}
-\caption{\label{label}Doxygen documentation of Geant4 {\sf QGSP\_\-INCL\_ABLA} physics list is provided.}
+\caption{\label{fig:doxygen}Doxygen documentation of Geant4 {\tt QGSP\_\-INCL\_ABLA} physics list is provided.}
 %\end{minipage}
 \end{center}
 \end{figure}
 
 
-
-\section{Fragment yield}
+\section{Physics performance}\label{sec:performance}
+%\subsection{Fragment yield}
+Fragment yield
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.70]{poster/images/fragments.eps}
+\includegraphics[scale=0.80]{poster/images/fragments.eps}
 
 \caption{Fragment production of the INCL and ABLA \cite{abla, abla1, abla2} models. 
 Black and red histograms are the results from the original FORTRAN version 
-and new C++ implementation, respectively. Data is from Ref. \cite{gsifragments}.}
+and new C++ implementation, respectively. Data is from Ref.~\cite{gsifragments}.}
 
 \end{center}
 \end{figure}
@@ -175,7 +175,8 @@ and new C++ implementation, respectively. Data is from Ref. \cite{gsifragments}.
 \end{figure}
 
 
-\section{Neutron production}
+%\subsection{Neutron production}
+Neutron production
 
 \begin{figure}
 \begin{center}
@@ -240,44 +241,59 @@ These results can be compared with a corresponding case with aluminium target in
 %Blue data points are from Ref.~\cite{data}.}
 %\end{figure}
 
-\section{Light targets}
+%\subsection{Light targets}
+
+
+%Light targets
 
 We have introduced a cut to choose between ABLA and Fermi break-up for light targets.
 So, INCL can now be used with the Geant4 Fermi break-up model.
-
-
 Currently, INCL interface provides Fermi break-up \cite{g4incl} for
 remnant nuclei lighter than A = 13 and ABLA for heavier elements.
 
 Comparison of the fragment production results for reaction p(1.0 GeV)
 + C calculated using INCL and ABLA, INCL with Fermi break-up and
-Geant4 Bertini cascade are shown in figure \ref{fig:fermibreakup}.
+Geant4 Bertini cascade are shown in Fig.~\ref{fig:fermibreakup}.
 
-\begin{figure}
+%\begin{figure}
+%%\begin{center}
+%\includegraphics[scale=0.60,angle=90]{poster/images/masses.eps}
+%%\end{center}
+%\caption{Comparison of massnumber distributions given INCL4.2 cascade with ABLA evaporation 
+%and with standard Geant4 Fermi break up model against data from \cite{a}.
+%Also, results from Geant4 Bertini cascade with independent evaporation model are shown. }
+%\label{fig:fermibreakup}
+%\end{figure}
+
+
+\begin{figure}[h]
+\begin{minipage}{9.0cm}
 %\begin{center}
-\includegraphics[scale=0.60,angle=90]{poster/images/masses.eps}
+\includegraphics[width=1.0\textwidth]{poster/images/masses2.eps}
 %\end{center}
+%\caption{\label{label}Figure caption .}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{6cm}
+%\includegraphics[width=14pc]{./poster/images/inclAblaDoc.eps}
 \caption{Comparison of massnumber distributions given INCL4.2 cascade with ABLA evaporation 
 and with standard Geant4 Fermi break up model against data from \cite{a}.
 Also, results from Geant4 Bertini cascade with independent evaporation model are shown. }
-\label{fig:fermibreakup}
+\end{minipage} 
 \end{figure}
 
-\section{Carbon projectiles}
+\section{Carbon projectiles}\label{sec:carbon}
 
 Standard INCL4.2 contains support for light ion projectiles up to and
-including Alphas. The INCL4.2 method of handling composite projectiles
+including $\alpha$s. The INCL4.2 method of handling composite projectiles
 is a simple extension of the single projectile particle case. Instead
 of shooting a single projectile particle we shoot an ion that consists
 of protons and neutrons.
-
-This support is being extended to include Carbon-12
-ions, commonly used in medical applications.
-
+This support is being extended to include carbon ions, 
+commonly used in medical applications.
 Carbon beams are of particular interest for medical applications of Geant4, 
 and recently, a Carbon projectile support has been added to the INCL cascade. 
 
-An ongoing work is to improve of the physics models for the treatment of light ion beams up to Carbon.
+This ongoing work will  improve of the physics models for the treatment of light ion beams.
 
 
 
@@ -313,7 +329,7 @@ An ongoing work is to improve of the physics models for the treatment of light i
 
 \begin{center}
 \begin{table}[h]
-\caption{\label{opt}Summary of {\sf QGSP\_\-INCL\_ABLA} physics list.}
+\caption{\label{opt}Summary of {\tt QGSP\_\-INCL\_ABLA} physics list~\cite{pk08bProceedings}.}
 %\footnotesize\rm
 \centering
 \begin{tabular}{@{}*{7}{l}}
