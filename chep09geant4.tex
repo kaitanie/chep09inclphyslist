@@ -130,10 +130,10 @@ We have implemented a new physics list called {\tt QGSP\_\-INCL\_ABLA} with
 spallation physics in mind. 
 The list is based on widely used {\tt QGSP\_BERT} physics list.
 The new physics list uses INCL and ABLA models for proton,
-neutron and pion inelastic interactions in the energy range 0~-~3~GeV.
-Above 3~GeV threshold Geant4 QGSP model is used, since this list is intended for
+neutron, pion, deuteron, triton, He-3 and alpha inelastic interactions in the energy range 0~-~3~GeV.
+Above 3~GeV threshold Geant4 Bertini cascade model is used and above 15~GeV QGSP high energy model. However, since this list is intended for
 spallation and ADS applications we have not optimized the physics
-performance for energies higher than 3 GeV. 
+performance for energies higher than 3~GeV. 
 Key features of {\tt QGSP\_INCL\_ABLA} physics list are summarised in Table~\ref{tab:list}.
 
 \begin{center}
@@ -147,7 +147,7 @@ Models&Description\\
 \mr
 Electromagnetic physics & Geant4 standard EM\\
 Spallation modelling & INCL cascade with ABLA fission and evaporation (E$<$3~GeV)\\
-High energy model & QGSP (E$>$3~GeV)\\
+High energy model & Bertini cascade (E $>$ 3~GeV), QGSP (E$>$15~GeV)\\
 \br
 {\bf Use-cases} &  \\
  & Spallation studies \\
