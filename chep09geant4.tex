@@ -52,16 +52,17 @@ based on INCL \cite{incl} intra-nuclear cascade model and ABLA de-excitation mod
 This physics list can be used to simulate the main components of an ADS system: accelerator, spallation
 target and sub-critical core.
 
-This paper is organized as follows.
-Section~\ref{sec:list} briefly summarises the concept of Geant4 physics list.
-Geant4 9.2 models intra-nuclear cascade INCL or Liege cascade, and ABLA evaporation-fission model
-applied in this work are introduced in Section~\ref{sec:models}, 
-while Section~\ref{sec:newlist} documents the details of physics list implementation.
+%This paper is organized as follows.
+%Section~\ref{sec:list} briefly summarises the concept of Geant4 physics list.
+%Geant4 9.2 models intra-nuclear cascade INCL (also called  Li\'{e}ge cascade), 
+%and ABLA evaporation-fission model applied in this work are introduced in Section~\ref{sec:models}, 
+%while Section~\ref{sec:newlist} documents the details of physics list implementation.
+
 %Secctio~\ref{sec:example} describes an example application utilizing the new physics list
 %for the use case of spallation reaction study.
-Physics performance is demonstrated in Section~\ref{sec:performance},
-and status of carbon projectiles is given in Section~\ref{sec:carbon}. 
-Section~\ref{sec:conclusion} concludes with outline of future developments.
+%Physics performance is demonstrated in Section~\ref{sec:performance},
+%and status of carbon projectiles is given in Section~\ref{sec:carbon}. 
+%Section~\ref{sec:conclusion} concludes with outline of future developments.
 
 \section{Geant4 physics lists}\label{sec:list}
 
@@ -74,35 +75,39 @@ using abstract interfaces, and manage the usage of different options with so-cal
 (e.g. CPU time requirements vs. accuracy of results).
 \end{itemize}
 
-Often optional models are available with specific strengths and limitations, 
+Often in Geant4 optional models are available with specific strengths and limitations, 
 so physics lists concept is used to provide optimal set of functionality for specific use case.
 
 \section{INCL and ABLA models in Geant4} \label{sec:models}
-
-INCL and ABLA models are cast into independent Fortran based Monte Carlo codes 
-INCL4.2 \cite{incl} and ABLA v3 \cite{abla}.
-Recently these implementations have been translated into C++ and codes distributed
-as part of the Geant4 toolkit \cite{pk08bProceedings}. 
-The first beta release of INCL 4.2 and ABLA v3 was in Geant4  9.1 (December 2007)~\cite{g4site}.
-Currently the INCL and ABLA versions in Geant4 are straightforward
-Fortran to C++ translations.
+%Independent 
+Fortran based Monte Carlo codes INCL4.2~\cite{incl} and ABLA~v3~\cite{abla} are 
+implementations of corresponding INCL and ABLA models.
+%INCL and ABLA models are cast into independent Fortran based Monte Carlo codes 
+%INCL4.2 \cite{incl} and ABLA~v3 \cite{abla}.
+Recently these implementations have been translated into C++ and distributed
+as part of the Geant4 toolkit~\cite{pk08bProceedings}. 
+The first beta release of INCL4.2 and ABLA~v3 was in Geant4~9.1 (December 2007)~\cite{g4site}.
+Currently the INCL and ABLA versions in Geant4~9.2 are straightforward
+Fortran to C++ translations~\cite{g4incl}.
 Table~\ref{tab:inclabla} summarises the key features of these models.
-
+\vspace{-0.5cm}
 \begin{center}
 \begin{table}[h]
-\caption{\label{tab:inclabla}Summary of key features of INCL and ABLA models in Geant4~\cite{pk08bProceedings}.}
+\footnotesize
+\caption{\label{tab:inclabla}Summary of key features of INCL and 
+ABLA models in Geant4 9.2~\cite{pk08bProceedings, g4site}.}
 %\footnotesize\rm
 \centering
 \begin{tabular}{@{}*{7}{l}}
 \br
 {\bf INCL4.2}& \\
 \mr
-
-Projectiles & Protons, neutrons, pions ($\pi^-$, $\pi^0$, $\pi^+$)\\
+Projectiles & Protons, neutrons, pions ($\pi^-$, $\pi^0$, $\pi^+$),\\
 & d, t, $^3{\rm He}$, $\alpha$\\
 Energy range & $\sim$150~MeV -- $\sim$3GeV \\
 Target nuclei & Carbon -- Uranium \\
-Model features&  Stand alone mode with built in random number generation\\
+Model features&  \\
+& Stand alone mode with built in random number generation\\
 & No ad hoc parameters \\
 & Woods-Saxon nuclear potential \\
 & Coulomb barrier \\
@@ -111,7 +116,7 @@ Model features&  Stand alone mode with built in random number generation\\
 & $\pi$ and $\Delta$ production cross sections \\
 & $\Delta$ decay \\
 
-{\bf ABLA v3}& \\
+{\bf ABLA~v3}& \\
 \mr
 Supported input & Exited nuclei \\
 Model features & Fission \\
@@ -119,23 +124,29 @@ Model features & Fission \\
 Output particles & Fission products, residual nuclei, p, n, $\alpha$\\
 \mr
 \end{tabular}
+\normalsize
 \end{table}
 \end{center}
 
+\vspace{-0.5cm}
 \section{A new Geant4 physics list {\tt QGSP\_\-INCL\_ABLA}}\label{sec:newlist}
 
 We have implemented a new physics list called {\tt QGSP\_\-INCL\_ABLA} with
 spallation physics in mind. 
 The list is based on the widely used {\tt QGSP\_BERT} physics list.
 The new physics list uses INCL and ABLA models for proton,
-neutron, pion, deuteron, triton, He-3 and alpha inelastic interactions in the energy range 0~-~3~GeV.
-Above 3~GeV threshold Geant4 Bertini cascade model is used and above 15~GeV QGSP high energy model. However, since this list is intended for
+neutron, pion, deuteron, triton, $^3{\rm He}$, 
+and $\alpha$ inelastic interactions in the energy range 0~--~3~GeV.
+Above 3~GeV threshold Geant4 Bertini cascade model~\cite{bertini} 
+is used and above 15~GeV QGSP high energy model. 
+However, since this list is intended for
 spallation and ADS applications we have not optimized the physics
 performance for energies higher than 3~GeV. 
 Key features of {\tt QGSP\_INCL\_ABLA} physics list are summarised in Table~\ref{tab:list}.
 
 \begin{center}
 \begin{table}[h]
+\footnotesize
 \caption{\label{tab:list}Summary of {\tt QGSP\_\-INCL\_ABLA} physics list~\cite{pk08bProceedings}.}
 %\footnotesize\rm
 \centering
@@ -144,8 +155,10 @@ Key features of {\tt QGSP\_INCL\_ABLA} physics list are summarised in Table~\ref
 Models&Description\\
 \mr
 Electromagnetic physics & Geant4 standard EM\\
-Spallation modelling & INCL cascade with ABLA fission and evaporation (E$<$3~GeV)\\
-High energy model & Bertini cascade (E $>$ 3~GeV), QGSP (E$>$15~GeV)\\
+Spallation modelling & INCL cascade with ABLA fission and evaporation (E~$<$~3~GeV)\\
+High energy models   & \\
+& Bertini cascade (3~GeV~$<$~E~$<$~15~GeV) \\
+& QGSP (E~$>$~15~GeV)\\
 \br
 {\bf Use-cases} &  \\
  & Spallation studies \\
@@ -154,33 +167,34 @@ High energy model & Bertini cascade (E $>$ 3~GeV), QGSP (E$>$15~GeV)\\
                    & Neutron production \\
 \br
 \end{tabular}
+\normalsize
 \end{table}
 \end{center}
+\vspace{-0.5cm}
 The class reference documentation of the INCL/ABLA models is produced
 using Doxygen \cite{doxygen} documentation generator (see Fig.~\ref{fig:doxygen}). 
-It allows us to produce full documentation of the class structure complete with usage
-instructions, class diagrams, detailed descriptions of all methods and
-code listings.
+It allows us to generate full documentation of the class structure, 
+complete with usage instructions, class diagrams, 
+and detailed descriptions of all methods and code listings.
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.70]{poster/images/inclAblaDoc.eps}
-\caption{Doxygen documentation of Geant4 {\tt QGSP\_\-INCL\_ABLA} physics list is provided.}
+\caption{Doxygen documentation of Geant4 {\tt QGSP\_\-INCL\_ABLA} physics list.}
 \end{center}
 \label{fig:doxygen}
 \end{figure}
 
 \section{Physics performance}\label{sec:performance}
 Extensive validation has been performed to ensure the quality of INCL and ABLA models and correctness
-of Fortran to C+ translation. 
+of Fortran to C++ translation. 
 % Neutron production is the main method of validation
 Particularly double-differential neutron production cross sections of
 Al - Pb targets bombarded by 0.8 - 1.6 GeV protons have been
-investigated with simulations and comparison with accurate experimental data
-from~\cite{data}.
+investigated with simulations and comparison with accurate experimental data from~\cite{data}.
 % and fragment production comes after that
 In addition to neutron production also fragment production has been
-compared against data from Refs~\cite{carbone, gsifragments}.
+compared against data from Refs~\cite{gsifragments, carbone}.
 
 %% Particularly fragmentation of C - Pb targets bombarded with 0.8 - 1.6 GeV protons has been investigated
 %% with simulations and results compared with experimental data~\cite{carbone, gsifragments}.
@@ -212,7 +226,7 @@ Table~\ref{tab:validation} summarises the validations reported in this paper.
 \end{minipage}\hspace{2pc}%
 \begin{minipage}{6cm}
 \caption{\label{fig:breakc}Comparison of mass number distributions from p(1.0~GeV) + C reaction,
-given by INCL4.2 cascade with ABLA evaporation 
+given by INCL4.2 cascade with ABLA~v3 evaporation 
 and with standard Geant4 Fermi break up model against data from \cite{carbone}.
 Also, results from Geant4 Bertini cascade with internal fragmentation model are shown. }
 \end{minipage} 
@@ -222,7 +236,8 @@ Also, results from Geant4 Bertini cascade with internal fragmentation model are 
 
 \begin{center}
 \begin{table}[h]
-\caption{Summary of Geant4 INCL ABLA validations.}
+\footnotesize
+\caption{Summary of Geant4 INCL4.2~/~ABLA~v3 validations.}
 %\footnotesize\rm
 \centering
 \begin{tabular}{@{}*{7}{l}{l}}
@@ -241,24 +256,29 @@ Validation & Configuration & Figure \\
 \br
 \end{tabular}
 \label{tab:validation}
+\normalsize
 \end{table}
 \end{center}
 
 \begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.80]{images/proton1000MeVPb.eps}
-
-\caption{\label{fig:fragpb}Mass distribution of fragments  for p(1.0~GeV) + $^{208}{\rm Pb}$ interaction 
+\begin{minipage}{9.0cm}
+%\begin{center}
+\includegraphics[scale=0.80]{images/proton1000MeVPbzoomed.eps}
+\end{minipage}\hspace{2pc}%
+\begin{minipage}{6cm}
+\caption{\label{fig:fragpb}Mass distribution of 
+fragments  for p(1.0~GeV) + $^{208}{\rm Pb}$ interaction 
 using the INCL and ABLA  models.
-Histograms are the results from the original FORTRAN version (black) 
-and new C++ implementation (red). Data is from Ref.~\cite{gsifragments}
-(the reason for the difference between the C++ and FORTRAN versions is under investigation).}
+Histograms are the results from the original Fortran version (black) 
+and new C++ implementation (red). Data is from Ref.~\cite{gsifragments}.
+}
+\end{minipage}
 %(the reason for the difference
 %between the fortran version and the C++ version in the fission part is
 %not yet fully understood... (which means in clear for us that there is
 %a mistake in the coding)).}
 
-\end{center}
+%\end{center}
 \end{figure}
 
 \begin{figure}[h]
@@ -268,8 +288,8 @@ and new C++ implementation (red). Data is from Ref.~\cite{gsifragments}
 
 \caption{\label{fig:fragisotopes}Fragment production of the INCL and ABLA  models 
 for p(1.0~GeV) + $^{208}{\rm Pb}$ interaction.
-Histograms are the results from the original FORTRAN version (black)
-and new C++ implementation (red). Data is from Ref.\cite{gsifragments}.}
+Histograms are the results from the original Fortran version (black)
+and new C++ implementation (red). Data is from Ref.~\cite{gsifragments}.}
 
 \end{center}
 \end{figure}
@@ -279,8 +299,8 @@ and new C++ implementation (red). Data is from Ref.\cite{gsifragments}.}
 \begin{center}
 \includegraphics[scale=0.70]{images/proton1200MeVAl.eps}
 \caption{\label{fig:neutronAl}Double-differential for neutron production cross section
-    from Geant4 INCL and ABLA models in p(1.2 GeV) + Al $\rightarrow$ n + X reaction.
-Histograms are the results from the original FORTRAN version (black) and new C++ implementation (red), respectively. 
+    from Geant4~9.2 INCL and ABLA models in p(1.2 GeV) + Al $\rightarrow$ n + X reaction.
+Histograms are the results from the original Fortran version (black) and new C++ implementation (red). 
 Data is from Ref.~\cite{data}.}
 
 \end{center}
@@ -301,7 +321,7 @@ Data is from Ref.~\cite{data}.}
 \begin{center}
 \includegraphics[scale=0.70]{images/proton1600MeVFe.eps}
 \caption{\label{fig:neutronFe}Double-differential for neutron production cross section
-    from Geant4 INCL and ABLA models in p(1.6~GeV) + Fe $\rightarrow$ n + X reaction.
+    from Geant4~9.2 INCL and ABLA models in p(1.6~GeV) + Fe $\rightarrow$ n + X reaction.
 Data is from Ref.~\cite{data}.}
 
 \end{center}
@@ -312,12 +332,13 @@ Data is from Ref.~\cite{data}.}
 \begin{center}
 \includegraphics[scale=0.70]{images/proton1600MeVPb.eps}
 \caption{\label{fig:neutronPb}Double-differential for neutron production cross section
-    from Geant4 INCL and ABLA models in p(1.6~GeV) + Pb $\rightarrow$ n + X reaction.
+    from Geant4~9.2 INCL and ABLA models in p(1.6~GeV) + Pb $\rightarrow$ n + X reaction.
 Data is from Ref.~\cite{data}.}
 
 \end{center}
 
 \end{figure}
+
 
 \section{Carbon projectiles}\label{sec:carbon}
 The INCL4.2 method of handling composite projectiles is a simple extension 
@@ -342,10 +363,13 @@ dedicated  Fortran codes INCL4.2 and ABLA v3, providing detailed modelling
 of spallation, fission, and evaporation.
 
 
-Currently the physics models for the treatment of light ion beams needs to be improved and is underway.
+
 %Ongoing work is the improvement of the physics models for the treatment of light ion beams.
+The reason for the difference between the C++ and 
+Fortran versions seen in Fig.~\ref{fig:fragpb} is under investigation and
+improvement of the physics models for the treatment of light ion beams is underway.
 In future releases the physics list {\tt QGSP\_\-INCL\_ABLA} will be further optimised. 
-For low energy applications the physics list need to be modified
+For low energy applications the physics list need to be modified,
 so that additional model is added below INCL/ABLA validity region to treat interactions of low energy particles.
 Further, our goal is to completely redesign the INCL cascade code using modern object-oriented techniques
 and taking benefit of the most recent INCL version \cite{inclTrieste}.
@@ -354,8 +378,8 @@ and taking benefit of the most recent INCL version \cite{inclTrieste}.
 We are grateful to INCL developers Joseph Cugnon (University of Li\'{e}ge, Belgium) and 
 Y.~Yariv (SphN-DAPNIA, CEA-Saclay and Soreq, Israel) for supporting Geant4 INCL project.
 The ABLA group kindly provided code to the Geant4 collaboration. 
-Special thanks to Christelle Schmidt (IPNL) for providing a C++ translation of 
-the ABLA fission model. 
+Christelle Schmidt (IPNL) provided a C++ translation of the ABLA fission model. 
+The work was funded partly by the Fortum Foundation.
 
 %\appendix % The command \appendix" is used to signify the start of the appendixes.
 %\section{AH:::}
@@ -399,31 +423,39 @@ Annual Review of Nuclear and Particle Science Vol. 48: 505-556, December, 1998,
 \bibitem{abla2} A. R. Junghans et al., %\emph{},
   Nuc. Phys. A629 (1998) 635
 
+\bibitem{pk08bProceedings} A. Heikkinen, P. Kaitaniemi, and A. Boudard,
+\emph{Implementation of INCL4 cascade and ABLA evaporation codes in Geant4},
+Journal of Physics: Conference Series 119 (2008) 032024, {\tt doi:10.1088\-/1742-6596\-/119/3/032024}
+
 \bibitem{g4site} Geant4 collaboration, {\tt http://\-cern.ch/\-geant4}
 
-\bibitem{pk08bProceedings}
-A. Heikkinen, P. Kaitaniemi, and A. Boudard,
-{\em Implementation of INCL4 cascade and ABLA evaporation codes in Geant4},
-Journal of Physics: Conference Series 119 (2008) 032024, {\tt doi:10.1088/1742-6596/119/3/032024}
+\bibitem{g4incl} A. Heikkinen, P. Kaitaniemi, \emph{Geant4 9.2 Physics Reference Manual: INCL~4.2 Cascade and ABLA~v3 Evaporation with Fission} 
+
+\bibitem{bertini} A.~Heikkinen, N.~Stepanov, and J.~P.~Wellisch,
+\emph{Bertini intra-nuclear cascade implementation in Geant4},
+{\tt arXiv:nucl-th/0306008}, SLAC-R-636 (2003)
 
 \bibitem{doxygen} Doxygen source code documentation generator tool v1.5.9 (2009)
-
-\bibitem{gsifragments} T. Enqvist et al. %\emph{},
-  Nucl. Phys. A686 (2001) 481
-\bibitem{g4incl} Geant4 collaboration, \emph{Geant4 9.2 Physics Reference Manual: INCL~4.2 Cascade and ABLA~v3 Evaporation with Fission} 
-\bibitem{g4fermi} Geant4 collaboration, \emph{Geant4 9.2 Physics Reference Manual: Fermi Break-up Model} 
-%\\ {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
 
 \bibitem{data} S. Leray et al., \emph{Spallation Neutron Production by
   0.8, 1.2, and 1.6 GeV Protons on Various Targets} Phys. Rev. C65 044621 (1999)
 
-\bibitem{inclTrieste} A. Boudard and J. Cugnon et al., \emph{Joint ICTP-IAEA Advanced Workshop on Model Codes for Spallation Reactions, page 29}, ICTP Trieste, Feb 2008
+
+\bibitem{gsifragments} T. Enqvist et al., %\emph{},
+Nucl. Phys. A686 (2001) 481
 
 \bibitem{carbone}
 D.L. Olson et al.,
 {\em Factorization of fragment-production cross sections in relativistic heavy-ion collisions},
-Phys. Rev. C28, 1602 (1983)
-{\sf [doi:10.1103/PhysRevC.28.1602]}
+Phys. Rev. C28, 1602 (1983), {\tt doi:10.1103/PhysRevC.28.1602}
+
+
+
+\bibitem{g4fermi} Geant4 collaboration, \emph{Geant4 9.2 Physics Reference Manual: Fermi Break-up Model} 
+%\\ {\tt http://geant4.web.cern.ch/\-geant4/\-UserDocumentation/\-UsersGuides/\-PhysicsReferenceManual/\-html/\-node185.html}
+
+\bibitem{inclTrieste} A. Boudard and J. Cugnon et al., \emph{Joint ICTP-IAEA Advanced Workshop on Model Codes for Spallation Reactions}, p~29, ICTP Trieste, February 2008
+
 
 %\bibitem{doxygen} \emph{Doxygen website} \\ {\tt http://\-www.doxygen.org/}
 %\item Strite S and Morkoc H 1992 {\it J. Vac. Sci. Technol.} B {\bf 10} 1237 
