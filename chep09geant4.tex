@@ -180,10 +180,14 @@ with simulations and results compared with GSI data~\cite{gsifragments}.
 In addition to mass number distributions neutron production double differentials
 have been compared with accurate data from~\cite{data}.
 
-
-We have introduced a cut to choose between ABLA and Fermi break-up for light targets.
-So, INCL can now be used with the Geant4 Fermi break-up model.
-Currently, INCL interface provides Fermi break-up~\cite{g4incl} for
+In case of light cascade remnant nuclei de-excitation Fermi break-up
+model is more appropriate choice than ABLA.
+We have made this functionality available through the INCL Geant4 interface.
+%To achieve this we have
+%introduced a selection rule that chooses Geant4 Fermi break-up for remnants with
+%mass number smaller than 13 and ABLA for remnants with mass number 13
+%or more.
+Currently, INCL interface uses Geant4 Fermi break-up~\cite{g4fermi} for
 remnant nuclei lighter than A = 13 and ABLA for heavier elements.
 
 
