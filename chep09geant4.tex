@@ -172,18 +172,18 @@ High energy models   & \\
 \end{center}
 \vspace{-0.5cm}
 The class reference documentation of the INCL/ABLA models is produced
-using Doxygen \cite{doxygen} documentation generator (see Fig.~\ref{fig:doxygen}). 
+using Doxygen \cite{doxygen} documentation generator %(see Fig.~\ref{fig:doxygen}). 
 It allows us to generate full documentation of the class structure, 
 complete with usage instructions, class diagrams, 
 and detailed descriptions of all methods and code listings.
 
-\begin{figure}[h]
-\begin{center}
-\includegraphics[scale=0.70]{poster/images/inclAblaDoc.eps}
-\caption{Doxygen documentation of Geant4 {\tt QGSP\_\-INCL\_ABLA} physics list.}
-\end{center}
-\label{fig:doxygen}
-\end{figure}
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[scale=0.70]{poster/images/inclAblaDoc.eps}
+%\caption{Doxygen documentation of Geant4 {\tt QGSP\_\-INCL\_ABLA} physics list.}
+%\end{center}
+%\label{fig:doxygen}
+%\end{figure}
 
 \section{Physics performance}\label{sec:performance}
 Extensive validation has been performed to ensure the quality of INCL and ABLA models and correctness
@@ -203,7 +203,7 @@ compared against data from Refs~\cite{gsifragments, carbone}.
 %% In addition to mass number distributions neutron production double differentials
 %% have been compared with accurate data from~\cite{data}.
 
-In case of light cascade remnant nuclei de-excitation Fermi break-up
+In case of light cascade remnant nuclei de-excitation Fermi break-up,
 model is more appropriate choice than ABLA.
 We have made this functionality available through the INCL Geant4 interface.
 %To achieve this we have
@@ -214,7 +214,7 @@ Currently, INCL interface uses Geant4 Fermi break-up~\cite{g4fermi} for
 remnant nuclei lighter than A = 13 and ABLA for heavier elements.
 
 
-For example, comparison of the fragment production results for reaction p(1.0 GeV) + C 
+Comparison of the fragment production results for reaction p(1.0 GeV) + C 
 calculated using INCL and ABLA, INCL with Fermi break-up and
 Geant4 Bertini cascade are shown in Fig.~\ref{fig:breakc}.
 Table~\ref{tab:validation} summarises the validations reported in this paper.
@@ -299,7 +299,7 @@ and new C++ implementation (red). Data is from Ref.~\cite{gsifragments}.}
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.70]{images/proton1200MeVAl.eps}
+\includegraphics[scale=0.70]{images/proton1200MeVAlv1.eps}
 \caption{\label{fig:neutronAl}Double-differential for neutron production cross section
     from Geant4~9.2 INCL and ABLA models in p(1.2 GeV) + Al $\rightarrow$ n + X reaction.
 Histograms are the results from the original Fortran version (black) and new C++ implementation (red). 
@@ -312,7 +312,7 @@ Data is from Ref.~\cite{data}.}
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.70]{images/proton800MeVFe.eps}
+\includegraphics[scale=0.70]{images/proton800MeVFev1.eps}
 \caption{\label{fig:neutron08Fe}Neutron production from p(0.8 GeV) + Fe  $\rightarrow$ n + X. 
 Data is from Ref.~\cite{data}.}
 \end{center}
@@ -321,7 +321,7 @@ Data is from Ref.~\cite{data}.}
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.70]{images/proton1600MeVFe.eps}
+\includegraphics[scale=0.70]{images/proton1600MeVFev1.eps}
 \caption{\label{fig:neutronFe}Double-differential for neutron production cross section
     from Geant4~9.2 INCL and ABLA models in p(1.6~GeV) + Fe $\rightarrow$ n + X reaction.
 Data is from Ref.~\cite{data}.}
@@ -332,7 +332,7 @@ Data is from Ref.~\cite{data}.}
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.70]{images/proton1600MeVPb.eps}
+\includegraphics[scale=0.70]{images/proton1600MeVPbv1.eps}
 \caption{\label{fig:neutronPb}Double-differential for neutron production cross section
     from Geant4~9.2 INCL and ABLA models in p(1.6~GeV) + Pb $\rightarrow$ n + X reaction.
 Data is from Ref.~\cite{data}.}
