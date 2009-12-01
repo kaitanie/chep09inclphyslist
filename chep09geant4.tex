@@ -66,8 +66,23 @@ target and sub-critical core.
 
 \section{Geant4 physics lists}\label{sec:list}
 
-A unique feature of Geant4 is to decouple physics models, cross sections, and processes
-using abstract interfaces, and manage the usage of different options with so-called the physics lists:
+In Geant4 hadronic physics different aspects of the calculation are
+separated using abstract interfaces. The main bulding blocks of Geant4
+hadronic physics are:
+\begin{itemize}
+\item \emph{cross section} determines when a reaction will take place,
+\item \emph{physics model} calculates the final state of the reaction and
+\item \emph{process} combines the model and the cross section to
+  create a description of how particles interact with matter.
+\end{itemize}
+In a Geant4 application the needed physics processes, cross sections,
+models and model options (such as energy limits) must be explicitly
+assigned to the particles used in the application. This configuration
+is managed by using so-called physics lists.
+
+%A unique feature of Geant4 is to decouple physics models, cross sections, and processes
+%using abstract interfaces, and manage the usage of different options with so-called the physics lists:
+This decoupling offers several advantages:
 \begin{itemize}
 \item Concept provides transparent access to various physics models.
 \item The Geant4 physics system can be easily extended with new models and cross sections.
